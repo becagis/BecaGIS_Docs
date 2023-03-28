@@ -1,0 +1,9 @@
+networks:
+  shared_proxy:
+    external: true
+
+services:
+  docs.deploy:
+    image: becagis/docs:${APP_VERSION}
+    networks:
+      - shared_proxy

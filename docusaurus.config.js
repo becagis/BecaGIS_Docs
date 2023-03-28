@@ -6,20 +6,20 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'BecaGIS Docs',
+  tagline: 'BecaGIS Docs',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.becagis.vn',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'becagis', // Usually your GitHub org/user name.
+  projectName: 'BecaGIS_Docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -42,14 +42,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/becagis/BecaGIS_Docs/tree/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/becagis/BecaGIS_Docs/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -72,13 +72,31 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
+            sidebarId: 'maps_js_sdk',
+            label: 'Maps JavaScript SDK',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            type: 'docSidebar',
+            sidebarId: 'maps_flutter_sdk',
+            label: 'Maps Flutter SDK',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'geoportal',
+            label: 'GeopPortal',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'geosurvey',
+            label: 'GeoSurvey',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'qgis_plugins',
+            label: 'QGIS Plugins',
+          },
+          {
+            href: 'https://github.com/becagis/BecaGIS_Docs',
             label: 'GitHub',
             position: 'right',
           },

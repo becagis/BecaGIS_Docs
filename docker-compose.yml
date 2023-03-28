@@ -1,0 +1,10 @@
+services:
+  docs:
+    build:
+      context: .
+      target: development
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    volumes:
+      - .:/home/node/app
+      - /home/node/app/node_modules
