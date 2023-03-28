@@ -1,24 +1,35 @@
 include .env
 
+# Local
+
+pull:
+	docker-compose pull
+
 up:
 	docker-compose up -d
 
-push:
-	docker-compose push docs
+down:
+	docker-compose down
 
-pull:
-	docker-compose pull docs
+
+# Production
+
+up-prod:
+	docker-compose --env-file ./.env.prod -f docker-compose.prod.yml up -d
+
+down-prod:
+	docker-compose --env-file ./.env.prod -f docker-compose.prod.yml down
+
+build-prod:
+	docker-compose --env-file ./.env.prod -f docker-compose.prod.yml build
+
+push-prod:
+	docker-compose --env-file ./.env.prod -f docker-compose.prod.yml push
+
+# Deployment
 
 login:
 	docker login -u becagis -p $(DOCKER_ACCESS_TOKEN)
 
-up-prod:
-	docker compose -f docker-compose.prod.yml up docs.prod -d --force-recreate
-
-build-prod:
-	docker compose -f docker-compose.prod.yml build
-
-publish:
-	docker compose -f docker-compose.prod.yml build
-	docker-compose -f docker-compose.prod.yml docs.prod
-	curl -X POST $(WEB_HOOK_URL)
+publish: build-prod push-prod
+	$(WEB_HOOK_REQUEST)
