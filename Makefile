@@ -1,9 +1,12 @@
 include .env
 
 # Local
-
+	
 pull:
 	docker-compose pull
+
+build:
+	docker-compose build
 
 up:
 	docker-compose up -d
@@ -29,7 +32,7 @@ push-prod:
 # Deployment
 
 login:
-	docker login -u becagis -p $(DOCKER_ACCESS_TOKEN)
+	docker login -u ${DOCKER_USERNAME} -p $(DOCKER_ACCESS_TOKEN)
 
 publish: build-prod push-prod
 	$(WEB_HOOK_REQUEST)
