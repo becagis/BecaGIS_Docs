@@ -83,7 +83,7 @@ const config = {
           {
             type: 'docSidebar',
             sidebarId: 'geoportal',
-            label: 'GeopPortal',
+            label: 'GeoPortal',
           },
           {
             type: 'docSidebar',
