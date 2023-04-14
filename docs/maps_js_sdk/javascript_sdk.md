@@ -246,8 +246,6 @@ sidebar_label: JavaScript SDK
                             .getFeatureAttributes("layername");
 ```
 
-
-
 ## Tài liệu tham khảo API
 
 ### Map
@@ -277,10 +275,8 @@ sidebar_label: JavaScript SDK
 > Diễn giải các thông số:
 > - **divId**: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
 > - **options**: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
-    > Có 2 thông số bắt buộc khi khởi tạo map:
-    >
-
-- **center**: xác định vị trí trung tâm của map khi khởi tạo
+> Có 2 thông số bắt buộc khi khởi tạo map:
+> - **center**: xác định vị trí trung tâm của map khi khởi tạo
 
 > - **zoom**: mức zoom mặc định của map khi khởi tạo
 > - **config**: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
@@ -295,16 +291,16 @@ sidebar_label: JavaScript SDK
 > - _maxZoom_(Number): độ zoom lớn nhất cho phép
 > - _layers_(Number): danh sách layers được thêm mặc định
 > - _maxBounds_([LatLngBounds](#LatLngBounds): Bounds tối đa
->
+
 >**Animation Options**
 > - _zoomAnimation_(Boolean): hiệu ứng khi phóng to, thu nhỏ
 > - _zoomAnimationThreshold_(Number): chênh lệch mức zoom để xuất hiện hiệu ứng
 > - _fadeAnimation_(Boolean): hiệu ứng fade in/out khi tile được thay thế đối với [TileLayer](#TileLayer)
->
+
 >**Control options**
 > - _zoomControl_(Boolean): hiển thị zoom control
 > - _attributionControl_(Boolean): hiển thị thông tin nhà phát triển
->
+
 >[Xem thêm...](https://leafletjs.com/reference.html#map)
 
 #### Config
@@ -346,16 +342,16 @@ sidebar_label: JavaScript SDK
 >    },
 > ```
 
->#### Methods
+> #### Methods
 
 > **Methods dành cho Layers và Controls**
 > - _addControl(control)_: this
->   - Thêm control vào map
+> - Thêm control vào map
 > - _removeControl(control)_: this
 >   - Xóa control khỏi map
 > - _addLayer(layer)_: this
 >   - Thêm layer vào map
-> - _removeLayer(layer)_: 
+> - _removeLayer(layer)_:
 >   - xóa layer khỏi map
 > - _hasLayer(layer)_: Boolean
 >   - Kiểm tra layer có tồn tại trong map hay không
@@ -388,7 +384,7 @@ sidebar_label: JavaScript SDK
 >   - Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
 > - _invalidateSize()_: this
 >   - Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
- 
+
 > **Methods truy xuất thông tin map**
 > - _getCenter()_: [LatLng](#LatLng)
 >   - 
@@ -403,6 +399,7 @@ sidebar_label: JavaScript SDK
 > - _getBoundsZoom(latlngBounds)_: Number
 >   - 
 > - _getSize()_: [Point](#Point)
+>   - 
 
 > **Methods khai báo Event **
 > - _on(eventName, callback)_: this
@@ -414,6 +411,30 @@ sidebar_label: JavaScript SDK
 
 > **Events liên quan đến Layer**
 > - _baselayerchange_:
+> - _overlayeradd_:
+> - _overlayremove_:
+> - _layeradd_:
+> - _layerremove_:
+
+> **Events liên quan đến trạng thái map**
+> - _zoomlevelschange_:
+> - _zoomstart_:
+> - _movestart_:
+> - _zoom_:
+> - _move_:
+> - _zoomend_:
+> - _moveend_:
+
+> **Events tương tác**
+> - _click_:
+> - _dblclick_:
+> - _mousedown_:
+> - _mouseover_:
+> - _mouseup_
+> - _keypress_:
+> - _keydown_:
+> - _keyup_:
+> - _preclick_:
 
 ### GeoPortal
 
@@ -423,7 +444,7 @@ sidebar_label: JavaScript SDK
 > 1. Khai báo GeoPortal bằng method `createMap`
 > 2. Xác thực tài khoản
 > - Dữ liệu trong GeoPortal được khai báo với phân quyền theo từng người dùng và nhóm người dùng cụ thể,
-    > để có thể truy cập vào dữ liệu, người dùng phải thông qua thao tác xác thực được hỗ trợ bởi GeoPortal API.
+> để có thể truy cập vào dữ liệu, người dùng phải thông qua thao tác xác thực được hỗ trợ bởi GeoPortal API.
 > 3. Gọi các methods theo như cầu sử dụng
 
 #### Khai báo GeoPortal bằng `createMap`
@@ -463,51 +484,29 @@ sidebar_label: JavaScript SDK
 
 > Diễn giải các thông số:
 > - **geoPortal**: chứa khai báo liên quan đến GeoPortal
-    >
-
-- **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportal.vntts.com.vn
+> - **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportal.vntts.com.vn
 
 > - **loginInfo**: Thông tin xác thực tài khoản GeoPortal
-    >
-
-- **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
+> - **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
 
 >     - **clientSecret**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
 >     - **username**: Tên đăng nhập của người dùng sử dụng dữ liệu
 >     - **password**: Mật khẩu của người dùng sử dụng dữ liệu
 >   - **layers**: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
-      >
-
-- Trong mỗi khai báo Layer, gồm các thông số sau:
-  >
-- **layers**: Là typename của Layer trong GeoPortal
-
->       - **options**: Chứa các khai báo bổ sung cho Layers
-
-          >
-
-- **featureInfo**: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
-
->         - **featureInfoOptions**: Các thông tin bổ sung cho FeatureInfo
-
-            >
-
-- **showFeatureHandler**: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
+> - Trong mỗi khai báo Layer, gồm các thông số sau:
+>   - **layers**: Là typename của Layer trong GeoPortal
+>   - **options**: Chứa các khai báo bổ sung cho Layers
+>   - **featureInfo**: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
+>   - **featureInfoOptions**: Các thông tin bổ sung cho FeatureInfo
+>   - **showFeatureHandler**: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
 
 > - Ngoài ra một số chức năng khác tương tác với GeoPortal được khai báo dưới dạng plugins trong khai báo `map`
 > - **map**: Đối tượng khai báo cấu hình cho map
-    >
-
-- **controls**: Nơi khai báo các plugins controls
-  >
-- **geoPortalLayersControl**: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền
-  truy cập.
-
->     - **geoPortalLoginControl**: Khai báo control cho phép người dùng có thể tự login vào GeoPortal
->     - **geoPortalWmsLegendControl**: Khai báo control cho phép hiển thị legend các active layer của GeoPortal
->     - **geoPortalFeatureSearchControl**: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer
-
-        của GeoPortal
+> - **controls**: Nơi khai báo các plugins controls
+> - **geoPortalLayersControl**: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền truy cập.
+>   - **geoPortalLoginControl**: Khai báo control cho phép người dùng có thể tự login vào GeoPortal
+>   - **geoPortalWmsLegendControl**: Khai báo control cho phép hiển thị legend các active layer của GeoPortal
+>   - **geoPortalFeatureSearchControl**: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer của GeoPortal
 
 #### Methods và properties của GeoPortal API
 
@@ -541,9 +540,7 @@ sidebar_label: JavaScript SDK
 > **async getFeatureHelper().getFeatureInfo(params): Object**
 > - Truy xuất thông tin chi tiết của Feature dựa thông số
     của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo)
-    >
-
-- `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
+> - `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
 
 > **async getFeatureHelper().getFeatureTypeList(): Object[]**
 > - Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
@@ -568,7 +565,7 @@ sidebar_label: JavaScript SDK
 
 > **async getAuthHelper().getTokenInfoAsync(loginInfo): Object**
 > - Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}`
-    > từ tham số `LoginInfo{clientId, clientSecret, username, password}`
+> từ tham số `LoginInfo{clientId, clientSecret, username, password}`
 
 > **async getAuthHelper().getAuthorizationString(): String**
 > - Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
@@ -601,9 +598,7 @@ Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai b
 > **equal(latlngOther, numberOfMagin): Boolean**
 > - So sánh 2 giá trị LatLng, trả về true nếu 2 điểm là giống nhau
 > - Tham số
-    >
-
-- latlngOther: một LatLng khác
+> - latlngOther: một LatLng khác
 
 > - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
 > ```javascript
@@ -615,14 +610,10 @@ Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai b
 > **toString(): String**
 > - Trả về một chuỗi thể hiện giá trị của LatLng
 
-    >  **distanceTo(latlngOther): Number**
-
+>  **distanceTo(latlngOther): Number**
 > - Trả về giá trị khoảng cách đến một LatLng theo meter
 > - Trong đó:
-    >
-
-- latlngOther: một LatLng khác
-
+>   - latlngOther: một LatLng khác
 > ```javascript
 >    var latlng = BCG.latLng(11.05310, 106.66616);
 >    var latlngOther = BCG.latLng(11.05, 106.66);
@@ -632,9 +623,7 @@ Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai b
 > **toBounds(sizeInMeters): [LatLngBounds](#LatLngBounds)**
 > - Trả về giá trị [LatLngBounds](#LatLngBounds) được tính các góc bằng sizeInMeters / 2
 > - Thông số:
-    >
-
-- Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
+>   - Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
 
 > **Properties**
 > - lat: Giá trị latitude theo độ
@@ -706,7 +695,7 @@ Trường hợp sử dụng phố biến, xác định khung nhìn bản đồ.
 
 > **toBBoxString(): String**
 > - Trả về một chuỗi kèm theo tọa độ trong định dạng
-    > 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
+> 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
 
 > **equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther): Boolean**
 > - Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
@@ -772,19 +761,175 @@ Trường hợp sử dụng phố biến, xác định tọa độ trung tâm c�
 > **toString(): String**
 > - Trả về String thể hiện 2 giá trị x,y
 
-#### Bounds
-
-### Map
-
 ### Layer
+1. Là class cơ bản của Layer, bao gồm các methods, properties, options định nghĩa nên một lớp dữ liệu
+2. Layer là một baseclass, do đó các loại Layer cụ thể sẽ kế thừa Layer: TileLayer, ImageOverlay, TileLayer.WMS, VideoOverlay, GeoJSON
+3. Methods và Properties
+
+> **addTo(map): this**
+> -
+
+> **remove(): this**
+> -
+
+> **getEvents(): Object**
+> -
 
 #### TileLayer
+1. Kế thừa từ Layer, hiển thị các lớp bản đồ dạng tiling image có cấu trúc gồm các thông số {x}, {y}, {z} và {s}
+ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
+2. Khởi tạo TileLayer
+```javascript
+    var tilelayer = BCG.tileLayer('https://{s}.somedomain.com/layer/{z}/{x}/{y}.png', options);
+```
+> **Trong đó:**
+> - s: là thông số subdomain, ví dụ đối với google tile sẽ có các sub: m1, m2, m3,...
+> - z: là giá trị zoom
+> - x: thông số tiling x
+> - y: thông số tiling y
+
+> **Options**
+> - _minZoom_(Number): 
+> - _maxZoom_(Number):
+> - _errorTileUrl_():
+
+3. Methods và Properties
+
+> **Methods**
+> - _setUrl(url, noReDraw?)_: this
+>   - 
+>
+> - _createTile(coords, doneCallback): HTMLElement
+> 
+> 
+> [Methods kế thừa từ Layer](#Layer)
+
+> **Events**
+> - _tileabort_: Event khi tile gặp lỗi
+> 
+> [Events kế thừa từ Layer](#Layer)
+
+#### TileLayer.WMS
+1. Được sử dụng hiển thị layer được cung cấp với dịch vụ OGC WMS, kế thừa từ [TileLayer](#TileLayer)
+2. Khởi tạo TileLayer.WMS
+```javascript
+    var wmslayer = BCG.tileLayer.wms("http://demo.com/geoserver/wms", {
+        layers: 'ten_layer',
+        format: 'image/png',
+        transparent: true,
+        attribution: "BecaGIS"
+    });
+```
+> **Trong đó:**
+> - _url_:
+> - _layers_:
+> - _transparent_:
+> - _attribution_: 
+
+> **Options**
+> - _layers(String)_:
+> - _styles(String)_:
+> - _format(String)_:
+> - _transparent(Boolean_:
+> - _version(String)_:
+> - _crs(String)_:
+
+4. Methods và Properties
+
+> **Methods**
+> - _setParams(params, noRedraw): this_
+>   - 
+> 
+> - [Methods kế thừa từ TileLayer](#TileLayer)
 
 #### ImageOverlay
+1. Được sử dụng hiển thị Image với Bounds
+2. Khởi tạo ImageOverlay
+```javascript
+    var imageUrl = 'https://maps.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
+    var imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+    BCG.imageOverlay(imageUrl, imageBounds).addTo(map);
+```
+> **Trong đó:**
+> - _imageUrl:_
+> - _imageBounds:_
+> - _BCG.imageOverlay:_
+
+> **Options**
+> - _opacity(Number)_:
+> - _alt(String)_:
+> - _interactive(Boolean)_:
+> - _crossOrigin(Boolean)_:
+> - _errorOverlayUrl(String)_:
+> - _zIndex(Number)_:
+> - _className(String)_:
+
+3. Methods và Properties
+
+> **Methods**
+> - _setOpacity(opacity): this_
+>   - 
+> 
+> - _bringToFront()_: this_
+>   - 
+> 
+> - _bringToBack(): this_
+>   -
+> 
+> - _setUrl(url): this_
+>   -
+> 
+> - _setBounds(bounds): this_
+>   -
+> 
+> - _setZIndex(zIndex): this_
+>   -
+> 
+> - _getBounds(): [LatLngBounds](#LatLngBounds)_
+>   -
+> 
+> - _getElement(): HtmlElement_
+>   -
+> 
+> - _getCenter(): [LatLng](#LatLng)_
+>   - 
+
+> **Events**
+> - _load_:
+> - _error_:
 
 #### VideoOverlay
+1. Được sử dụng hiển thị Video với Bounds
+2. Khởi tạo VideoOverlay
+```javascript
+    var videoUrl = 'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
+    var videoBounds = [[ 32, -130], [ 13, -100]];
+    BCG.videoOverlay(videoUrl, videoBounds ).addTo(map);
+```
+> **Trong đó:**
+> - _videoUrl:_
+> - _videoBounds:_
+> - _BCG.videoOverlay:_
+
+> **Options**
+> - _autoplay(Boolean)_:
+> - _loop(Boolean)_:
+> - _keepAspectRatio(Boolean)_:
+> - _muted(Boolean)_:
+> - _playsInline(Boolean)_:
 
 #### GeoJSON
+1. Sử dụng để tạo Layer từ GeoJSON data
+2. Khởi tạo GeoJSON
+```javascript
+    BCG.geoJSON(data, {
+        style: function (feature) {
+            return {color: feature.properties.color};
+        }
+    }).bindPopup(function (layer) {
+        return layer.feature.properties.description;
+    }).addTo(map);
+```
 
 ### Control
 
