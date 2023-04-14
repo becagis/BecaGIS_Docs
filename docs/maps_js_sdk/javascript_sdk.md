@@ -6,32 +6,46 @@ sidebar_label: JavaScript SDK
 # JavaScript SDK
 
 ## Một số trường hợp sử dụng
+
 ### Khởi tạo bản đồ với cấu hình bản đồ nền cơ bản
+
 1. Khởi tạo thẻ `div` với id trong html
+
 ```html
-        <div id="map"></div>
+
+<div id="map"></div>
 ```
+
 2. Khai báo thông tin css cho thẻ `div`
+
 ```css
         #map {
             height: 600px;
             width: 600px;
         }
 ```
+
 3. Sử dụng hàm `createMap` để khởi tạo bản đồ cơ bản với bản đồ nền `Google`
+
 ```javascript
         var map = BCG.BecaGIS.createMap("map", {}, {
             baseLayer: "Google"
         })
 ```
+
 4. Mã nguồn hoàn chỉnh
+
 ```html
-        <html>
-            
-        </html>
+
+<html>
+
+</html>
 ```
+
 ### Khởi tạo bản đồ với đầy đủ các thông số
+
 1. Sử dụng hàm `createMap` để khởi tạo bản đồ với đầy đủ các thông số
+
 ```javascript
         var map = BCG.BecaGIS.createMap("map", {}, {
             geoPortal: {
@@ -90,8 +104,11 @@ sidebar_label: JavaScript SDK
             baseLayer: "Google"
         })
 ```
+
 ### Tạo bản đồ với Marker
+
 1. Sử dụng hàm `createMap` để khởi tạo bản đồ với Marker và popup hiển thị thông báo
+
 ```javascript
         var map = BCG.BecaGIS.createMap("map", {}, {
             map: {
@@ -125,9 +142,12 @@ sidebar_label: JavaScript SDK
             baseLayer: "Google"
         })
 ```
+
 ### Tạo bản đồ với WMS Layer từ GeoPortal
-1. Sử dụng hàm `createMap` để khởi tạo thông tin đăng nhập GeoPortal, danh sách WMS layer 
-được phân quyền truy cập từ GeoPortal
+
+1. Sử dụng hàm `createMap` để khởi tạo thông tin đăng nhập GeoPortal, danh sách WMS layer
+   được phân quyền truy cập từ GeoPortal
+
 ```javascript
         var map = BCG.BecaGIS.createMap("map", {}, {
             geoPortal: {
@@ -154,8 +174,10 @@ sidebar_label: JavaScript SDK
 ```
 
 ### Tìm kiếm Feature với GeoPortal Connector
-1. Kết nối GeoPortal từ `createMap` để khởi tạo thông tin đăng nhập GeoPortal, 
-các Feature được phân quyền truy cập từ GeoPortal
+
+1. Kết nối GeoPortal từ `createMap` để khởi tạo thông tin đăng nhập GeoPortal,
+   các Feature được phân quyền truy cập từ GeoPortal
+
 ```javascript
         var map = BCG.BecaGIS.createMap("map", {}, {
             geoPortal: {
@@ -180,13 +202,17 @@ các Feature được phân quyền truy cập từ GeoPortal
             }
         })
 ```
+
 2. Truy xuất danh sách Features dựa vào truy vấn CQL.
+
 ```javascript
     var features = await map.geoPortal
             .getFeaturesHelper()
             .getFeatures("layer1,layer2,layer3", {CQL_FILTER: "prop=searchText"});
 ```
+
 3. Truy xuất danh sách Features bằng phép tính WITHIN Geometry
+
 ```javascript
     var geoJson =     {
       "type": "Feature",
@@ -208,40 +234,60 @@ các Feature được phân quyền truy cập từ GeoPortal
             .getFeaturesHelper()
             .getFeaturesWithinGeoJSON("layer1", "the_geom", geoJson);
 ```
-> *** Hướng dẫn CQL Query xem chi tiết [tại đây](https://docs.geoserver.org/2.22.x/en/user/tutorials/cql/cql_tutorial.html)
+
+> *** Hướng dẫn CQL Query xem chi
+> tiết [tại đây](https://docs.geoserver.org/2.22.x/en/user/tutorials/cql/cql_tutorial.html)
 
 4. Truy xuất thông tin mô tả thuộc tính của Feature
+
 ```javascript
     var featureAttributes = await map.geoPortal
                             .getFeaturesHelper()
                             .getFeatureAttributes("layername");
 ```
+
+
+
 ## Tài liệu tham khảo API
+
 ### Map
+
 > Map API là đối tượng chính của BecaGIS SDK, là đối tượng thể hiện nên bản đồ, được kế thừa từ bộ thư viên LeafletJS
-> Được BecaGIS bổ sung các method, module, plugins nhằm phục vụ kết nối BecaGIS Platform và tăng cường các tác vụ xử lý dữ liệu không gian
+> Được BecaGIS bổ sung các method, module, plugins nhằm phục vụ kết nối BecaGIS Platform và tăng cường các tác vụ xử lý
+> dữ liệu không gian
+
 #### Khởi tạo Map bằng `BCG.BecaGIS.createMap`
+
 ```html
-    <div id="divMapId"></div>
+
+<div id="divMapId"></div>
 ```
+
 ```css
     #divMapId {
         width: 500px;
         height: 500px
     }
 ```
+
 ```javascript
     var map = BCG.BecaGIS.createMap('divMapId', options, config)
 ```
+
 > Diễn giải các thông số:
 > - **divId**: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
 > - **options**: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
-> Có 2 thông số bắt buộc khi khởi tạo map:
->   - **center**: xác định vị trí trung tâm của map khi khởi tạo
->   - **zoom**: mức zoom mặc định của map khi khởi tạo
+    > Có 2 thông số bắt buộc khi khởi tạo map:
+    >
+
+- **center**: xác định vị trí trung tâm của map khi khởi tạo
+
+> - **zoom**: mức zoom mặc định của map khi khởi tạo
 > - **config**: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
+
 #### Options
->**Map State Options**
+
+> **Map State Options**
 > - _crs_: hệ tọa độ
 > - _center_(*): [LatLng](#LatLng) vị trí trung tâm khi khởi tạo
 > - _zoom_(Number)(*): độ zoom mặc định
@@ -254,15 +300,16 @@ các Feature được phân quyền truy cập từ GeoPortal
 > - _zoomAnimation_(Boolean): hiệu ứng khi phóng to, thu nhỏ
 > - _zoomAnimationThreshold_(Number): chênh lệch mức zoom để xuất hiện hiệu ứng
 > - _fadeAnimation_(Boolean): hiệu ứng fade in/out khi tile được thay thế đối với [TileLayer](#TileLayer)
-> 
+>
 >**Control options**
 > - _zoomControl_(Boolean): hiển thị zoom control
 > - _attributionControl_(Boolean): hiển thị thông tin nhà phát triển
-> 
+>
 >[Xem thêm...](https://leafletjs.com/reference.html#map)
 
 #### Config
->**Cấu hình GeoPortal**
+
+> **Cấu hình GeoPortal**
 > - _geoPortal_: chứa các cấu hình liên quan đến [GeoPorta](#GeoPortal)
 > - _map_: chứa các cấu hình modules, control, plugins
 >```javascript
@@ -299,20 +346,88 @@ các Feature được phân quyền truy cập từ GeoPortal
 >    },
 > ```
 
-#### Methods
+>#### Methods
 
+> **Methods dành cho Layers và Controls**
+> - _addControl(control)_: this
+>   - Thêm control vào map
+> - _removeControl(control)_: this
+>   - Xóa control khỏi map
+> - _addLayer(layer)_: this
+>   - Thêm layer vào map
+> - _removeLayer(layer)_: 
+>   - xóa layer khỏi map
+> - _hasLayer(layer)_: Boolean
+>   - Kiểm tra layer có tồn tại trong map hay không
+> - _eachLayer(func, context)_: this
+>   - Duyệt qua tất cả layer của map với đối số layer truyền vào hàm func
+> ```javascript
+>   map.eachLayer((layer) => {
+>       layer.bindPopup('Hello');
+>   })
+> ```
+
+> **Methods thay đổi trạng thái map**
+> - _setView(center, zoom)_: this
+>   - Thiết lập vị trí center ([LatLng](#LatLng))) và độ zoom (Number)
+> - _setZoom(zoom)_: this
+>   - Thiết lập độ zoom (Number)
+> - _fitBounds(latlngBound)_: this
+>   - Thiết lập bounds ([LatLngBounds](#LatLngBounds)) vào khung nhìn của map
+> - _panTo(latlng)_: this
+>   - Di chuyển map center đến vị trí latlng ([LatLng](#LatLng))
+> - _flyTo(latlng, zoom)_: this
+>   - Di chuyển map center với hiệu ứng fly đến vị trí latlng ([LatLng](#LatLng)) và độ zoom (Number)
+> - _flyToBounds(latlngbounds)_: this
+>   - Di chuyển map view đến khung latlngBounds ([LatLngBounds](#LatLngBounds))
+> - _setMaxBounds(latlngBounds)_: this
+>   - Thiết lập latlngBounds ([LatLngBounds](#LatLngBounds)) tối đa của map và giới hạn khung nhìn di chuyển ra khỏi bounds
+> - _setMaxZoom(zoom)_: this
+>   - Thiết lập độ zoom lớn nhất của map (Thông thường giá trị là 24)
+> - _setMinZoom(zoom)_: this
+>   - Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
+> - _invalidateSize()_: this
+>   - Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
+ 
+> **Methods truy xuất thông tin map**
+> - _getCenter()_: [LatLng](#LatLng)
+>   - 
+> - _getZoom()_: Number
+>   - 
+> - _getBounds()_: [LatLngBounds](#LatLngBounds)
+>   - 
+> - _getMinZoom()_: Number
+>   - 
+> - _getMaxZoom()_: Number
+>   - 
+> - _getBoundsZoom(latlngBounds)_: Number
+>   - 
+> - _getSize()_: [Point](#Point)
+
+> **Methods khai báo Event **
+> - _on(eventName, callback)_: this
+>   - 
+> - off(eventName, callbackRef): this
+>   - 
+
+#### Events
+
+> **Events liên quan đến Layer**
+> - _baselayerchange_:
 
 ### GeoPortal
+
 > GeoPortal API chứa các methods giúp tương tác với website GeoPortal được phát triển bởi BecaGIS.
-Nhóm các methods trong GeoPortal API giúp khai thác các dịch vụ WFS và WMS được cung cấp bởi Website GeoPortal
+> Nhóm các methods trong GeoPortal API giúp khai thác các dịch vụ WFS và WMS được cung cấp bởi Website GeoPortal
 > Để sử dụng GeoPortal API, cần thực hiện các bước sau:
 > 1. Khai báo GeoPortal bằng method `createMap`
 > 2. Xác thực tài khoản
 > - Dữ liệu trong GeoPortal được khai báo với phân quyền theo từng người dùng và nhóm người dùng cụ thể,
-> để có thể truy cập vào dữ liệu, người dùng phải thông qua thao tác xác thực được hỗ trợ bởi GeoPortal API.
+    > để có thể truy cập vào dữ liệu, người dùng phải thông qua thao tác xác thực được hỗ trợ bởi GeoPortal API.
 > 3. Gọi các methods theo như cầu sử dụng
 
 #### Khai báo GeoPortal bằng `createMap`
+
 ```javascript
         var map = BCG.BecaGIS.createMap("map", {}, {
             geoPortal: {
@@ -345,35 +460,64 @@ Nhóm các methods trong GeoPortal API giúp khai thác các dịch vụ WFS và
             }
         })
 ```
+
 > Diễn giải các thông số:
 > - **geoPortal**: chứa khai báo liên quan đến GeoPortal
->   - **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportal.vntts.com.vn
->   - **loginInfo**: Thông tin xác thực tài khoản GeoPortal
->     - **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
+    >
+
+- **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportal.vntts.com.vn
+
+> - **loginInfo**: Thông tin xác thực tài khoản GeoPortal
+    >
+
+- **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
+
 >     - **clientSecret**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
 >     - **username**: Tên đăng nhập của người dùng sử dụng dữ liệu
 >     - **password**: Mật khẩu của người dùng sử dụng dữ liệu
 >   - **layers**: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
->     - Trong mỗi khai báo Layer, gồm các thông số sau:
->       - **layers**: Là typename của Layer trong GeoPortal
+      >
+
+- Trong mỗi khai báo Layer, gồm các thông số sau:
+  >
+- **layers**: Là typename của Layer trong GeoPortal
+
 >       - **options**: Chứa các khai báo bổ sung cho Layers
->         - **featureInfo**: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
+
+          >
+
+- **featureInfo**: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
+
 >         - **featureInfoOptions**: Các thông tin bổ sung cho FeatureInfo
->           - **showFeatureHandler**: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
+
+            >
+
+- **showFeatureHandler**: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
+
 > - Ngoài ra một số chức năng khác tương tác với GeoPortal được khai báo dưới dạng plugins trong khai báo `map`
 > - **map**: Đối tượng khai báo cấu hình cho map
->   - **controls**: Nơi khai báo các plugins controls
->     - **geoPortalLayersControl**: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền truy cập.
+    >
+
+- **controls**: Nơi khai báo các plugins controls
+  >
+- **geoPortalLayersControl**: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền
+  truy cập.
+
 >     - **geoPortalLoginControl**: Khai báo control cho phép người dùng có thể tự login vào GeoPortal
 >     - **geoPortalWmsLegendControl**: Khai báo control cho phép hiển thị legend các active layer của GeoPortal
->     - **geoPortalFeatureSearchControl**: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer của GeoPortal
+>     - **geoPortalFeatureSearchControl**: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer
+
+        của GeoPortal
+
 #### Methods và properties của GeoPortal API
+
 > GeoPortal API sử dụng thông qua đối tượng `map` (được khởi tạo bởi `createMap`), thông qua lời gọi `getGeoPortal()`
 > ```javascript
 >   var map = BCG.createMap('map', {.....})
 >   map.getGeoPortal().... /// Lời gọi đối tượng GeoPortal
 > ```
-> Sau khi `createMap` thực thi, GeoPortal API sẽ tiến hành đăng nhập vào website và lưu trữ `accessToken`  và `refreshToken`
+> Sau khi `createMap` thực thi, GeoPortal API sẽ tiến hành đăng nhập vào website và lưu trữ `accessToken`
+> và `refreshToken`
 > phục vụ cho những lần sử dụng trong phiên làm việc.
 
 > **setAccessToken(accessToken)**
@@ -395,19 +539,22 @@ Nhóm các methods trong GeoPortal API giúp khai thác các dịch vụ WFS và
 > - Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
 
 > **async getFeatureHelper().getFeatureInfo(params): Object**
-> - Truy xuất thông tin chi tiết của Feature dựa thông số của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo)
->   - `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
+> - Truy xuất thông tin chi tiết của Feature dựa thông số
+    của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo)
+    >
+
+- `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
 
 > **async getFeatureHelper().getFeatureTypeList(): Object[]**
 > - Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
 
 > **async getFeatureHelper().getFeatureDescription(layer): Object**
->  - Truy xuất thông tin chi tiết của layer 
+>  - Truy xuất thông tin chi tiết của layer
 
 > **async getFeatureHelper().getFeatureResourceDescription(layer): Object**
 > - Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
 
-> **async getFeatureHelper().getFeatures(layer, params)** 
+> **async getFeatureHelper().getFeatures(layer, params)**
 > - Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER}
 
 > **async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson): Object[]**
@@ -420,48 +567,62 @@ Nhóm các methods trong GeoPortal API giúp khai thác các dịch vụ WFS và
 > - Truy cập module chứa các method thực thi xác thực
 
 > **async getAuthHelper().getTokenInfoAsync(loginInfo): Object**
-> - Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` 
-> từ tham số `LoginInfo{clientId, clientSecret, username, password}`
- 
+> - Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}`
+    > từ tham số `LoginInfo{clientId, clientSecret, username, password}`
+
 > **async getAuthHelper().getAuthorizationString(): String**
 > - Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
- 
+
 > **async getAuthHelper().getTokenInfoByRefreshTokenAsync(): Object**
 > - Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
 
 ### Kiểu dữ liệu cơ bản
+
 #### LatLng
+
 1. LatLng là kiểu dữ liệu cơ bản, LatLng định nghĩa cấu trúc lưu trữ latitude và longitude
 2. Khởi tạo giá trị LatLng
+
 ```javascript
     var latlng = BCG.latLng(11.05310, 106.66616)
 ```
+
 Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai báo như sau:
+
 ```javascript
     map.panTo([11.05310, 106.66616]);
     map.panTo({lng: 106.66616, lat: 11.05310});
     map.panTo({lat: 11.05310, lng: 106.66616});
     map.panTo(L.latLng(11.05310, 106.66616));
 ```
+
 3. Methods và Properties
+
 > **equal(latlngOther, numberOfMagin): Boolean**
 > - So sánh 2 giá trị LatLng, trả về true nếu 2 điểm là giống nhau
 > - Tham số
->   - latlngOther: một LatLng khác
->   - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
+    >
+
+- latlngOther: một LatLng khác
+
+> - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
 > ```javascript
 >    var latlng = BCG.latLng(11.05310, 106.66616);
 >    var latlngOther = BCG.latLng(11.05, 106.66);
 >    var isEqual = latlng.equal(latlngOther, 0.001);
 > ```
 
-> **toString(): String** 
+> **toString(): String**
 > - Trả về một chuỗi thể hiện giá trị của LatLng
 
->  **distanceTo(latlngOther): Number**
-> - Trả về giá trị khoảng cách đến một LatLng theo meter 
+    >  **distanceTo(latlngOther): Number**
+
+> - Trả về giá trị khoảng cách đến một LatLng theo meter
 > - Trong đó:
->   - latlngOther: một LatLng khác
+    >
+
+- latlngOther: một LatLng khác
+
 > ```javascript
 >    var latlng = BCG.latLng(11.05310, 106.66616);
 >    var latlngOther = BCG.latLng(11.05, 106.66);
@@ -471,7 +632,9 @@ Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai b
 > **toBounds(sizeInMeters): [LatLngBounds](#LatLngBounds)**
 > - Trả về giá trị [LatLngBounds](#LatLngBounds) được tính các góc bằng sizeInMeters / 2
 > - Thông số:
->   - Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
+    >
+
+- Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
 
 > **Properties**
 > - lat: Giá trị latitude theo độ
@@ -479,14 +642,18 @@ Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai b
 > - alt: Giá trị altitude theo độ
 
 #### LatLngBounds
+
 1. Định nghĩa hình chữ nhật được mô tả bằng 2 giá trị [LatLng](#LatLng), góc Tây-Nam và góc Đông-Bắc
 2. Khởi tạo
+
 ```javascript
     var southwest = BCG.latLng(11.052296887021058, 106.6661822358538);
     var northeast = BCG.latLng(11.05376950525995, 106.6682242178851);
     var latlngBounds = BCG.latLngBounds(southwest, northeast);
 ```
+
 Trường hợp sử dụng phố biến, xác định khung nhìn bản đồ.
+
 ```javascript
     map.fitBounds(latlngBounds)
     map.fitBounds([
@@ -494,11 +661,13 @@ Trường hợp sử dụng phố biến, xác định khung nhìn bản đồ.
         [11.05376950525995, 106.6682242178851]
     ])
 ```
+
 > Có thể khởi tạo LatLngBounds bằng 2 cách
 > - BCG.latLngBounds(<[LatLng](#LatLng)> southwest, <[LatLng](#LatLng)> northeast)
 > - BCG.latLngBounds([LatLng](#LatLng)[]) latlngs)
 
 3. Methods và Properties
+
 > **getCenter(): [LatLng](#LatLng)**
 > - Trả về giá trị [LatLng](#LatLng) là center của bounds
 
@@ -536,8 +705,8 @@ Trường hợp sử dụng phố biến, xác định khung nhìn bản đồ.
 > - Trả về giá trị true nếu chồng lên một [LatLngBounds](#LatLngBounds) khác
 
 > **toBBoxString(): String**
-> - Trả về một chuỗi kèm theo tọa độ trong định dạng 
-> 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
+> - Trả về một chuỗi kèm theo tọa độ trong định dạng
+    > 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
 
 > **equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther): Boolean**
 > - Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
@@ -545,19 +714,23 @@ Trường hợp sử dụng phố biến, xác định khung nhìn bản đồ.
 > **isValid(): Boolean**
 > - Trả về giá trị true nếu đối tượng [LatLngBounds](#LatLngBounds) hợp lệ
 
-
 #### Point
+
 1. Định nghĩa dữ liệu điểm x, y theo pixel
 2. Khởi tạo
+
 ```javascript
     var point = BCG.point(200, 300)
 ```
+
 Trường hợp sử dụng phố biến, xác định tọa độ trung tâm của bản đồ.
+
 ```javascript
     map.panBy([200, 300]
     map.panBy(BCG.point(200, 300))
     /////
 ```
+
 3. Methods và Properties
 
 > **add(<[Point](#Point)> otherPoint): [Point](#Point)**
@@ -600,18 +773,33 @@ Trường hợp sử dụng phố biến, xác định tọa độ trung tâm c�
 > - Trả về String thể hiện 2 giá trị x,y
 
 #### Bounds
+
 ### Map
+
 ### Layer
+
 #### TileLayer
+
 #### ImageOverlay
+
 #### VideoOverlay
+
 #### GeoJSON
+
 ### Control
+
 #### DrawControl
+
 #### SearchControl
+
 #### ScaleControl
+
 ### Path
+
 #### Polyline
+
 #### Polygon
+
 #### Circle
+
 #### Rectangle
