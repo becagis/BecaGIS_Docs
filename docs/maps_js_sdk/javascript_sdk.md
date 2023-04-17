@@ -930,9 +930,55 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
         return layer.feature.properties.description;
     }).addTo(map);
 ```
+> **Trong đó**
+> - BCG.geoJSON:
+> - data:
+> - style:
+> - addTo:
+
+> **Options**
+> - *pointToLayer(Function)*:
+> - *onEachFeature(Function)*:
+> - *filter(Function)*:
+> - *coordsToLatLng(Function)*:
+
+3. Methods và Properties
+
+> **Methods**
+> - *addData(data)*: this
+>   - 
+>
+> - *geometryToLayer(featureData, options?)*: [Layer](#Layer)
+>   - 
+> 
+> - *coordsToLatLng(coords)*: [LatLng](#LatLng)
+>   - 
+> 
+> - *latLngToCoords(latlng, pricision)*:
+>   - 
+>
+> - *asFeature(geoJson)*: Object
+>   - 
+> 
 
 ### Control
+1. Là class cơ sở để khai báo các control của map, các control sẽ được xây dựng từ class Control
+2. Options và Methods
 
+> **Options** - Control được khởi tạo với thông số
+> - **position**:  xác định vị trí của điều khiển trên bản đồ. Giá trị mặc định là 'topright'. Các giá trị khác bao gồm 'topleft', 'bottomleft', hoặc 'bottomright'.
+> 
+> **Methods** - Một số method cơ bản của control
+> - **getPosition()**: trả về vị trí hiện tại
+> - **setPosition(position)**: thiết lập vị trí
+> - **getContainer()**: trả về phần tử DOM chứa control
+> - **addTo(map)**: thêm control vào map instance chỉ định
+> - **remove()**: xóa control khỏi map instance
+> **Methods bắt buộc khi kế thừa**
+> - **onAdd(map)**: Phương thức này trả về phần tử DOM chứa điều khiển và các Event Handler trên bản đồ. 
+> Phương thức này được gọi khi control được thêm vào map bằng cách sử dụng phương thức `addTo(map)`.
+> - **onRemove(map)**: Phương thức này chứa tất cả mã dọn dẹp để xóa các Event Handler được thêm vào trước đó trong onAdd. 
+> Phương thức này được gọi khi điều khiển được loại bỏ khỏi bản đồ bằng cách sử dụng phương thức `remove`
 #### DrawControl
 
 #### SearchControl
