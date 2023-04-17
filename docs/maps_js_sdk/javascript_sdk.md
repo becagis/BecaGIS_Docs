@@ -273,13 +273,12 @@ var map = BCG.BecaGIS.createMap('divMapId', options, config)
 ```
 
 > Diễn giải các thông số:
-> - **divId**: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
-> - **options**: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
+> - *divId*: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
+> - *options*: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
 > Có 2 thông số bắt buộc khi khởi tạo map:
-> - **center**: xác định vị trí trung tâm của map khi khởi tạo
-
-> - **zoom**: mức zoom mặc định của map khi khởi tạo
-> - **config**: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
+> - *center*: xác định vị trí trung tâm của map khi khởi tạo
+> - *zoom*: mức zoom mặc định của map khi khởi tạo
+> - *config*: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
 
 #### Options
 
@@ -358,29 +357,29 @@ var map = BCG.BecaGIS.createMap('divMapId', options, config)
 > ```
 
 > **Methods thay đổi trạng thái map**
-> - _setView(center, zoom)_ -> this: Thiết lập vị trí center ([LatLng](#LatLng))) và độ zoom (Number)
-> - _setZoom(zoom)_ -> this: Thiết lập độ zoom (Number)
-> - _fitBounds(latlngBound)_ -> this: Thiết lập bounds ([LatLngBounds](#LatLngBounds)) vào khung nhìn của map
-> - _panTo(latlng)_ -> this: Di chuyển map center đến vị trí latlng ([LatLng](#LatLng))
-> - _flyTo(latlng, zoom)_ -> this: Di chuyển map center với hiệu ứng fly đến vị trí latlng ([LatLng](#LatLng)) và độ zoom (Number)
-> - _flyToBounds(latlngbounds)_ -> this: Di chuyển map view đến khung latlngBounds ([LatLngBounds](#LatLngBounds))
-> - _setMaxBounds(latlngBounds)_ -> this: Thiết lập latlngBounds ([LatLngBounds](#LatLngBounds)) tối đa của map và giới hạn khung nhìn di chuyển ra khỏi bounds
-> - _setMaxZoom(zoom)_ -> this: Thiết lập độ zoom lớn nhất của map (Thông thường giá trị là 24)
-> - _setMinZoom(zoom)_ -> this: Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
-> - _invalidateSize()_ -> this: Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
+> - _setView(center, zoom) -> this_: Thiết lập vị trí center ([LatLng](#LatLng))) và độ zoom (Number)
+> - _setZoom(zoom) -> this_: Thiết lập độ zoom (Number)
+> - _fitBounds(latlngBound) -> this_: Thiết lập bounds ([LatLngBounds](#LatLngBounds)) vào khung nhìn của map
+> - _panTo(latlng) -> this_: Di chuyển map center đến vị trí latlng ([LatLng](#LatLng))
+> - _flyTo(latlng, zoom) -> this_: Di chuyển map center với hiệu ứng fly đến vị trí latlng ([LatLng](#LatLng)) và độ zoom (Number)
+> - _flyToBounds(latlngbounds) -> this_: Di chuyển map view đến khung latlngBounds ([LatLngBounds](#LatLngBounds))
+> - _setMaxBounds(latlngBounds) -> this_: Thiết lập latlngBounds ([LatLngBounds](#LatLngBounds)) tối đa của map và giới hạn khung nhìn di chuyển ra khỏi bounds
+> - _setMaxZoom(zoom) -> this_: Thiết lập độ zoom lớn nhất của map (Thông thường giá trị là 24)
+> - _setMinZoom(zoom) -> this_: Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
+> - _invalidateSize() -> this_: Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
 
 > **Methods truy xuất thông tin map**
-> - _getCenter() -> [LatLng](#LatLng): Lấy vị trí center của map
-> - _getZoom() -> Number: Lấy độ zoom hiện tại của map
-> - _getBounds() -> [LatLngBounds](#LatLngBounds): Lấy Bounds hiện tại của map
-> - _getMinZoom() -> Number: Lấy giá trị zoom nhỏ nhất của map
-> - _getMaxZoom() -> Number: Lấy giá trị zoom lớn nhất
-> - _getBoundsZoom(latlngBounds) -> Number: Lấy độ zoom tương ứng của map với thông số đầu vào là bounds
-> - _getSize() -> [Point](#Point): Lấy kích thước của map
+> - _getCenter() -> [LatLng](#LatLng)_: Lấy vị trí center của map
+> - _getZoom() -> Number_: Lấy độ zoom hiện tại của map
+> - _getBounds() -> [LatLngBounds](#LatLngBounds)_: Lấy Bounds hiện tại của map
+> - _getMinZoom() -> Number_: Lấy giá trị zoom nhỏ nhất của map
+> - _getMaxZoom() -> Number_: Lấy giá trị zoom lớn nhất
+> - _getBoundsZoom(latlngBounds) -> Number_: Lấy độ zoom tương ứng của map với thông số đầu vào là bounds
+> - _getSize() -> [Point](#Point)_: Lấy kích thước của map
 
 > **Methods khai báo Event **
-> - _on(eventName, callback)_ -> this: Đăng ký sự kiện của map với giá trị handler là callback.
-> - off(eventName, callbackRef) -> this: Hủy đăng ký sự kiện của máp với reference của callback đã đăng ký.
+> - _on(eventName, callback) -> this_: Đăng ký sự kiện của map với giá trị handler là callback.
+> - off(eventName, callbackRef) -> this_: Hủy đăng ký sự kiện của máp với reference của callback đã đăng ký.
 
 #### Events
 
@@ -458,29 +457,29 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 ```
 
 > Diễn giải các thông số:
-> - **geoPortal**: chứa khai báo liên quan đến GeoPortal
-> - **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportaBCG.vntts.com.vn
+> - *geoPortal*: chứa khai báo liên quan đến GeoPortal
+> - *geoPortalUrl*: đường dẫn đến website GeoPortal, ví dụ: https://geoportaBCG.vntts.com.vn
 
-> - **loginInfo**: Thông tin xác thực tài khoản GeoPortal
->   - **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
->   - **clientSecret**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
->   - **username**: Tên đăng nhập của người dùng sử dụng dữ liệu
->   - **password**: Mật khẩu của người dùng sử dụng dữ liệu
-> - **layers**: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
+> - *loginInfo*: Thông tin xác thực tài khoản GeoPortal
+>   - *clientId*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
+>   - *clientSecret*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
+>   - *username*: Tên đăng nhập của người dùng sử dụng dữ liệu
+>   - *password*: Mật khẩu của người dùng sử dụng dữ liệu
+> - *layers*: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
 > - Trong mỗi khai báo Layer, gồm các thông số sau:
->   - **layers**: Là typename của Layer trong GeoPortal
->   - **options**: Chứa các khai báo bổ sung cho Layers
->   - **featureInfo**: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
->   - **featureInfoOptions**: Các thông tin bổ sung cho FeatureInfo
->   - **showFeatureHandler**: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
+>   - *layers*: Là typename của Layer trong GeoPortal
+>   - *options*: Chứa các khai báo bổ sung cho Layers
+>   - *featureInfo*: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
+>   - *featureInfoOptions*: Các thông tin bổ sung cho FeatureInfo
+>   - *showFeatureHandler*: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
 
 > - Ngoài ra một số chức năng khác tương tác với GeoPortal được khai báo dưới dạng plugins trong khai báo `map`
-> - **map**: Đối tượng khai báo cấu hình cho map
-> - **controls**: Nơi khai báo các plugins controls
-> - **geoPortalLayersControl**: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền truy cập.
->   - **geoPortalLoginControl**: Khai báo control cho phép người dùng có thể tự login vào GeoPortal
->   - **geoPortalWmsLegendControl**: Khai báo control cho phép hiển thị legend các active layer của GeoPortal
->   - **geoPortalFeatureSearchControl**: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer của GeoPortal
+> - *map*: Đối tượng khai báo cấu hình cho map
+> - *controls*: Nơi khai báo các plugins controls
+> - *geoPortalLayersControl*: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền truy cập.
+>   - *geoPortalLoginControl*: Khai báo control cho phép người dùng có thể tự login vào GeoPortal
+>   - *geoPortalWmsLegendControl*: Khai báo control cho phép hiển thị legend các active layer của GeoPortal
+>   - *geoPortalFeatureSearchControl*: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer của GeoPortal
 
 #### Methods và properties của GeoPortal API
 
@@ -493,24 +492,24 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 > và `refreshToken`
 > phục vụ cho những lần sử dụng trong phiên làm việc.
 
-> **setAccessToken(accessToken)**: Thiết lập giá trị accessToken
-> **getAccessToken(): String**: Lấy giá trị accessToken
-> **getRefreshToken(): String**: Lấy giá trị refreshToken
-> **async loginAsync(loginInfo)**: Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
-> **async getLayersDataAsync() -> Object[]**: Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
-> **getFeatureHelper(): Object**: Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
-> **async getFeatureHelper().getFeatureInfo(params) -> Object**: Truy xuất thông tin chi tiết của Feature dựa thông số
+> *setAccessToken(accessToken)*: Thiết lập giá trị accessToken
+> *getAccessToken(): String*: Lấy giá trị accessToken
+> *getRefreshToken(): String*: Lấy giá trị refreshToken
+> *async loginAsync(loginInfo)*: Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
+> *async getLayersDataAsync() -> Object[]*: Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
+> *getFeatureHelper(): Object*: Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
+> *async getFeatureHelper().getFeatureInfo(params) -> Object*: Truy xuất thông tin chi tiết của Feature dựa thông số
     của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo): `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
-> **async getFeatureHelper().getFeatureTypeList() -> Object[]**: Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
-> **async getFeatureHelper().getFeatureDescription(layer) -> Object**: Truy xuất thông tin chi tiết của layer
-> **async getFeatureHelper().getFeatureResourceDescription(layer) -> Object**: Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
-> **async getFeatureHelper().getFeatures(layer, params)**: Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER
-> **async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson) -> Object[]**: Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
-> **async getFeatureHelper().getFeatureAttributes(layer) -> Object**: Truy xuất danh sách các attributes của layer
-> **getAuthHelper() -> Object**: Truy cập module chứa các method thực thi xác thực
-> **async getAuthHelper().getTokenInfoAsync(loginInfo) -> Object**: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ tham số `LoginInfo{clientId, clientSecret, username, password}`
-> **async getAuthHelper().getAuthorizationString() -> String**: Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
-> **async getAuthHelper().getTokenInfoByRefreshTokenAsync() -> Object**: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
+> *async getFeatureHelper().getFeatureTypeList() -> Object[]*: Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
+> *async getFeatureHelper().getFeatureDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer
+> *async getFeatureHelper().getFeatureResourceDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
+> *async getFeatureHelper().getFeatures(layer, params)*: Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER
+> *async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson) -> Object[]*: Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
+> *async getFeatureHelper().getFeatureAttributes(layer) -> Object*: Truy xuất danh sách các attributes của layer
+> *getAuthHelper() -> Object*: Truy cập module chứa các method thực thi xác thực
+> *async getAuthHelper().getTokenInfoAsync(loginInfo) -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ tham số `LoginInfo{clientId, clientSecret, username, password}`
+> *async getAuthHelper().getAuthorizationString() -> String*: Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
+> *async getAuthHelper().getTokenInfoByRefreshTokenAsync() -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
 
 ### Kiểu dữ liệu cơ bản
 
