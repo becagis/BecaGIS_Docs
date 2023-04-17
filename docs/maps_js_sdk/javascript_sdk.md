@@ -1055,7 +1055,6 @@ Tạo một đối tượng CircleMarker:
 > - *getLatLng()*: Lấy vị trí hiện tại của CircleMarker.
 > - *setRadius(radius)*: Cập nhật bán kính của CircleMarker.
 > - *getRadius()*: Lấy bán kính hiện tại của CircleMarker.
-> 
 > - Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
 
 > **Events**
@@ -1072,6 +1071,7 @@ Tạo một đối tượng CircleMarker:
 > - *BCG.circle(latLng, radius, options)* : Cách này là cũ và không được khuyến khích sử dụng trong các ứng dụng hoặc plugin mới.
 
 3. Methods và Properties
+
 > **Methods**
 > - *setRadius(radius)*: Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
 > - *getRadius()*: Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
