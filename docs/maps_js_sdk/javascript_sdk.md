@@ -951,52 +951,52 @@ var imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
 BCG.imageOverlay(imageUrl, imageBounds).addTo(map);
 ```
 
-> - _imageUrl:_ 
-> - _imageBounds:_
-> - _BCG.imageOverlay:_
+> - _imageUrl:_ đường dẫn đến image
+> - _imageBounds:_ vùng (Bounds)[#LatLngBounds] của image
+> - _BCG.imageOverlay:_ hàm khởi tạo ImageOverlay
 
 > **Options**
-> - _opacity(Number)_:
-> - _alt(String)_:
-> - _interactive(Boolean)_:
-> - _crossOrigin(Boolean)_:
-> - _errorOverlayUrl(String)_:
-> - _zIndex(Number)_:
-> - _className(String)_:
+> - _opacity(Number)_: độ trong suốt của hình có giá trị từ 0-1
+> - _alt(String)_: Văn bản cho thuộc tính alt của hình ảnh
+> - _interactive(Boolean)_: Nếu true, lớp phủ hình ảnh sẽ phát ra các sự kiện chuột khi được nhấp hoặc di chuột qua.
+> - _crossOrigin(Boolean)_: mặc định là false, Xác định xem liệu thuộc tính crossOrigin có được thêm vào hình ảnh hay không. Nếu cung cấp một chuỗi, thuộc tính crossOrigin của hình ảnh sẽ được thiết lập thành chuỗi đó.
+> - _errorOverlayUrl(String)_: URL đến hình ảnh phủ để hiển thị thay cho lớp phủ đã không tải được.
+> - _zIndex(Number)_: zIndex của image
+> - _className(String)_: tên class của thẻ div chứa hình ảnh
 
 3. Methods và Properties
 
 > **Methods**
 > - _setOpacity(opacity): this_
->   - 
+>   - Thiết lập độ mờ có giá trị từ 0 đến 1
 > 
 > - _bringToFront()_: this_
->   - 
+>   - Đưa hình ảnh lên zIndex cao hơn
 > 
 > - _bringToBack(): this_
->   -
+>   - Đưa hình ảnh xuống zIndex thấp hơn
 > 
 > - _setUrl(url): this_
->   -
+>   - Thiết lập url đến hình ảnh
 > 
 > - _setBounds(bounds): this_
->   -
+>   - Thiết lập Bounds của hình ảnh
 > 
 > - _setZIndex(zIndex): this_
->   -
+>   - Thiết lập ZIndex của hình ảnh
 > 
 > - _getBounds(): [LatLngBounds](#LatLngBounds)_
->   -
+>   - Lấy giá trị Bounds hiện tại của hình ảnh
 > 
 > - _getElement(): HtmlElement_
->   -
+>   - Lấy giá trị DOM đang là thể hiện của hình ảnh
 > 
 > - _getCenter(): [LatLng](#LatLng)_
->   - 
+>   - Lấy vị trí Center của Bounds hình ảnh
 
 > **Events**
-> - _load_:
-> - _error_:
+> - _load_: sự kiện diễn ra khi hình ảnh được tải xong
+> - _error_: sự kiễn diễn ra khi hình ảnh tải gặp lỗi
 
 #### VideoOverlay
 1. Được sử dụng hiển thị Video với Bounds
@@ -1007,16 +1007,16 @@ var videoBounds = [[ 32, -130], [ 13, -100]];
 BCG.videoOverlay(videoUrl, videoBounds ).addTo(map);
 ```
 
-> - _videoUrl:_
-> - _videoBounds:_
-> - _BCG.videoOverlay:_
+> - _videoUrl:_ đường dẫn đến video
+> - _videoBounds:_ khung [Bounds](#LatLngBounds) của video
+> - _BCG.videoOverlay:_ hàm khởi tạo VideoOverlay
 
 > **Options**
-> - _autoplay(Boolean)_:
-> - _loop(Boolean)_:
-> - _keepAspectRatio(Boolean)_:
-> - _muted(Boolean)_:
-> - _playsInline(Boolean)_:
+> - _autoplay(Boolean)_: nếu là True, video sẽ tự động phát sau khi tải.
+> - _loop(Boolean)_: nếu là True, video sẽ tự lặp lại sau khi phát xong
+> - _keepAspectRatio(Boolean)_: nếu là True, video sẽ tự tính toán Width/Height nếu 1 hướng đã được thiết lập
+> - _muted(Boolean)_: nếu là True, video sẽ không phát âm thanh
+> - _playsInline(Boolean)_: nếu là true, đối với trình duyệt mobile sẽ chỉ phát video mà không phát dưới dạng fullscreen
 
 #### GeoJSON
 1. Sử dụng để tạo Layer từ GeoJSON data
