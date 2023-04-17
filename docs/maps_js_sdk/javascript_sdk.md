@@ -765,14 +765,14 @@ map.panBy(BCG.point(200, 300))
 2. Layer là một baseclass, do đó các loại Layer cụ thể sẽ kế thừa Layer: TileLayer, ImageOverlay, TileLayer.WMS, VideoOverlay, GeoJSON
 3. Methods và Properties
 
-> **addTo(map): this**
-> - Sử dụng khi thêm layer vào map, khi được gọi hàm sẽ kích hoạt sự kiện `onAdd`
-
-> **remove(): this**
-> - Sử dụng khi xóa layer khỏi map, khi được họi hàm sẽ kích hoạt sự kiện `onRemove`
-
-> **getEvents(): Object**
-> - Lấy danh sách tất cả Events và Handlers tương ứng của event đã đăng ký vào Layer
+> - **addTo(map): this**
+>   - Sử dụng khi thêm layer vào map, khi được gọi hàm sẽ kích hoạt sự kiện `onAdd`
+>
+> - **remove(): this**
+>   - Sử dụng khi xóa layer khỏi map, khi được họi hàm sẽ kích hoạt sự kiện `onRemove`
+>
+> - **getEvents(): Object**
+>   - Lấy danh sách tất cả Events và Handlers tương ứng của event đã đăng ký vào Layer
 
 #### GridLayer
 1. Đây là lớp cơ sở cho tất cả các lớp tile và thay thế cho TileLayer.Canvas. GridLayer sẽ xử lý việc tạo image và animation các phần tử DOM này.
