@@ -19,18 +19,18 @@ sidebar_label: JavaScript SDK
 2. Khai báo thông tin css cho thẻ `div`
 
 ```css
-        #map {
-            height: 600px;
-            width: 600px;
-        }
+#map {
+    height: 600px;
+    width: 600px;
+}
 ```
 
 3. Sử dụng hàm `createMap` để khởi tạo bản đồ cơ bản với bản đồ nền `Google`
 
 ```javascript
-        var map = BCG.BecaGIS.createMap("map", {}, {
-            baseLayer: "Google"
-        })
+var map = BCG.BecaGIS.createMap("map", {}, {
+    baseLayer: "Google"
+})
 ```
 
 4. Mã nguồn hoàn chỉnh
@@ -47,62 +47,62 @@ sidebar_label: JavaScript SDK
 1. Sử dụng hàm `createMap` để khởi tạo bản đồ với đầy đủ các thông số
 
 ```javascript
-        var map = BCG.BecaGIS.createMap("map", {}, {
-            geoPortal: {
-                geoPortalUrl: "<geoportal_url>",
-                loginInfo: {
-                    clientId: "<geoportal_clientid>",
-                    clientSecret: "<geoportal_clientsecret>",
-                    username: "<geoportal_username>",
-                    password: "<geoportal_password>"
-                },
-                layers: [{
-                    layers: "<geoportal_layer_typename>",
-                    options: {
-                        featureInfo: true,
-                        featureInfoOptions: {
-                            showFeatureHandler: (feature) => {
-                                // TODO: Hàm callback để hiển thị feature
-                            }
+var map = BCG.BecaGIS.createMap("map", {}, {
+    geoPortal: {
+        geoPortalUrl: "<geoportal_url>",
+        loginInfo: {
+            clientId: "<geoportal_clientid>",
+            clientSecret: "<geoportal_clientsecret>",
+            username: "<geoportal_username>",
+            password: "<geoportal_password>"
+        },
+        layers: [{
+            layers: "<geoportal_layer_typename>",
+            options: {
+                featureInfo: true,
+                featureInfoOptions: {
+                    showFeatureHandler: (feature) => {
+                        // TODO: Hàm callback để hiển thị feature
+                    }
+                }
+            }
+        }]
+    },
+    map: {
+        controls: {
+            drawControl: false,
+            measurementControl: false,
+            searchPlaceControl: false,
+            scaleControl: false,
+            geoPortalLayersControl: false,
+            geoPortalLoginControl: false,
+            geoPortalWmsLegendControl: false,
+            geoPortalFeatureSearchControl: false,
+        },
+        layers: {
+            overlayLayers: [
+                layers:[
+                    {
+                        type: "GeoJSON|WMS|TileLayer",
+                        key: "<Chuỗi khóa duy nhất của layer trong map instance>",
+                        options: {
+                            url: "geojson_url | wms url | tile url template",
+                            layers: "Tên layer trong khai báo của url"
                         }
                     }
-                }]
-            },
-            map: {
-                controls: {
-                    drawControl: false,
-                    measurementControl: false,
-                    searchPlaceControl: false,
-                    scaleControl: false,
-                    geoPortalLayersControl: false,
-                    geoPortalLoginControl: false,
-                    geoPortalWmsLegendControl: false,
-                    geoPortalFeatureSearchControl: false,
-                },
-                layers: {
-                    overlayLayers: [
-                        layers:[
-                            {
-                                type: "GeoJSON|WMS|TileLayer",
-                                key: "<Chuỗi khóa duy nhất của layer trong map instance>",
-                                options: {
-                                    url: "geojson_url | wms url | tile url template",
-                                    layers: "Tên layer trong khai báo của url"
-                                }
-                            }
-                        ]
-                    ],
-                    baseLayers: []
-                },
-                plugins: {
-                    turfPlugin: false,
-                    mvtPlugin: false,
-                    model3DPlugins: false,
-                    model3DTilingPlugins: false
-                },
-            },
-            baseLayer: "Google"
-        })
+                ]
+            ],
+            baseLayers: []
+        },
+        plugins: {
+            turfPlugin: false,
+            mvtPlugin: false,
+            model3DPlugins: false,
+            model3DTilingPlugins: false
+        },
+    },
+    baseLayer: "Google"
+})
 ```
 
 ### Tạo bản đồ với Marker
@@ -110,37 +110,37 @@ sidebar_label: JavaScript SDK
 1. Sử dụng hàm `createMap` để khởi tạo bản đồ với Marker và popup hiển thị thông báo
 
 ```javascript
-        var map = BCG.BecaGIS.createMap("map", {}, {
-            map: {
-                layers: {
-                    overlayLayers: [
-                        layers:[
-                            {
-                                type: "GeoJSON",
-                                key: "<Chuỗi khóa duy nhất của layer trong map instance>",
-                                options: {
-                                    data: {
-                                        "type": "Feature",
-                                        "properties": {},
-                                        "geometry": {
-                                            "coordinates": [
-                                                106.6661822358538,
-                                                11.052296887021058
-                                            ],
-                                            "type": "Point"
-                                        }
-                                    },
-                                    showPopup: {
-                                        content: "BecaGIS Team"
-                                    }
+var map = BCG.BecaGIS.createMap("map", {}, {
+    map: {
+        layers: {
+            overlayLayers: [
+                layers:[
+                    {
+                        type: "GeoJSON",
+                        key: "<Chuỗi khóa duy nhất của layer trong map instance>",
+                        options: {
+                            data: {
+                                "type": "Feature",
+                                "properties": {},
+                                "geometry": {
+                                    "coordinates": [
+                                        106.6661822358538,
+                                        11.052296887021058
+                                    ],
+                                    "type": "Point"
                                 }
+                            },
+                            showPopup: {
+                                content: "BecaGIS Team"
                             }
-                        ]
-                    ]
-                }
-            },
-            baseLayer: "Google"
-        })
+                        }
+                    }
+                ]
+            ]
+        }
+    },
+    baseLayer: "Google"
+})
 ```
 
 ### Tạo bản đồ với WMS Layer từ GeoPortal
@@ -149,28 +149,28 @@ sidebar_label: JavaScript SDK
    được phân quyền truy cập từ GeoPortal
 
 ```javascript
-        var map = BCG.BecaGIS.createMap("map", {}, {
-            geoPortal: {
-                geoPortalUrl: "<geoportal_url>",
-                loginInfo: {
-                    clientId: "<geoportal_clientid>",
-                    clientSecret: "<geoportal_clientsecret>",
-                    username: "<geoportal_username>",
-                    password: "<geoportal_password>"
-                },
-                layers: [{
-                    layers: "<geoportal_layer_typename>",
-                    options: {
-                        featureInfo: true,
-                        featureInfoOptions: {
-                            showFeatureHandler: (feature) => {
-                                // TODO: Hàm callback để hiển thị feature
-                            }
-                        }
+var map = BCG.BecaGIS.createMap("map", {}, {
+    geoPortal: {
+        geoPortalUrl: "<geoportal_url>",
+        loginInfo: {
+            clientId: "<geoportal_clientid>",
+            clientSecret: "<geoportal_clientsecret>",
+            username: "<geoportal_username>",
+            password: "<geoportal_password>"
+        },
+        layers: [{
+            layers: "<geoportal_layer_typename>",
+            options: {
+                featureInfo: true,
+                featureInfoOptions: {
+                    showFeatureHandler: (feature) => {
+                        // TODO: Hàm callback để hiển thị feature
                     }
-                }]
+                }
             }
-        })
+        }]
+    }
+})
 ```
 
 ### Tìm kiếm Feature với GeoPortal Connector
@@ -179,60 +179,60 @@ sidebar_label: JavaScript SDK
    các Feature được phân quyền truy cập từ GeoPortal
 
 ```javascript
-        var map = BCG.BecaGIS.createMap("map", {}, {
-            geoPortal: {
-                geoPortalUrl: "<geoportal_url>",
-                loginInfo: {
-                    clientId: "<geoportal_clientid>",
-                    clientSecret: "<geoportal_clientsecret>",
-                    username: "<geoportal_username>",
-                    password: "<geoportal_password>"
-                },
-                layers: [{
-                    layers: "<geoportal_layer_typename>",
-                    options: {
-                        featureInfo: true,
-                        featureInfoOptions: {
-                            showFeatureHandler: (feature) => {
-                                // TODO: Hàm callback để hiển thị feature
-                            }
-                        }
+var map = BCG.BecaGIS.createMap("map", {}, {
+    geoPortal: {
+        geoPortalUrl: "<geoportal_url>",
+        loginInfo: {
+            clientId: "<geoportal_clientid>",
+            clientSecret: "<geoportal_clientsecret>",
+            username: "<geoportal_username>",
+            password: "<geoportal_password>"
+        },
+        layers: [{
+            layers: "<geoportal_layer_typename>",
+            options: {
+                featureInfo: true,
+                featureInfoOptions: {
+                    showFeatureHandler: (feature) => {
+                        // TODO: Hàm callback để hiển thị feature
                     }
-                }]
+                }
             }
-        })
+        }]
+    }
+})
 ```
 
 2. Truy xuất danh sách Features dựa vào truy vấn CQBCG.
 
 ```javascript
-    var features = await map.geoPortal
-            .getFeaturesHelper()
-            .getFeatures("layer1,layer2,layer3", {CQL_FILTER: "prop=searchText"});
+var features = await map.geoPortal
+        .getFeaturesHelper()
+        .getFeatures("layer1,layer2,layer3", {CQL_FILTER: "prop=searchText"});
 ```
 
 3. Truy xuất danh sách Features bằng phép tính WITHIN Geometry
 
 ```javascript
-    var geoJson =     {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          [
-            [106.6482317147952,11.087427890480868],
-            [106.6482317147952,11.029666522504229],
-            [106.72984719825786,11.029666522504229],
-            [106.72984719825786,11.087427890480868],
-            [106.6482317147952,11.087427890480868]
-          ]
-        ],
-        "type": "Polygon"
-      }
-    };
-    var features = await map.geoPortal
-            .getFeaturesHelper()
-            .getFeaturesWithinGeoJSON("layer1", "the_geom", geoJson);
+var geoJson =     {
+  "type": "Feature",
+  "properties": {},
+  "geometry": {
+    "coordinates": [
+      [
+        [106.6482317147952,11.087427890480868],
+        [106.6482317147952,11.029666522504229],
+        [106.72984719825786,11.029666522504229],
+        [106.72984719825786,11.087427890480868],
+        [106.6482317147952,11.087427890480868]
+      ]
+    ],
+    "type": "Polygon"
+  }
+};
+var features = await map.geoPortal
+        .getFeaturesHelper()
+        .getFeaturesWithinGeoJSON("layer1", "the_geom", geoJson);
 ```
 
 > *** Hướng dẫn CQL Query xem chi
@@ -241,9 +241,9 @@ sidebar_label: JavaScript SDK
 4. Truy xuất thông tin mô tả thuộc tính của Feature
 
 ```javascript
-    var featureAttributes = await map.geoPortal
-                            .getFeaturesHelper()
-                            .getFeatureAttributes("layername");
+var featureAttributes = await map.geoPortal
+                        .getFeaturesHelper()
+                        .getFeatureAttributes("layername");
 ```
 
 ## Tài liệu tham khảo API
@@ -262,14 +262,14 @@ sidebar_label: JavaScript SDK
 ```
 
 ```css
-    #divMapId {
-        width: 500px;
-        height: 500px
-    }
+#divMapId {
+    width: 500px;
+    height: 500px
+}
 ```
 
 ```javascript
-    var map = BCG.BecaGIS.createMap('divMapId', options, config)
+var map = BCG.BecaGIS.createMap('divMapId', options, config)
 ```
 
 > Diễn giải các thông số:
@@ -450,36 +450,36 @@ sidebar_label: JavaScript SDK
 #### Khai báo GeoPortal bằng `createMap`
 
 ```javascript
-        var map = BCG.BecaGIS.createMap("map", {}, {
-            geoPortal: {
-                geoPortalUrl: "<geoportal_url>",
-                loginInfo: {
-                    clientId: "<geoportal_clientid>",
-                    clientSecret: "<geoportal_clientsecret>",
-                    username: "<geoportal_username>",
-                    password: "<geoportal_password>"
-                },
-                layers: [{
-                    layers: "<geoportal_layer_typename>",
-                    options: {
-                        featureInfo: true,
-                        featureInfoOptions: {
-                            showFeatureHandler: (feature) => {
-                                // TODO: Hàm callback để hiển thị feature
-                            }
-                        }
+var map = BCG.BecaGIS.createMap("map", {}, {
+    geoPortal: {
+        geoPortalUrl: "<geoportal_url>",
+        loginInfo: {
+            clientId: "<geoportal_clientid>",
+            clientSecret: "<geoportal_clientsecret>",
+            username: "<geoportal_username>",
+            password: "<geoportal_password>"
+        },
+        layers: [{
+            layers: "<geoportal_layer_typename>",
+            options: {
+                featureInfo: true,
+                featureInfoOptions: {
+                    showFeatureHandler: (feature) => {
+                        // TODO: Hàm callback để hiển thị feature
                     }
-                }]
-            },
-            map: {
-                controls: {
-                    geoPortalLayersControl: false,
-                    geoPortalLoginControl: false,
-                    geoPortalWmsLegendControl: false,
-                    geoPortalFeatureSearchControl: false,
                 }
             }
-        })
+        }]
+    },
+    map: {
+        controls: {
+            geoPortalLayersControl: false,
+            geoPortalLoginControl: false,
+            geoPortalWmsLegendControl: false,
+            geoPortalFeatureSearchControl: false,
+        }
+    }
+})
 ```
 
 > Diễn giải các thông số:
@@ -581,16 +581,16 @@ sidebar_label: JavaScript SDK
 2. Khởi tạo giá trị LatLng
 
 ```javascript
-    var latlng = BCG.latLng(11.05310, 106.66616)
+var latlng = BCG.latLng(11.05310, 106.66616)
 ```
 
 Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai báo như sau:
 
 ```javascript
-    map.panTo([11.05310, 106.66616]);
-    map.panTo({lng: 106.66616, lat: 11.05310});
-    map.panTo({lat: 11.05310, lng: 106.66616});
-    map.panTo(BCG.latLng(11.05310, 106.66616));
+map.panTo([11.05310, 106.66616]);
+map.panTo({lng: 106.66616, lat: 11.05310});
+map.panTo({lat: 11.05310, lng: 106.66616});
+map.panTo(BCG.latLng(11.05310, 106.66616));
 ```
 
 3. Methods và Properties
@@ -636,19 +636,19 @@ Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai b
 2. Khởi tạo
 
 ```javascript
-    var southwest = BCG.latLng(11.052296887021058, 106.6661822358538);
-    var northeast = BCG.latLng(11.05376950525995, 106.6682242178851);
-    var latlngBounds = BCG.latLngBounds(southwest, northeast);
+var southwest = BCG.latLng(11.052296887021058, 106.6661822358538);
+var northeast = BCG.latLng(11.05376950525995, 106.6682242178851);
+var latlngBounds = BCG.latLngBounds(southwest, northeast);
 ```
 
 Trường hợp sử dụng phố biến, xác định khung nhìn bản đồ.
 
 ```javascript
-    map.fitBounds(latlngBounds)
-    map.fitBounds([
-        [11.052296887021058, 106.6661822358538],
-        [11.05376950525995, 106.6682242178851]
-    ])
+map.fitBounds(latlngBounds)
+map.fitBounds([
+    [11.052296887021058, 106.6661822358538],
+    [11.05376950525995, 106.6682242178851]
+])
 ```
 
 > Có thể khởi tạo LatLngBounds bằng 2 cách
@@ -715,8 +715,8 @@ Trường hợp sử dụng phố biến, xác định khung nhìn bản đồ.
 Trường hợp sử dụng phố biến, xác định tọa độ trung tâm của bản đồ.
 
 ```javascript
-    map.panBy([200, 300]
-    map.panBy(BCG.point(200, 300))
+map.panBy([200, 300]
+map.panBy(BCG.point(200, 300))
     /////
 ```
 
@@ -767,33 +767,34 @@ Trường hợp sử dụng phố biến, xác định tọa độ trung tâm c�
 3. Methods và Properties
 
 > **addTo(map): this**
-> -
+> - Sử dụng khi thêm layer vào map, khi được gọi hàm sẽ kích hoạt sự kiện `onAdd`
 
 > **remove(): this**
-> -
+> - Sử dụng khi xóa layer khỏi map, khi được họi hàm sẽ kích hoạt sự kiện `onRemove`
 
 > **getEvents(): Object**
-> -
+> - Lấy danh sách tất cả Events và Handlers tương ứng của event đã đăng ký vào Layer
+
 #### GridLayer
 1. Đây là lớp cơ sở cho tất cả các lớp tile và thay thế cho TileLayer.Canvas. GridLayer sẽ xử lý việc tạo image và animation các phần tử DOM này.
 2. Để sử dụng cần tạo lớp mở rộng GridLayer và thực hiện phương thức createTile(), phương thức này sẽ nhận vào một đối tượng Point với các tọa độ x, y và z (mức zoom) để vẽ tile.
 ```javascript
-    var CanvasLayer = BCG.GridLayer.extend({
-        createTile: function(coords){
-            // tạo một phần tử <canvas> để vẽ
-            var tile = BCG.DomUtiBCG.create('canvas', 'leaflet-tile');
-            // thiết lập chiều rộng và chiều cao của tile theo các tùy chọn
-            var size = this.getTileSize();
-            tile.width = size.x;
-            tile.height = size.y;
-        
-            // lấy ngữ cảnh canvas và vẽ một cái gì đó trên đó bằng cách sử dụng coords.x, coords.y và coords.z
-            var ctx = tile.getContext('2d');
-        
-            // trả về tile để có thể được hiển thị trên màn hình
-            return tile;
-        }
-    });
+var CanvasLayer = BCG.GridLayer.extend({
+    createTile: function(coords){
+        // tạo một phần tử <canvas> để vẽ
+        var tile = BCG.DomUtiBCG.create('canvas', 'leaflet-tile');
+        // thiết lập chiều rộng và chiều cao của tile theo các tùy chọn
+        var size = this.getTileSize();
+        tile.width = size.x;
+        tile.height = size.y;
+    
+        // lấy ngữ cảnh canvas và vẽ một cái gì đó trên đó bằng cách sử dụng coords.x, coords.y và coords.z
+        var ctx = tile.getContext('2d');
+    
+        // trả về tile để có thể được hiển thị trên màn hình
+        return tile;
+    }
+});
 ```
 Ngoài ra có thể sử dụng việc vẽ tile dưới dạng bất đồng bộ, phù hợp khi hàm vẽ phải gọi các thư viện thứ 3 và chờ thao tác tạo tile thành công.
 ```javascript
@@ -819,7 +820,7 @@ Ngoài ra có thể sử dụng việc vẽ tile dưới dạng bất đồng b�
 ```
 Hàm khởi tạo
 ```javascript
-    BCG.gridLayer(options?)
+BCG.gridLayer(options?)
 ```
 > **Trong đó:**
 > tileSize (Kích thước tile)**: số hoặc L.point(width, height) để chỉ chiều rộng và chiều cao của tile trong lưới.
@@ -891,10 +892,10 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 
 > **Methods**
 > - _setUrl(url, noReDraw?)_: this
->   - 
+>   - Thiết lập url dùng để request tile của TileLayer, nếu noReDraw được xác định là False, TileLaye sẽ refresh và vẽ lại toàn bộ.
 >
 > - _createTile(coords, doneCallback): HTMLElement
-> 
+>   - Trả về phần tử HTMLElement tương ứng với các tọa độ đã cho. Nếu callback done được chỉ định, nó phải được gọi khi tile đã tải xong và vẽ xong.
 > 
 > [Methods kế thừa từ Layer](#Layer)
 
@@ -907,32 +908,32 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 1. Được sử dụng hiển thị layer được cung cấp với dịch vụ OGC WMS, kế thừa từ [TileLayer](#TileLayer)
 2. Khởi tạo TileLayer.WMS
 ```javascript
-    var wmslayer = BCG.tileLayer.wms("http://demo.com/geoserver/wms", {
-        layers: 'ten_layer',
-        format: 'image/png',
-        transparent: true,
-        attribution: "BecaGIS"
-    });
+var wmslayer = BCG.tileLayer.wms("http://demo.com/geoserver/wms", {
+    layers: 'ten_layer',
+    format: 'image/png',
+    transparent: true,
+    attribution: "BecaGIS"
+});
 ```
 > **Trong đó:**
-> - _url_:
-> - _layers_:
-> - _transparent_:
-> - _attribution_: 
+> - _url_: là url của WMS OGC service
+> - _layers_: danh sách các layers được khai báo bằng string và cách nhau mỗi dấu phẩy
+> - _transparent_: xác định độ trong suốt của layer ở những vùng không có dữ liệu
+> - _attribution_: chuỗi hiển thị overlay, được sử dụng để thông tin về bản quyền hoặc meta của layer
 
 > **Options**
-> - _layers(String)_:
-> - _styles(String)_:
-> - _format(String)_:
-> - _transparent(Boolean_:
-> - _version(String)_:
-> - _crs(String)_:
+> - _layers(String)_: danh sách các layers được khai báo bằng string và cách nhau mỗi dấu phẩy
+> - _styles(String)_: style của layer được định nghĩa tại OCG Services
+> - _format(String)_: định dạng của file raster do WMS service trích xuất, mặc định là image/jpeg, khai báo image/png nếu sử dụng thuộc tính transparent là True
+> - _transparent(Boolean_: xác định độ trong suốt của layer ở những vùng không có dữ liệu
+> - _version(String)_: phiên bản của dịch vụ WMS
+> - _crs(String)_: hệ tọa độ chuyển đổi của layer từ native crs được khai báo tại OGC service
 
 4. Methods và Properties
 
 > **Methods**
 > - _setParams(params, noRedraw): this_
->   - 
+>   - Thiết lập các thông số params vào request tile, nếu noReDraw được xác định là False, TileLaye sẽ refresh và vẽ lại toàn bộ.
 > 
 > - [Methods kế thừa từ TileLayer](#TileLayer)
 
@@ -940,12 +941,12 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 1. Được sử dụng hiển thị Image với Bounds
 2. Khởi tạo ImageOverlay
 ```javascript
-    var imageUrl = 'https://maps.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
-    var imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
-    BCG.imageOverlay(imageUrl, imageBounds).addTo(map);
+var imageUrl = 'https://maps.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
+var imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+BCG.imageOverlay(imageUrl, imageBounds).addTo(map);
 ```
 > **Trong đó:**
-> - _imageUrl:_
+> - _imageUrl:_ 
 > - _imageBounds:_
 > - _BCG.imageOverlay:_
 
@@ -996,9 +997,9 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 1. Được sử dụng hiển thị Video với Bounds
 2. Khởi tạo VideoOverlay
 ```javascript
-    var videoUrl = 'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
-    var videoBounds = [[ 32, -130], [ 13, -100]];
-    BCG.videoOverlay(videoUrl, videoBounds ).addTo(map);
+var videoUrl = 'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
+var videoBounds = [[ 32, -130], [ 13, -100]];
+BCG.videoOverlay(videoUrl, videoBounds ).addTo(map);
 ```
 > **Trong đó:**
 > - _videoUrl:_
@@ -1016,13 +1017,13 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 1. Sử dụng để tạo Layer từ GeoJSON data
 2. Khởi tạo GeoJSON
 ```javascript
-    BCG.geoJSON(data, {
-        style: function (feature) {
-            return {color: feature.properties.color};
-        }
-    }).bindPopup(function (layer) {
-        return layer.feature.properties.description;
-    }).addTo(map);
+BCG.geoJSON(data, {
+    style: function (feature) {
+        return {color: feature.properties.color};
+    }
+}).bindPopup(function (layer) {
+    return layer.feature.properties.description;
+}).addTo(map);
 ```
 > **Trong đó**
 > - BCG.geoJSON: hàm khởi tạo
@@ -1119,26 +1120,26 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 1. Polyline được sử dụng để vẽ Polyline, kế thừa từ [Path](#Path)
 2. Khởi tạo 
 ```javascript
-    var latlngs = [
-        [45.51, -122.68],
-        [37.77, -122.43],
-        [34.04, -118.2]
-    ];
-    
-    var polyline = BCG.polyline(latlngs, {color: 'red'}).addTo(map);
+var latlngs = [
+    [45.51, -122.68],
+    [37.77, -122.43],
+    [34.04, -118.2]
+];
 
-    map.fitBounds(polyline.getBounds());
+var polyline = BCG.polyline(latlngs, {color: 'red'}).addTo(map);
+
+map.fitBounds(polyline.getBounds());
 ```
 Ngoài ra có thể khởi tạo bằng cách sử dụng các nested array hình thành MultiPolyline
 ```javascript
-    var latlngs = [
-        [[45.51, -122.68],
-         [37.77, -122.43],
-         [34.04, -118.2]],
-        [[40.78, -73.91],
-         [41.83, -87.62],
-         [32.76, -96.72]]
-    ];
+var latlngs = [
+    [[45.51, -122.68],
+     [37.77, -122.43],
+     [34.04, -118.2]],
+    [[40.78, -73.91],
+     [41.83, -87.62],
+     [32.76, -96.72]]
+];
 ```
 > **Hàm khởi tạo**
 > - BCG.polyline(latlngs, options):
@@ -1201,14 +1202,14 @@ Các phương thức và sự kiện của lớp Polygon được kế thừa t�
 1. Lớp Rectangle được sử dụng để vẽ các đối tượng hình chữ nhật trên bản đồ. Nó kế thừa từ lớp Polygon.
 2. Khởi tạo
 ```javascript
-    // định nghĩa vùng địa lý của hình chữ nhật
-    var bounds = [[54.559322, -5.767822], [56.1210604, -3.021240]];
-    
-    // tạo một hình chữ nhật màu cam
-    BCG.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
-    
-    // phóng to bản đồ đến giới hạn của hình chữ nhật
-    map.fitBounds(bounds);
+// định nghĩa vùng địa lý của hình chữ nhật
+var bounds = [[54.559322, -5.767822], [56.1210604, -3.021240]];
+
+// tạo một hình chữ nhật màu cam
+BCG.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
+
+// phóng to bản đồ đến giới hạn của hình chữ nhật
+map.fitBounds(bounds);
 ```
 3. Methods và Properties
 
