@@ -5,14 +5,18 @@
     "command-working-directory": "/home/ubuntu/VNTT/PROJECT/INTERNAL/BecaGIS_Docs_Deploy",
     "response-message": "Executing deploy script...",
     "trigger-rule": {
-      "match": {
-        "type": "payload-hash-sha1",
-        "secret": "YmVjYWdpcy1kb2NzCg==",
-        "parameter": {
-          "source": "header",
-          "name": "X-Hub-Signature"
-        }
-      }
+      "and": [
+        {
+          "match": {
+            "type": "payload-hash-sha1",
+            "secret": "YmVjYWdpcy1kb2NzCg==",
+            "parameter": {
+              "source": "header",
+              "name": "X-Hub-Signature"
+            }
+          }
+        }      
+      ]
     }
   }
 ]
