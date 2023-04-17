@@ -346,7 +346,7 @@ var map = BCG.BecaGIS.createMap('divMapId', options, config)
 
 > **Methods dành cho Layers và Controls**
 > - _addControl(control)_: this
-> - Thêm control vào map
+>   - Thêm control vào map
 > - _removeControl(control)_: this
 >   - Xóa control khỏi map
 > - _addLayer(layer)_: this
@@ -612,7 +612,6 @@ map.panTo(BCG.latLng(11.05310, 106.66616));
 
 >  **distanceTo(latlngOther): Number**
 > - Trả về giá trị khoảng cách đến một LatLng theo meter
-> - Trong đó:
 >   - latlngOther: một LatLng khác
 > ```javascript
 >    var latlng = BCG.latLng(11.05310, 106.66616);
@@ -778,6 +777,7 @@ map.panBy(BCG.point(200, 300))
 #### GridLayer
 1. Đây là lớp cơ sở cho tất cả các lớp tile và thay thế cho TileLayer.Canvas. GridLayer sẽ xử lý việc tạo image và animation các phần tử DOM này.
 2. Để sử dụng cần tạo lớp mở rộng GridLayer và thực hiện phương thức createTile(), phương thức này sẽ nhận vào một đối tượng Point với các tọa độ x, y và z (mức zoom) để vẽ tile.
+
 ```javascript
 var CanvasLayer = BCG.GridLayer.extend({
     createTile: function(coords){
@@ -796,35 +796,40 @@ var CanvasLayer = BCG.GridLayer.extend({
     }
 });
 ```
+
 Ngoài ra có thể sử dụng việc vẽ tile dưới dạng bất đồng bộ, phù hợp khi hàm vẽ phải gọi các thư viện thứ 3 và chờ thao tác tạo tile thành công.
+
 ```javascript
-    var CanvasLayer = BCG.GridLayer.extend({
-        createTile: function(coords, done){
-        var error;
-         // tạo một phần tử <canvas> để vẽ
-            var tile = BCG.DomUtiBCG.create('canvas', 'leaflet-tile');
-        
-            // thiết lập chiều rộng và chiều cao của tile theo các tùy chọn
-            var size = this.getTileSize();
-            tile.width = size.x;
-            tile.height = size.y;
-        
-            // vẽ một cái gì đó không đồng bộ và chuyển tile đến callback done()
-            setTimeout(function() {
-                done(error, tile);
-            }, 1000);
-        
-            return tile;
-        }
-    });
+var CanvasLayer = BCG.GridLayer.extend({
+    createTile: function(coords, done){
+    var error;
+     // tạo một phần tử <canvas> để vẽ
+        var tile = BCG.DomUtiBCG.create('canvas', 'leaflet-tile');
+    
+        // thiết lập chiều rộng và chiều cao của tile theo các tùy chọn
+        var size = this.getTileSize();
+        tile.width = size.x;
+        tile.height = size.y;
+    
+        // vẽ một cái gì đó không đồng bộ và chuyển tile đến callback done()
+        setTimeout(function() {
+            done(error, tile);
+        }, 1000);
+    
+        return tile;
+    }
+});
 ```
+
 Hàm khởi tạo
+
 ```javascript
 BCG.gridLayer(options?)
 ```
-> **Trong đó:**
-> tileSize (Kích thước tile)**: số hoặc L.point(width, height) để chỉ chiều rộng và chiều cao của tile trong lưới.
 
+
+> 
+> - **tileSize (Kích thước tile)**: số hoặc L.point(width, height) để chỉ chiều rộng và chiều cao của tile trong lưới.
 > - **opacity (Độ mờ)**: giá trị độ mờ của các tile, có thể sử dụng trong hàm createTile().
 > - **updateWhenIdle (Cập nhật khi không hoạt động)**: chỉ tải các tile mới khi di chuyển kết thúc. Mặc định là true trên trình duyệt di động để tránh quá nhiều yêu cầu và giữ cho điều hướng mượt mà. False trong trường hợp khác để hiển thị các tile mới trong khi di chuyển, vì dễ di chuyển ra ngoài tùy chọn keepBuffer trên trình duyệt máy tính để bàn.
 > - **updateWhenZooming (Cập nhật khi thu phóng)**: mặc định, khi thực hiện phép thu/phóng mượt (trong lúc vuốt hoặc flyTo()), lớp lưới sẽ cập nhật sau mỗi mức zoom nguyên. Thiết lập tùy chọn này thành false sẽ chỉ cập nhật lớp lưới sau khi phép thu/phóng mượt kết thúc.
@@ -877,7 +882,7 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 ```javascript
     var tilelayer = BCG.tileLayer('https://{s}.somedomain.com/layer/{z}/{x}/{y}.png', options);
 ```
-> **Trong đó:**
+
 > - s: là thông số subdomain, ví dụ đối với google tile sẽ có các sub: m1, m2, m3,...
 > - z: là giá trị zoom
 > - x: thông số tiling x
@@ -915,7 +920,7 @@ var wmslayer = BCG.tileLayer.wms("http://demo.com/geoserver/wms", {
     attribution: "BecaGIS"
 });
 ```
-> **Trong đó:**
+
 > - _url_: là url của WMS OGC service
 > - _layers_: danh sách các layers được khai báo bằng string và cách nhau mỗi dấu phẩy
 > - _transparent_: xác định độ trong suốt của layer ở những vùng không có dữ liệu
@@ -945,7 +950,7 @@ var imageUrl = 'https://maps.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
 var imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
 BCG.imageOverlay(imageUrl, imageBounds).addTo(map);
 ```
-> **Trong đó:**
+
 > - _imageUrl:_ 
 > - _imageBounds:_
 > - _BCG.imageOverlay:_
@@ -1001,7 +1006,7 @@ var videoUrl = 'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
 var videoBounds = [[ 32, -130], [ 13, -100]];
 BCG.videoOverlay(videoUrl, videoBounds ).addTo(map);
 ```
-> **Trong đó:**
+
 > - _videoUrl:_
 > - _videoBounds:_
 > - _BCG.videoOverlay:_
@@ -1025,7 +1030,7 @@ BCG.geoJSON(data, {
     return layer.feature.properties.description;
 }).addTo(map);
 ```
-> **Trong đó**
+
 > - BCG.geoJSON: hàm khởi tạo
 > - data: dữ liệu [GeoJSON](https://geojson.io)
 > - style: định dạng style cho feature
