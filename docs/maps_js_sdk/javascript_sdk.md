@@ -774,10 +774,104 @@ Trường hợp sử dụng phố biến, xác định tọa độ trung tâm c�
 
 > **getEvents(): Object**
 > -
+#### GridLayer
+1. Đây là lớp cơ sở cho tất cả các lớp tile và thay thế cho TileLayer.Canvas. GridLayer có thể được mở rộng để tạo ra một lưới các phần tử HTML như <canvas>, <img> hoặc <div>. GridLayer sẽ xử lý việc tạo image và animation các phần tử DOM này.
+2. Để sử dụng cần tạo lớp mở rộng GridLayer và thực hiện phương thức createTile(), phương thức này sẽ nhận vào một đối tượng Point với các tọa độ x, y và z (mức zoom) để vẽ tile.
+```javascript
+    var CanvasLayer = BCG.GridLayer.extend({
+        createTile: function(coords){
+            // tạo một phần tử <canvas> để vẽ
+            var tile = BCG.DomUtiBCG.create('canvas', 'leaflet-tile');
+            // thiết lập chiều rộng và chiều cao của tile theo các tùy chọn
+            var size = this.getTileSize();
+            tile.width = size.x;
+            tile.height = size.y;
+        
+            // lấy ngữ cảnh canvas và vẽ một cái gì đó trên đó bằng cách sử dụng coords.x, coords.y và coords.z
+            var ctx = tile.getContext('2d');
+        
+            // trả về tile để có thể được hiển thị trên màn hình
+            return tile;
+        }
+    });
+```
+Ngoài ra có thể sử dụng việc vẽ tile dưới dạng bất đồng bộ, phù hợp khi hàm vẽ phải gọi các thư viện thứ 3 và chờ thao tác tạo tile thành công.
+```javascript
+    var CanvasLayer = BCG.GridLayer.extend({
+        createTile: function(coords, done){
+        var error;
+         // tạo một phần tử <canvas> để vẽ
+            var tile = BCG.DomUtiBCG.create('canvas', 'leaflet-tile');
+        
+            // thiết lập chiều rộng và chiều cao của tile theo các tùy chọn
+            var size = this.getTileSize();
+            tile.width = size.x;
+            tile.height = size.y;
+        
+            // vẽ một cái gì đó không đồng bộ và chuyển tile đến callback done()
+            setTimeout(function() {
+                done(error, tile);
+            }, 1000);
+        
+            return tile;
+        }
+    });
+```
+Hàm khởi tạo
+```javascript
+    BCG.gridLayer(options?)
+```
+> **Trong đó:**
+> tileSize (Kích thước tile)**: số hoặc L.point(width, height) để chỉ chiều rộng và chiều cao của tile trong lưới.
+
+> - **opacity (Độ mờ)**: giá trị độ mờ của các tile, có thể sử dụng trong hàm createTile().
+> - **updateWhenIdle (Cập nhật khi không hoạt động)**: chỉ tải các tile mới khi di chuyển kết thúc. Mặc định là true trên trình duyệt di động để tránh quá nhiều yêu cầu và giữ cho điều hướng mượt mà. False trong trường hợp khác để hiển thị các tile mới trong khi di chuyển, vì dễ di chuyển ra ngoài tùy chọn keepBuffer trên trình duyệt máy tính để bàn.
+> - **updateWhenZooming (Cập nhật khi thu phóng)**: mặc định, khi thực hiện phép thu/phóng mượt (trong lúc vuốt hoặc flyTo()), lớp lưới sẽ cập nhật sau mỗi mức zoom nguyên. Thiết lập tùy chọn này thành false sẽ chỉ cập nhật lớp lưới sau khi phép thu/phóng mượt kết thúc.
+> - **updateInterval (Thời gian cập nhật)**: tile sẽ không được cập nhật nhiều hơn một lần trong updateInterval mili giây khi di chuyển.
+> - **zIndex (Độ sâu chồng)**: số nguyên cho zIndex rõ ràng của lớp tile.
+> - **bounds (Giới hạn địa lý)**: nếu được thiết lập, các tile chỉ được tải bên trong giới hạn địa lý được thiết lập.
+> - **minZoom (Mức zoom tối thiểu)**: mức zoom tối thiểu mà lớp này sẽ được hiển thị.
+> - **maxZoom (Mức zoom tối đa)**: mức zoom tối đa mà lớp này sẽ được hiển thị.
+> - **maxNativeZoom (Mức zoom tối đa của tile source)**: Số mức thu phóng tối đa mà nguồn tile có sẵn. Nếu được chỉ định, các tile trên tất cả các mức thu phóng cao hơn maxNativeZoom sẽ được tải từ mức zoom maxNativeZoom và tự động thay đổi kích thước.
+> - **minNativeZoom (Mức zoom tối thiểu của tile source)**: Số mức thu phóng tối thiểu mà nguồn tile có sẵn. Nếu được chỉ định, các tile trên tất cả các mức thu phóng thấp hơn minNativeZoom sẽ được tải từ mức zoom minNativeZoom và tự động thay đổi kích thước.
+> - **noWrap (Không quấn quanh)**: xác định liệu lớp tile có quấn quanh ngược đồng hồ hay không. Nếu đúng, GridLayer sẽ chỉ được hiển thị một lần ở các mức zoom thấp. Không có tác dụng khi hệ thống tọa độ của bản đồ không quấn quanh. Có thể được sử dụng kết hợp với giới hạn địa lý để ngăn không cho các tile vượt quá giới hạn của hệ thống tọa độ.
+> - **pane (Bảng địa lý)**: xác định pane của bản đồ mà lớp lưới sẽ được thêm vào.
+> - **className (Tên lớp)**: tên lớp tùy chỉnh để gán cho lớp tile. Mặc định là trống.
+> - **keepBuffer (Dữ liệu đệm)**: số lượng hàng và cột tile sẽ được giữ lại khi di chuyển bản đồ trước khi giải phóng chúng.
+
+3. Methods và Properties
+
+> **Methods**
+> - **bringToFront()**:
+>   - Đưa lớp tile lên trên tất cả các lớp tile. Trả về đối tượng lớp đó.
+>
+> - **bringToBack()**:
+>   - Đưa lớp tile xuống dưới đáy tất cả các lớp tile. Trả về đối tượng lớp đó.
+>
+> - **getContainer()**:
+>   - Trả về phần tử HTML chứa các tile cho lớp này.
+>
+> - **setOpacity(opacity)**:
+>   - Thay đổi độ mờ của lớp lưới. Trả về đối tượng lớp đó.
+>
+> - **setZIndex(zIndex)**:
+>   - Thay đổi độ sâu chồng của lớp lưới. Trả về đối tượng lớp đó.
+>
+> - **isLoading()**:
+>   - Trả về true nếu bất kỳ tile nào trong lớp lưới chưa tải xong.
+>
+> - **redraw()**:
+>   - Làm cho lớp xóa tất cả các tile và yêu cầu chúng lại. Trả về đối tượng lớp đó.
+>
+> - **getTileSize()**:
+>   - Chuẩn hóa tùy chọn tileSize thành một điểm. Sử dụng bởi phương thức createTile(). Trả về đối tượng Point.
+>
+> - **createTile(coords, done?)**:
+>   - Trả về phần tử HTMLElement tương ứng với các tọa độ đã cho. Nếu callback done được chỉ định, nó phải được gọi khi tile đã tải xong và vẽ xong.
 
 #### TileLayer
 1. Kế thừa từ Layer, hiển thị các lớp bản đồ dạng tiling image có cấu trúc gồm các thông số {x}, {y}, {z} và {s}
-ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
+ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 2. Khởi tạo TileLayer
 ```javascript
     var tilelayer = BCG.tileLayer('https://{s}.somedomain.com/layer/{z}/{x}/{y}.png', options);
@@ -1014,12 +1108,12 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
 > - **bubblingMouseEvents**: Khi đúng, một sự kiện chuột trên path này sẽ kích hoạt cùng một sự kiện trên bản đồ (trừ khi BCG.DomEvent.stopPropagation được sử dụng).
 > - **renderer**: Sử dụng bộ vẽ Renderer cụ thể này cho path này. Ưu tiên hơn so với bộ vẽ mặc định của bản đồ.
 > - **className**: Tên lớp tùy chỉnh được đặt tên trên phần tử DOM. Chỉ sử dụng cho bộ vẽ SVG.
->
+
 > **Methods**
-> **redraw()**: Vẽ lại path. Thỉnh thoảng hữu ích khi thay đổi tọa độ mà path sử dụng.
-> **setStyle(style)**: Thay đổi diện mạo của Path dựa trên các tùy chọn trong đối tượng tùy chọn Path.
-> **bringToFront()**: Đưa lớp lên trên tất cả các lớp path khác.
-> **bringToBack()**: Đưa lớp xuống dưới tất cả các lớp path khác.
+> - **redraw()**: Vẽ lại path. Thỉnh thoảng hữu ích khi thay đổi tọa độ mà path sử dụng.
+> - **setStyle(style)**: Thay đổi diện mạo của Path dựa trên các tùy chọn trong đối tượng tùy chọn Path.
+> - **bringToFront()**: Đưa lớp lên trên tất cả các lớp path khác.
+> - **bringToBack()**: Đưa lớp xuống dưới tất cả các lớp path khác.
 
 #### Polyline
 1. Polyline được sử dụng để vẽ Polyline, kế thừa từ [Path](#Path)
@@ -1152,7 +1246,7 @@ Tạo một đối tượng CircleMarker:
 >   - Lấy bán kính hiện tại của CircleMarker.
 > 
 > - Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
->
+
 > **Events**
 > - **move**: Được kích hoạt khi đối tượng CircleMarker được di chuyển.
 
@@ -1176,7 +1270,7 @@ Tạo một đối tượng CircleMarker:
 >
 > - **getBounds()**:
 >   - Trả về giới hạn địa lý của đối tượng.
->
+
 > **Events**
 > - Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Layer.
 
