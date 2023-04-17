@@ -931,16 +931,31 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
     }).addTo(map);
 ```
 > **Trong đó**
-> - BCG.geoJSON:
-> - data:
-> - style:
-> - addTo:
+> - BCG.geoJSON: hàm khởi tạo
+> - data: dữ liệu [GeoJSON](https://geojson.io)
+> - style: định dạng style cho feature
+> - addTo: hàm gọi đưa geojson vào map dưới dạng Layer
 
 > **Options**
-> - *pointToLayer(Function)*:
-> - *onEachFeature(Function)*:
-> - *filter(Function)*:
-> - *coordsToLatLng(Function)*:
+> - **pointToLayer(Function)**:
+>   - Một hàm xác định cách tạo lớp Leaflet từ các đối tượng điểm trong GeoJSON. Nó được gọi nội bộ khi dữ liệu được thêm vào, truyền vào đối tượng điểm GeoJSON và LatLng tương ứng của nó. Giá trị mặc định là tạo một Marker mặc định:
+> ```javascript
+> function(geoJsonPoint, latlng) {
+    > return BCG.marker(latlng);
+> }
+> ```
+> - **onEachFeature(Function)**: Một hàm sẽ được gọi một lần cho mỗi Feature được tạo, sau khi nó được tạo và được thiết kế. Hữu ích để gắn sự kiện và popups cho Feature. Giá trị mặc định là không làm gì với các lớp mới được tạo:
+> ```javascript
+> function (feature, layer) {}
+> ```
+> - **filter(Function)**: Một hàm sẽ được sử dụng để quyết định liệu có bao gồm Feature hay không. Giá trị mặc định là bao gồm tất cả các Feature:
+> ```javascript
+> function (geoJsonFeature) {
+>   return true;
+> }
+> ```
+> Lưu ý: thay đổi tùy chọn bộ lọc động sẽ chỉ có tác dụng trên dữ liệu mới được thêm vào. Nó sẽ không đánh giá lại các Feature đã được bao gồm trước đó.
+> - **coordsToLatLng(Function)**:  Một hàm sẽ được sử dụng để chuyển đổi tọa độ GeoJSON thành LatLng. Giá trị mặc định là phương thức tĩnh coordsToLatLng.
 
 3. Methods và Properties
 
