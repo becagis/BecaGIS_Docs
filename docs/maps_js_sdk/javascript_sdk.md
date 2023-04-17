@@ -272,24 +272,24 @@ var featureAttributes = await map.geoPortal
 var map = BCG.BecaGIS.createMap('divMapId', options, config)
 ```
 
- Diễn giải các thông số:
- - *divId*: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
- - *options*: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
- Có 2 thông số bắt buộc khi khởi tạo map:
- - *center*: xác định vị trí trung tâm của map khi khởi tạo
- - *zoom*: mức zoom mặc định của map khi khởi tạo
- - *config*: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
+**Diễn giải các thông số:**
+- *divId*: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
+- *options*: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
+**Có 2 thông số bắt buộc khi khởi tạo map:**
+- *center*: xác định vị trí trung tâm của map khi khởi tạo
+- *zoom*: mức zoom mặc định của map khi khởi tạo
+- *config*: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
 
 #### Options
 
  **Map State Options**
- - _crs_: hệ tọa độ
- - _center_(*): [LatLng](#LatLng) vị trí trung tâm khi khởi tạo
- - _zoom_(Number)(*): độ zoom mặc định
- - _minZoom_(Number): độ zoom nhỏ nhất cho phép
- - _maxZoom_(Number): độ zoom lớn nhất cho phép
- - _layers_(Number): danh sách layers được thêm mặc định
- - _maxBounds_([LatLngBounds](#LatLngBounds): Bounds tối đa
+- _crs_: hệ tọa độ
+- _center_(*): [LatLng](#LatLng) vị trí trung tâm khi khởi tạo
+- _zoom_(Number)(*): độ zoom mặc định
+- _minZoom_(Number): độ zoom nhỏ nhất cho phép
+- _maxZoom_(Number): độ zoom lớn nhất cho phép
+- _layers_(Number): danh sách layers được thêm mặc định
+- _maxBounds_([LatLngBounds](#LatLngBounds): Bounds tối đa
 
 **Animation Options**
  - _zoomAnimation_(Boolean): hiệu ứng khi phóng to, thu nhỏ
@@ -341,85 +341,84 @@ var map = BCG.BecaGIS.createMap('divMapId', options, config)
     },
  ```
 
-> #### Methods
+ #### Methods
+**Methods dành cho Layers và Controls**
+- _addControl(control)_ -> this: Thêm control vào map
+- _removeControl(control)_ -> this: Xóa control khỏi map
+- _addLayer(layer)_ -> this: Thêm layer vào map
+- _removeLayer(layer)_ -> xóa layer khỏi map
+- _hasLayer(layer)_ -> Boolean: Kiểm tra layer có tồn tại trong map hay không
+- _eachLayer(func, context)_ -> this: Duyệt qua tất cả layer của map với đối số layer truyền vào hàm func
+```javascript
+  map.eachLayer((layer) => {
+      layer.bindPopup('Hello');
+  })
+```
 
-> **Methods dành cho Layers và Controls**
-> - _addControl(control)_ -> this: Thêm control vào map
-> - _removeControl(control)_ -> this: Xóa control khỏi map
-> - _addLayer(layer)_ -> this: Thêm layer vào map
-> - _removeLayer(layer)_ -> xóa layer khỏi map
-> - _hasLayer(layer)_ -> Boolean: Kiểm tra layer có tồn tại trong map hay không
-> - _eachLayer(func, context)_ -> this: Duyệt qua tất cả layer của map với đối số layer truyền vào hàm func
-> ```javascript
->   map.eachLayer((layer) => {
->       layer.bindPopup('Hello');
->   })
-> ```
+**Methods thay đổi trạng thái map**
+- _setView(center, zoom) -> this_: Thiết lập vị trí center ([LatLng](#LatLng))) và độ zoom (Number)
+- _setZoom(zoom) -> this_: Thiết lập độ zoom (Number)
+- _fitBounds(latlngBound) -> this_: Thiết lập bounds ([LatLngBounds](#LatLngBounds)) vào khung nhìn của map
+- _panTo(latlng) -> this_: Di chuyển map center đến vị trí latlng ([LatLng](#LatLng))
+- _flyTo(latlng, zoom) -> this_: Di chuyển map center với hiệu ứng fly đến vị trí latlng ([LatLng](#LatLng)) và độ zoom (Number)
+- _flyToBounds(latlngbounds) -> this_: Di chuyển map view đến khung latlngBounds ([LatLngBounds](#LatLngBounds))
+- _setMaxBounds(latlngBounds) -> this_: Thiết lập latlngBounds ([LatLngBounds](#LatLngBounds)) tối đa của map và giới hạn khung nhìn di chuyển ra khỏi bounds
+- _setMaxZoom(zoom) -> this_: Thiết lập độ zoom lớn nhất của map (Thông thường giá trị là 24)
+- _setMinZoom(zoom) -> this_: Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
+- _invalidateSize() -> this_: Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
 
-> **Methods thay đổi trạng thái map**
-> - _setView(center, zoom) -> this_: Thiết lập vị trí center ([LatLng](#LatLng))) và độ zoom (Number)
-> - _setZoom(zoom) -> this_: Thiết lập độ zoom (Number)
-> - _fitBounds(latlngBound) -> this_: Thiết lập bounds ([LatLngBounds](#LatLngBounds)) vào khung nhìn của map
-> - _panTo(latlng) -> this_: Di chuyển map center đến vị trí latlng ([LatLng](#LatLng))
-> - _flyTo(latlng, zoom) -> this_: Di chuyển map center với hiệu ứng fly đến vị trí latlng ([LatLng](#LatLng)) và độ zoom (Number)
-> - _flyToBounds(latlngbounds) -> this_: Di chuyển map view đến khung latlngBounds ([LatLngBounds](#LatLngBounds))
-> - _setMaxBounds(latlngBounds) -> this_: Thiết lập latlngBounds ([LatLngBounds](#LatLngBounds)) tối đa của map và giới hạn khung nhìn di chuyển ra khỏi bounds
-> - _setMaxZoom(zoom) -> this_: Thiết lập độ zoom lớn nhất của map (Thông thường giá trị là 24)
-> - _setMinZoom(zoom) -> this_: Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
-> - _invalidateSize() -> this_: Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
+**Methods truy xuất thông tin map**
+- _getCenter() -> [LatLng](#LatLng)_: Lấy vị trí center của map
+- _getZoom() -> Number_: Lấy độ zoom hiện tại của map
+- _getBounds() -> [LatLngBounds](#LatLngBounds)_: Lấy Bounds hiện tại của map
+- _getMinZoom() -> Number_: Lấy giá trị zoom nhỏ nhất của map
+- _getMaxZoom() -> Number_: Lấy giá trị zoom lớn nhất
+- _getBoundsZoom(latlngBounds) -> Number_: Lấy độ zoom tương ứng của map với thông số đầu vào là bounds
+- _getSize() -> [Point](#Point)_: Lấy kích thước của map
 
-> **Methods truy xuất thông tin map**
-> - _getCenter() -> [LatLng](#LatLng)_: Lấy vị trí center của map
-> - _getZoom() -> Number_: Lấy độ zoom hiện tại của map
-> - _getBounds() -> [LatLngBounds](#LatLngBounds)_: Lấy Bounds hiện tại của map
-> - _getMinZoom() -> Number_: Lấy giá trị zoom nhỏ nhất của map
-> - _getMaxZoom() -> Number_: Lấy giá trị zoom lớn nhất
-> - _getBoundsZoom(latlngBounds) -> Number_: Lấy độ zoom tương ứng của map với thông số đầu vào là bounds
-> - _getSize() -> [Point](#Point)_: Lấy kích thước của map
-
-> **Methods khai báo Event **
-> - _on(eventName, callback) -> this_: Đăng ký sự kiện của map với giá trị handler là callback.
-> - off(eventName, callbackRef) -> this_: Hủy đăng ký sự kiện của máp với reference của callback đã đăng ký.
+**Methods khai báo Event **
+- _on(eventName, callback) -> this_: Đăng ký sự kiện của map với giá trị handler là callback.
+- off(eventName, callbackRef) -> this_: Hủy đăng ký sự kiện của máp với reference của callback đã đăng ký.
 
 #### Events
 
-> **Events liên quan đến Layer**
-> - _baselayerchange_: khi base layer được thay đổi
-> - _overlayeradd_: khi overlay layer được thêm vào map
-> - _overlayremove_: khi overlay layer được xóa khỏi map
-> - _layeradd_: khi bất kỳ layer được thêm vào map
-> - _layerremove_: khi bất kỳ layer được xóa khỏi map
+**Events liên quan đến Layer**
+- _baselayerchange_: khi base layer được thay đổi
+- _overlayeradd_: khi overlay layer được thêm vào map
+- _overlayremove_: khi overlay layer được xóa khỏi map
+- _layeradd_: khi bất kỳ layer được thêm vào map
+- _layerremove_: khi bất kỳ layer được xóa khỏi map
 
-> **Events liên quan đến trạng thái map**
-> - _zoomlevelschange_: thay đổi độ zoom
-> - _zoomstart_: khi quá trình zoom bắt đầu
-> - _movestart_: khi quá trình di chuyển bắt đầu
-> - _zoom_: khi quá trình zoom diễn ra
-> - _move_: khi quá trình di chuyển diễn ra
-> - _zoomend_: khi quá trình zoom kết thúc
-> - _moveend_: khi quá trình duy chuyển kết thúc
+**Events liên quan đến trạng thái map**
+- _zoomlevelschange_: thay đổi độ zoom
+- _zoomstart_: khi quá trình zoom bắt đầu
+- _movestart_: khi quá trình di chuyển bắt đầu
+- _zoom_: khi quá trình zoom diễn ra
+- _move_: khi quá trình di chuyển diễn ra
+- _zoomend_: khi quá trình zoom kết thúc
+- _moveend_: khi quá trình duy chuyển kết thúc
 
-> **Events tương tác**
-> - _click_: khi sự kiện click diễn ra
-> - _dblclick_: khi sự kiện double click diễn ra
-> - _mousedown_: khi sự kiện mouse down diễn ra
-> - _mouseover_: khi sự kiện mouse over diễn ra
-> - _mouseup_: khi sự kiện mouse up diễn ra
-> - _keypress_: khi sự kiện 1 key được press diễn ra
-> - _keydown_: khi sự kiện 1 key down diễn ra
-> - _keyup_: khi sự kiện 1 key up diễn ra
-> - _preclick_: trước khi hàm handler của sự kiện click được gọi
+**Events tương tác**
+- _click_: khi sự kiện click diễn ra
+- _dblclick_: khi sự kiện double click diễn ra
+- _mousedown_: khi sự kiện mouse down diễn ra
+- _mouseover_: khi sự kiện mouse over diễn ra
+- _mouseup_: khi sự kiện mouse up diễn ra
+- _keypress_: khi sự kiện 1 key được press diễn ra
+- _keydown_: khi sự kiện 1 key down diễn ra
+- _keyup_: khi sự kiện 1 key up diễn ra
+- _preclick_: trước khi hàm handler của sự kiện click được gọi
 
 ### GeoPortal
 
-> GeoPortal API chứa các methods giúp tương tác với website GeoPortal được phát triển bởi BecaGIS.
-> Nhóm các methods trong GeoPortal API giúp khai thác các dịch vụ WFS và WMS được cung cấp bởi Website GeoPortal
-> Để sử dụng GeoPortal API, cần thực hiện các bước sau:
-> 1. Khai báo GeoPortal bằng method `createMap`
-> 2. Xác thực tài khoản
-> - Dữ liệu trong GeoPortal được khai báo với phân quyền theo từng người dùng và nhóm người dùng cụ thể,
-> để có thể truy cập vào dữ liệu, người dùng phải thông qua thao tác xác thực được hỗ trợ bởi GeoPortal API.
-> 3. Gọi các methods theo nhu cầu sử dụng
+GeoPortal API chứa các methods giúp tương tác với website GeoPortal được phát triển bởi BecaGIS.
+Nhóm các methods trong GeoPortal API giúp khai thác các dịch vụ WFS và WMS được cung cấp bởi Website GeoPortal
+Để sử dụng GeoPortal API, cần thực hiện các bước sau:
+1. Khai báo GeoPortal bằng method `createMap`
+2. Xác thực tài khoản
+- Dữ liệu trong GeoPortal được khai báo với phân quyền theo từng người dùng và nhóm người dùng cụ thể,
+để có thể truy cập vào dữ liệu, người dùng phải thông qua thao tác xác thực được hỗ trợ bởi GeoPortal API.
+3. Gọi các methods theo nhu cầu sử dụng
 
 #### Khai báo GeoPortal bằng `createMap`
 
@@ -456,57 +455,57 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 })
 ```
 
-> Diễn giải các thông số:
-> - *geoPortal*: chứa khai báo liên quan đến GeoPortal
-> - *geoPortalUrl*: đường dẫn đến website GeoPortal, ví dụ: https://geoportaBCG.vntts.com.vn
-> - *loginInfo*: Thông tin xác thực tài khoản GeoPortal
->   - *clientId*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
->   - *clientSecret*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
->   - *username*: Tên đăng nhập của người dùng sử dụng dữ liệu
->   - *password*: Mật khẩu của người dùng sử dụng dữ liệu
-> - *layers*: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
-> - Trong mỗi khai báo Layer, gồm các thông số sau:
->   - *layers*: Là typename của Layer trong GeoPortal
->   - *options*: Chứa các khai báo bổ sung cho Layers
->   - *featureInfo*: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
->   - *featureInfoOptions*: Các thông tin bổ sung cho FeatureInfo
->   - *showFeatureHandler*: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
-> - Ngoài ra một số chức năng khác tương tác với GeoPortal được khai báo dưới dạng plugins trong khai báo `map`
-> - *map*: Đối tượng khai báo cấu hình cho map
-> - *controls*: Nơi khai báo các plugins controls
-> - *geoPortalLayersControl*: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền truy cập.
->   - *geoPortalLoginControl*: Khai báo control cho phép người dùng có thể tự login vào GeoPortal
->   - *geoPortalWmsLegendControl*: Khai báo control cho phép hiển thị legend các active layer của GeoPortal
->   - *geoPortalFeatureSearchControl*: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer của GeoPortal
+Diễn giải các thông số:
+- *geoPortal*: chứa khai báo liên quan đến GeoPortal
+- *geoPortalUrl*: đường dẫn đến website GeoPortal, ví dụ: https://geoportaBCG.vntts.com.vn
+- *loginInfo*: Thông tin xác thực tài khoản GeoPortal
+  - *clientId*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
+  - *clientSecret*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
+  - *username*: Tên đăng nhập của người dùng sử dụng dữ liệu
+  - *password*: Mật khẩu của người dùng sử dụng dữ liệu
+- *layers*: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
+- Trong mỗi khai báo Layer, gồm các thông số sau:
+  - *layers*: Là typename của Layer trong GeoPortal
+  - *options*: Chứa các khai báo bổ sung cho Layers
+  - *featureInfo*: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
+  - *featureInfoOptions*: Các thông tin bổ sung cho FeatureInfo
+  - *showFeatureHandler*: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
+- Ngoài ra một số chức năng khác tương tác với GeoPortal được khai báo dưới dạng plugins trong khai báo `map`
+- *map*: Đối tượng khai báo cấu hình cho map
+- *controls*: Nơi khai báo các plugins controls
+- *geoPortalLayersControl*: Khai báo control chưa danh sách các Layers của GeoPortal mà thông tin xác thực được quyền truy cập.
+  - *geoPortalLoginControl*: Khai báo control cho phép người dùng có thể tự login vào GeoPortal
+  - *geoPortalWmsLegendControl*: Khai báo control cho phép hiển thị legend các active layer của GeoPortal
+  - *geoPortalFeatureSearchControl*: Khai báo control cho phép tìm kiếm thông tin các Feature thuộc active Layer của GeoPortal
 
 #### Methods và properties của GeoPortal API
 
-> GeoPortal API sử dụng thông qua đối tượng `map` (được khởi tạo bởi `createMap`), thông qua lời gọi `getGeoPortal()`
-> ```javascript
->   var map = BCG.createMap('map', {.....})
->   map.getGeoPortal().... /// Lời gọi đối tượng GeoPortal
-> ```
-> Sau khi `createMap` thực thi, GeoPortal API sẽ tiến hành đăng nhập vào website và lưu trữ `accessToken`
-> và `refreshToken`
-> phục vụ cho những lần sử dụng trong phiên làm việc.
-> - *setAccessToken(accessToken)*: Thiết lập giá trị accessToken
-> - *getAccessToken(): String*: Lấy giá trị accessToken
-> - *getRefreshToken(): String*: Lấy giá trị refreshToken
-> - *async loginAsync(loginInfo)*: Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
-> - *async getLayersDataAsync() -> Object[]*: Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
-> - *getFeatureHelper(): Object*: Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
-> - *async getFeatureHelper().getFeatureInfo(params) -> Object*: Truy xuất thông tin chi tiết của Feature dựa thông số
-    của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo): `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
-> - *async getFeatureHelper().getFeatureTypeList() -> Object[]*: Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
-> - *async getFeatureHelper().getFeatureDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer
-> - *async getFeatureHelper().getFeatureResourceDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
-> - *async getFeatureHelper().getFeatures(layer, params)*: Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER
-> - *async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson) -> Object[]*: Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
-> - *async getFeatureHelper().getFeatureAttributes(layer) -> Object*: Truy xuất danh sách các attributes của layer
-> - *getAuthHelper() -> Object*: Truy cập module chứa các method thực thi xác thực
-> - *async getAuthHelper().getTokenInfoAsync(loginInfo) -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ tham số `LoginInfo{clientId, clientSecret, username, password}`
-> - *async getAuthHelper().getAuthorizationString() -> String*: Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
-> - *async getAuthHelper().getTokenInfoByRefreshTokenAsync() -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
+GeoPortal API sử dụng thông qua đối tượng `map` (được khởi tạo bởi `createMap`), thông qua lời gọi `getGeoPortal()`
+```javascript
+  var map = BCG.createMap('map', {.....})
+  map.getGeoPortal().... /// Lời gọi đối tượng GeoPortal
+```
+Sau khi `createMap` thực thi, GeoPortal API sẽ tiến hành đăng nhập vào website và lưu trữ `accessToken`
+và `refreshToken`
+phục vụ cho những lần sử dụng trong phiên làm việc.
+- *setAccessToken(accessToken)*: Thiết lập giá trị accessToken
+- *getAccessToken(): String*: Lấy giá trị accessToken
+- *getRefreshToken(): String*: Lấy giá trị refreshToken
+- *async loginAsync(loginInfo)*: Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
+- *async getLayersDataAsync() -> Object[]*: Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
+- *getFeatureHelper(): Object*: Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
+- *async getFeatureHelper().getFeatureInfo(params) -> Object*: Truy xuất thông tin chi tiết của Feature dựa thông số
+  của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo): `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
+- *async getFeatureHelper().getFeatureTypeList() -> Object[]*: Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
+- *async getFeatureHelper().getFeatureDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer
+- *async getFeatureHelper().getFeatureResourceDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
+- *async getFeatureHelper().getFeatures(layer, params)*: Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER
+- *async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson) -> Object[]*: Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
+- *async getFeatureHelper().getFeatureAttributes(layer) -> Object*: Truy xuất danh sách các attributes của layer
+- *getAuthHelper() -> Object*: Truy cập module chứa các method thực thi xác thực
+- *async getAuthHelper().getTokenInfoAsync(loginInfo) -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ tham số `LoginInfo{clientId, clientSecret, username, password}`
+- *async getAuthHelper().getAuthorizationString() -> String*: Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
+- *async getAuthHelper().getTokenInfoByRefreshTokenAsync() -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
 
 ### Kiểu dữ liệu cơ bản
 
@@ -530,32 +529,32 @@ map.panTo(BCG.latLng(11.05310, 106.66616));
 
 3. Methods và Properties
 
-> **Methods**
-> - *equal(latlngOther, numberOfMagin) -> Boolean*: So sánh 2 giá trị LatLng, trả về true nếu 2 điểm là giống nhau
->   - Tham số
->     - latlngOther: một LatLng khác
->     - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
-> ```javascript
->    var latlng = BCG.latLng(11.05310, 106.66616);
->    var latlngOther = BCG.latLng(11.05, 106.66);
->    var isEqual = latlng.equal(latlngOther, 0.001);
-> ```
-> - *toString() -> String*: Trả về một chuỗi thể hiện giá trị của LatLng
-> - *distanceTo(latlngOther) -> Number*: Trả về giá trị khoảng cách đến một LatLng theo meter
->   - latlngOther: một LatLng khác
-> ```javascript
->    var latlng = BCG.latLng(11.05310, 106.66616);
->    var latlngOther = BCG.latLng(11.05, 106.66);
->    var distanceInMeters = latlng.distanceTo(latlngOther, 0.001);
-> ```
-> - *toBounds(sizeInMeters) -> [LatLngBounds](#LatLngBounds)*: Trả về giá trị [LatLngBounds](#LatLngBounds) được tính các góc bằng sizeInMeters / 2
->   - Thông số:
->     - Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
+**Methods**
+- *equal(latlngOther, numberOfMagin) -> Boolean*: So sánh 2 giá trị LatLng, trả về true nếu 2 điểm là giống nhau
+  - Tham số
+    - latlngOther: một LatLng khác
+    - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
+```javascript
+   var latlng = BCG.latLng(11.05310, 106.66616);
+   var latlngOther = BCG.latLng(11.05, 106.66);
+   var isEqual = latlng.equal(latlngOther, 0.001);
+```
+- *toString() -> String*: Trả về một chuỗi thể hiện giá trị của LatLng
+- *distanceTo(latlngOther) -> Number*: Trả về giá trị khoảng cách đến một LatLng theo meter
+  - latlngOther: một LatLng khác
+```javascript
+   var latlng = BCG.latLng(11.05310, 106.66616);
+   var latlngOther = BCG.latLng(11.05, 106.66);
+   var distanceInMeters = latlng.distanceTo(latlngOther, 0.001);
+```
+- *toBounds(sizeInMeters) -> [LatLngBounds](#LatLngBounds)*: Trả về giá trị [LatLngBounds](#LatLngBounds) được tính các góc bằng sizeInMeters / 2
+  - Thông số:
+    - Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
 
-> **Properties**
-> - lat: Giá trị latitude theo độ
-> - lng: Giá trị longitude theo độ
-> - alt: Giá trị altitude theo độ
+**Properties**
+- lat: Giá trị latitude theo độ
+- lng: Giá trị longitude theo độ
+- alt: Giá trị altitude theo độ
 
 #### LatLngBounds
 
@@ -578,27 +577,27 @@ map.fitBounds([
 ])
 ```
 
-> Có thể khởi tạo LatLngBounds bằng 2 cách
-> - BCG.latLngBounds(<[LatLng](#LatLng)> southwest, <[LatLng](#LatLng)> northeast)
-> - BCG.latLngBounds([LatLng](#LatLng)[]) latlngs)
+Có thể khởi tạo LatLngBounds bằng 2 cách
+- BCG.latLngBounds(<[LatLng](#LatLng)> southwest, <[LatLng](#LatLng)> northeast)
+- BCG.latLngBounds([LatLng](#LatLng)[]) latlngs)
 
 3. Methods và Properties
 
-> -  *getCenter(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là center của bounds
-> -  *getSouthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthWest
-> -  *getNorthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthEast
-> -  *getNorthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthWest
-> -  *getSouthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthEast
-> -  *getWest() -> Number*: Trả về giá trị Number là West Longitude
-> -  *getSouth() -> Number*: Trả về giá trị Number là South Latitude
-> -  *getEast() -> Number*: Trả về giá trị Number là East Longitude
-> -  *getNorth() -> Number*: Trả về giá trị Number là North Latitude
-> -  *contains(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chứa một [LatLngBounds](#LatLngBounds) khác
-> -  *intersects(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giao một [LatLngBounds](#LatLngBounds) khác
-> -  *overlaps(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chồng lên một [LatLngBounds](#LatLngBounds) khác
-> -  *toBBoxString() -> String*: Trả về một chuỗi kèm theo tọa độ trong định dạng 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
-> -  *equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
-> -  *isValid() -> Boolean*: Trả về giá trị true nếu đối tượng [LatLngBounds](#LatLngBounds) hợp lệ
+-  *getCenter(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là center của bounds
+-  *getSouthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthWest
+-  *getNorthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthEast
+-  *getNorthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthWest
+-  *getSouthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthEast
+-  *getWest() -> Number*: Trả về giá trị Number là West Longitude
+-  *getSouth() -> Number*: Trả về giá trị Number là South Latitude
+-  *getEast() -> Number*: Trả về giá trị Number là East Longitude
+-  *getNorth() -> Number*: Trả về giá trị Number là North Latitude
+-  *contains(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chứa một [LatLngBounds](#LatLngBounds) khác
+-  *intersects(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giao một [LatLngBounds](#LatLngBounds) khác
+-  *overlaps(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chồng lên một [LatLngBounds](#LatLngBounds) khác
+-  *toBBoxString() -> String*: Trả về một chuỗi kèm theo tọa độ trong định dạng 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
+-  *equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
+-  *isValid() -> Boolean*: Trả về giá trị true nếu đối tượng [LatLngBounds](#LatLngBounds) hợp lệ
 
 #### Point
 
@@ -619,28 +618,28 @@ map.panBy(BCG.point(200, 300))
 
 3. Methods và Properties
 
-> - *add(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép cộng
-> - *subtract(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép trừ
-> - *divideBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia cho num
-> - *multiplyBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân với num
-> - *scaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân x với scale.x và y với scale.y
-> - *unscaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia x với scale.x và y với scale.y
-> - *round() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn 2 giá trị x,y
-> - *floor() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn xuống 2 giá trị x,y
-> - *ceil() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn lên 2 giá trị x,y
-> - *trunc() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn về 0 của 2 giá trị x,y
-> - *distanceTo(<[Point](#Point)> otherPoint) -> Number*: Trả về kết quả là khoản cách đến otherPoint
-> - *equals(<[Point](#Point)> otherPoint) -> Boolean*: Trả về true nếu có x, y bằng với otherPoint
-> - *toString() -> String*: Trả về String thể hiện 2 giá trị x,y
+- *add(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép cộng
+- *subtract(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép trừ
+- *divideBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia cho num
+- *multiplyBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân với num
+- *scaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân x với scale.x và y với scale.y
+- *unscaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia x với scale.x và y với scale.y
+- *round() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn 2 giá trị x,y
+- *floor() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn xuống 2 giá trị x,y
+- *ceil() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn lên 2 giá trị x,y
+- *trunc() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn về 0 của 2 giá trị x,y
+- *distanceTo(<[Point](#Point)> otherPoint) -> Number*: Trả về kết quả là khoản cách đến otherPoint
+- *equals(<[Point](#Point)> otherPoint) -> Boolean*: Trả về true nếu có x, y bằng với otherPoint
+- *toString() -> String*: Trả về String thể hiện 2 giá trị x,y
 
 ### Layer
 1. Là class cơ bản của Layer, bao gồm các methods, properties, options định nghĩa nên một lớp dữ liệu
 2. Layer là một baseclass, do đó các loại Layer cụ thể sẽ kế thừa Layer: TileLayer, ImageOverlay, TileLayer.WMS, VideoOverlay, GeoJSON
 3. Methods và Properties
 
-> - *addTo(map) -> this*: Sử dụng khi thêm layer vào map, khi được gọi hàm sẽ kích hoạt sự kiện `onAdd`
-> - *remove() -> this*: Sử dụng khi xóa layer khỏi map, khi được họi hàm sẽ kích hoạt sự kiện `onRemove`
-> - *getEvents() -> Object*: Lấy danh sách tất cả Events và Handlers tương ứng của event đã đăng ký vào Layer
+- *addTo(map) -> this*: Sử dụng khi thêm layer vào map, khi được gọi hàm sẽ kích hoạt sự kiện `onAdd`
+- *remove() -> this*: Sử dụng khi xóa layer khỏi map, khi được họi hàm sẽ kích hoạt sự kiện `onRemove`
+- *getEvents() -> Object*: Lấy danh sách tất cả Events và Handlers tương ứng của event đã đăng ký vào Layer
 
 #### GridLayer
 1. Đây là lớp cơ sở cho tất cả các lớp tile và thay thế cho TileLayer.Canvas. GridLayer sẽ xử lý việc tạo image và animation các phần tử DOM này.
@@ -696,35 +695,34 @@ BCG.gridLayer(options?)
 ```
 
 
-> 
-> - *tileSize (Kích thước tile)*: số hoặc L.point(width, height) để chỉ chiều rộng và chiều cao của tile trong lưới.
-> - *opacity (Độ mờ)*: giá trị độ mờ của các tile, có thể sử dụng trong hàm createTile().
-> - *updateWhenIdle (Cập nhật khi không hoạt động)*: chỉ tải các tile mới khi di chuyển kết thúc. Mặc định là true trên trình duyệt di động để tránh quá nhiều yêu cầu và giữ cho điều hướng mượt mà. False trong trường hợp khác để hiển thị các tile mới trong khi di chuyển, vì dễ di chuyển ra ngoài tùy chọn keepBuffer trên trình duyệt máy tính để bàn.
-> - *updateWhenZooming (Cập nhật khi thu phóng)*: mặc định, khi thực hiện phép thu/phóng mượt (trong lúc vuốt hoặc flyTo()), lớp lưới sẽ cập nhật sau mỗi mức zoom nguyên. Thiết lập tùy chọn này thành false sẽ chỉ cập nhật lớp lưới sau khi phép thu/phóng mượt kết thúc.
-> - *updateInterval (Thời gian cập nhật)*: tile sẽ không được cập nhật nhiều hơn một lần trong updateInterval mili giây khi di chuyển.
-> - *zIndex (Độ sâu chồng)*: số nguyên cho zIndex rõ ràng của lớp tile.
-> - *bounds (Giới hạn địa lý)*: nếu được thiết lập, các tile chỉ được tải bên trong giới hạn địa lý được thiết lập.
-> - *minZoom (Mức zoom tối thiểu)*: mức zoom tối thiểu mà lớp này sẽ được hiển thị.
-> - *maxZoom (Mức zoom tối đa)*: mức zoom tối đa mà lớp này sẽ được hiển thị.
-> - *maxNativeZoom (Mức zoom tối đa của tile source)*: Số mức thu phóng tối đa mà nguồn tile có sẵn. Nếu được chỉ định, các tile trên tất cả các mức thu phóng cao hơn maxNativeZoom sẽ được tải từ mức zoom maxNativeZoom và tự động thay đổi kích thước.
-> - *minNativeZoom (Mức zoom tối thiểu của tile source)*: Số mức thu phóng tối thiểu mà nguồn tile có sẵn. Nếu được chỉ định, các tile trên tất cả các mức thu phóng thấp hơn minNativeZoom sẽ được tải từ mức zoom minNativeZoom và tự động thay đổi kích thước.
-> - *noWrap (Không quấn quanh)*: xác định liệu lớp tile có quấn quanh ngược đồng hồ hay không. Nếu đúng, GridLayer sẽ chỉ được hiển thị một lần ở các mức zoom thấp. Không có tác dụng khi hệ thống tọa độ của bản đồ không quấn quanh. Có thể được sử dụng kết hợp với giới hạn địa lý để ngăn không cho các tile vượt quá giới hạn của hệ thống tọa độ.
-> - *pane (Bảng địa lý)*: xác định pane của bản đồ mà lớp lưới sẽ được thêm vào.
-> - *className (Tên lớp)*: tên lớp tùy chỉnh để gán cho lớp tile. Mặc định là trống.
-> - *keepBuffer (Dữ liệu đệm)*: số lượng hàng và cột tile sẽ được giữ lại khi di chuyển bản đồ trước khi giải phóng chúng.
+- *tileSize (Kích thước tile)*: số hoặc L.point(width, height) để chỉ chiều rộng và chiều cao của tile trong lưới.
+- *opacity (Độ mờ)*: giá trị độ mờ của các tile, có thể sử dụng trong hàm createTile().
+- *updateWhenIdle (Cập nhật khi không hoạt động)*: chỉ tải các tile mới khi di chuyển kết thúc. Mặc định là true trên trình duyệt di động để tránh quá nhiều yêu cầu và giữ cho điều hướng mượt mà. False trong trường hợp khác để hiển thị các tile mới trong khi di chuyển, vì dễ di chuyển ra ngoài tùy chọn keepBuffer trên trình duyệt máy tính để bàn.
+- *updateWhenZooming (Cập nhật khi thu phóng)*: mặc định, khi thực hiện phép thu/phóng mượt (trong lúc vuốt hoặc flyTo()), lớp lưới sẽ cập nhật sau mỗi mức zoom nguyên. Thiết lập tùy chọn này thành false sẽ chỉ cập nhật lớp lưới sau khi phép thu/phóng mượt kết thúc.
+- *updateInterval (Thời gian cập nhật)*: tile sẽ không được cập nhật nhiều hơn một lần trong updateInterval mili giây khi di chuyển.
+- *zIndex (Độ sâu chồng)*: số nguyên cho zIndex rõ ràng của lớp tile.
+- *bounds (Giới hạn địa lý)*: nếu được thiết lập, các tile chỉ được tải bên trong giới hạn địa lý được thiết lập.
+- *minZoom (Mức zoom tối thiểu)*: mức zoom tối thiểu mà lớp này sẽ được hiển thị.
+- *maxZoom (Mức zoom tối đa)*: mức zoom tối đa mà lớp này sẽ được hiển thị.
+- *maxNativeZoom (Mức zoom tối đa của tile source)*: Số mức thu phóng tối đa mà nguồn tile có sẵn. Nếu được chỉ định, các tile trên tất cả các mức thu phóng cao hơn maxNativeZoom sẽ được tải từ mức zoom maxNativeZoom và tự động thay đổi kích thước.
+- *minNativeZoom (Mức zoom tối thiểu của tile source)*: Số mức thu phóng tối thiểu mà nguồn tile có sẵn. Nếu được chỉ định, các tile trên tất cả các mức thu phóng thấp hơn minNativeZoom sẽ được tải từ mức zoom minNativeZoom và tự động thay đổi kích thước.
+- *noWrap (Không quấn quanh)*: xác định liệu lớp tile có quấn quanh ngược đồng hồ hay không. Nếu đúng, GridLayer sẽ chỉ được hiển thị một lần ở các mức zoom thấp. Không có tác dụng khi hệ thống tọa độ của bản đồ không quấn quanh. Có thể được sử dụng kết hợp với giới hạn địa lý để ngăn không cho các tile vượt quá giới hạn của hệ thống tọa độ.
+- *pane (Bảng địa lý)*: xác định pane của bản đồ mà lớp lưới sẽ được thêm vào.
+- *className (Tên lớp)*: tên lớp tùy chỉnh để gán cho lớp tile. Mặc định là trống.
+- *keepBuffer (Dữ liệu đệm)*: số lượng hàng và cột tile sẽ được giữ lại khi di chuyển bản đồ trước khi giải phóng chúng.
 
 3. Methods và Properties
 
-> **Methods**
-> - *bringToFront()*: Đưa lớp tile lên trên tất cả các lớp tile. Trả về đối tượng lớp đó.
-> - *bringToBack()*: Đưa lớp tile xuống dưới đáy tất cả các lớp tile. Trả về đối tượng lớp đó.
-> - *getContainer()*: Trả về phần tử HTML chứa các tile cho lớp này.
-> - *setOpacity(opacity)*: Thay đổi độ mờ của lớp lưới. Trả về đối tượng lớp đó.
-> - *setZIndex(zIndex)*: Thay đổi độ sâu chồng của lớp lưới. Trả về đối tượng lớp đó.
-> - *isLoading()*: Trả về true nếu bất kỳ tile nào trong lớp lưới chưa tải xong.
-> - *redraw()*: Làm cho lớp xóa tất cả các tile và yêu cầu chúng lại. Trả về đối tượng lớp đó.
-> - *getTileSize()*: Chuẩn hóa tùy chọn tileSize thành một điểm. Sử dụng bởi phương thức createTile(). Trả về đối tượng Point.
-> - *createTile(coords, done?)*: Trả về phần tử HTMLElement tương ứng với các tọa độ đã cho. Nếu callback done được chỉ định, nó phải được gọi khi tile đã tải xong và vẽ xong.
+**Methods**
+- *bringToFront()*: Đưa lớp tile lên trên tất cả các lớp tile. Trả về đối tượng lớp đó.
+- *bringToBack()*: Đưa lớp tile xuống dưới đáy tất cả các lớp tile. Trả về đối tượng lớp đó.
+- *getContainer()*: Trả về phần tử HTML chứa các tile cho lớp này.
+- *setOpacity(opacity)*: Thay đổi độ mờ của lớp lưới. Trả về đối tượng lớp đó.
+- *setZIndex(zIndex)*: Thay đổi độ sâu chồng của lớp lưới. Trả về đối tượng lớp đó.
+- *isLoading()*: Trả về true nếu bất kỳ tile nào trong lớp lưới chưa tải xong.
+- *redraw()*: Làm cho lớp xóa tất cả các tile và yêu cầu chúng lại. Trả về đối tượng lớp đó.
+- *getTileSize()*: Chuẩn hóa tùy chọn tileSize thành một điểm. Sử dụng bởi phương thức createTile(). Trả về đối tượng Point.
+- *createTile(coords, done?)*: Trả về phần tử HTMLElement tương ứng với các tọa độ đã cho. Nếu callback done được chỉ định, nó phải được gọi khi tile đã tải xong và vẽ xong.
 
 #### TileLayer
 1. Kế thừa từ Layer, hiển thị các lớp bản đồ dạng tiling image có cấu trúc gồm các thông số {x}, {y}, {z} và {s}
@@ -739,23 +737,23 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 > - x: thông số tiling x
 > - y: thông số tiling y
 
-> **Options**
-> - _minZoom_(Number): 
-> - _maxZoom_(Number):
-> - _errorTileUrl_():
+**Options**
+- _minZoom_(Number): 
+- _maxZoom_(Number):
+- _errorTileUrl_():
 
 3. Methods và Properties
 
-> **Methods**
-> - _setUrl(url, noReDraw?)_ -> this: Thiết lập url dùng để request tile của TileLayer, nếu noReDraw được xác định là False, TileLaye sẽ refresh và vẽ lại toàn bộ.
-> - _createTile(coords, doneCallback) -> HTMLElement: Trả về phần tử HTMLElement tương ứng với các tọa độ đã cho. Nếu callback done được chỉ định, nó phải được gọi khi tile đã tải xong và vẽ xong.
-> 
-> [Methods kế thừa từ Layer](#Layer)
+**Methods**
+- _setUrl(url, noReDraw?)_ -> this: Thiết lập url dùng để request tile của TileLayer, nếu noReDraw được xác định là False, TileLaye sẽ refresh và vẽ lại toàn bộ.
+- _createTile(coords, doneCallback) -> HTMLElement: Trả về phần tử HTMLElement tương ứng với các tọa độ đã cho. Nếu callback done được chỉ định, nó phải được gọi khi tile đã tải xong và vẽ xong.
 
-> **Events**
-> - _tileabort_: Event khi tile gặp lỗi
-> 
-> [Events kế thừa từ Layer](#Layer)
+[Methods kế thừa từ Layer](#Layer)
+
+**Events**
+- _tileabort_: Event khi tile gặp lỗi
+
+[Events kế thừa từ Layer](#Layer)
 
 #### TileLayer.WMS
 1. Được sử dụng hiển thị layer được cung cấp với dịch vụ OGC WMS, kế thừa từ [TileLayer](#TileLayer)
@@ -769,26 +767,26 @@ var wmslayer = BCG.tileLayer.wms("http://demo.com/geoserver/wms", {
 });
 ```
 
-> - _url_: là url của WMS OGC service
-> - _layers_: danh sách các layers được khai báo bằng string và cách nhau mỗi dấu phẩy
-> - _transparent_: xác định độ trong suốt của layer ở những vùng không có dữ liệu
-> - _attribution_: chuỗi hiển thị overlay, được sử dụng để thông tin về bản quyền hoặc meta của layer
+- _url_: là url của WMS OGC service
+- _layers_: danh sách các layers được khai báo bằng string và cách nhau mỗi dấu phẩy
+- _transparent_: xác định độ trong suốt của layer ở những vùng không có dữ liệu
+- _attribution_: chuỗi hiển thị overlay, được sử dụng để thông tin về bản quyền hoặc meta của layer
 
-> **Options**
-> - _layers(String)_: danh sách các layers được khai báo bằng string và cách nhau mỗi dấu phẩy
-> - _styles(String)_: style của layer được định nghĩa tại OCG Services
-> - _format(String)_: định dạng của file raster do WMS service trích xuất, mặc định là image/jpeg, khai báo image/png nếu sử dụng thuộc tính transparent là True
-> - _transparent(Boolean_: xác định độ trong suốt của layer ở những vùng không có dữ liệu
-> - _version(String)_: phiên bản của dịch vụ WMS
-> - _crs(String)_: hệ tọa độ chuyển đổi của layer từ native crs được khai báo tại OGC service
+**Options**
+- _layers(String)_: danh sách các layers được khai báo bằng string và cách nhau mỗi dấu phẩy
+- _styles(String)_: style của layer được định nghĩa tại OCG Services
+- _format(String)_: định dạng của file raster do WMS service trích xuất, mặc định là image/jpeg, khai báo image/png nếu sử dụng thuộc tính transparent là True
+- _transparent(Boolean_: xác định độ trong suốt của layer ở những vùng không có dữ liệu
+- _version(String)_: phiên bản của dịch vụ WMS
+- _crs(String)_: hệ tọa độ chuyển đổi của layer từ native crs được khai báo tại OGC service
 
 4. Methods và Properties
 
-> **Methods**
-> - _setParams(params, noRedraw): this_
->   - Thiết lập các thông số params vào request tile, nếu noReDraw được xác định là False, TileLaye sẽ refresh và vẽ lại toàn bộ.
-> 
-> - [Methods kế thừa từ TileLayer](#TileLayer)
+**Methods**
+- _setParams(params, noRedraw): this_
+  - Thiết lập các thông số params vào request tile, nếu noReDraw được xác định là False, TileLaye sẽ refresh và vẽ lại toàn bộ.
+
+- [Methods kế thừa từ TileLayer](#TileLayer)
 
 #### ImageOverlay
 1. Được sử dụng hiển thị Image với Bounds
