@@ -419,7 +419,7 @@ var map = BCG.BecaGIS.createMap('divMapId', options, config)
 > 2. Xác thực tài khoản
 > - Dữ liệu trong GeoPortal được khai báo với phân quyền theo từng người dùng và nhóm người dùng cụ thể,
 > để có thể truy cập vào dữ liệu, người dùng phải thông qua thao tác xác thực được hỗ trợ bởi GeoPortal API.
-> 3. Gọi các methods theo như cầu sử dụng
+> 3. Gọi các methods theo nhu cầu sử dụng
 
 #### Khai báo GeoPortal bằng `createMap`
 
@@ -459,7 +459,6 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 > Diễn giải các thông số:
 > - *geoPortal*: chứa khai báo liên quan đến GeoPortal
 > - *geoPortalUrl*: đường dẫn đến website GeoPortal, ví dụ: https://geoportaBCG.vntts.com.vn
-
 > - *loginInfo*: Thông tin xác thực tài khoản GeoPortal
 >   - *clientId*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
 >   - *clientSecret*: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
@@ -472,7 +471,6 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 >   - *featureInfo*: Khai báo sử dụng chức năng chọn vào Feature trên bản đồ và hiển thị thông tin.
 >   - *featureInfoOptions*: Các thông tin bổ sung cho FeatureInfo
 >   - *showFeatureHandler*: function(feature): Đây là hàm callback, gọi sau khi Feature được click trên map.
-
 > - Ngoài ra một số chức năng khác tương tác với GeoPortal được khai báo dưới dạng plugins trong khai báo `map`
 > - *map*: Đối tượng khai báo cấu hình cho map
 > - *controls*: Nơi khai báo các plugins controls
@@ -491,7 +489,6 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 > Sau khi `createMap` thực thi, GeoPortal API sẽ tiến hành đăng nhập vào website và lưu trữ `accessToken`
 > và `refreshToken`
 > phục vụ cho những lần sử dụng trong phiên làm việc.
-
 > - *setAccessToken(accessToken)*: Thiết lập giá trị accessToken
 > - *getAccessToken(): String*: Lấy giá trị accessToken
 > - *getRefreshToken(): String*: Lấy giá trị refreshToken
@@ -533,34 +530,27 @@ map.panTo(BCG.latLng(11.05310, 106.66616));
 
 3. Methods và Properties
 
-> *equal(latlngOther, numberOfMagin): Boolean*
-> - So sánh 2 giá trị LatLng, trả về true nếu 2 điểm là giống nhau
-> - Tham số
->   - latlngOther: một LatLng khác
-
-> - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
+> **Methods**
+> - *equal(latlngOther, numberOfMagin) -> Boolean*: So sánh 2 giá trị LatLng, trả về true nếu 2 điểm là giống nhau
+>   - Tham số
+>     - latlngOther: một LatLng khác
+>     - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
 > ```javascript
 >    var latlng = BCG.latLng(11.05310, 106.66616);
 >    var latlngOther = BCG.latLng(11.05, 106.66);
 >    var isEqual = latlng.equal(latlngOther, 0.001);
 > ```
-
-> *toString(): String*
-> - Trả về một chuỗi thể hiện giá trị của LatLng
-
->  *distanceTo(latlngOther): Number*
-> - Trả về giá trị khoảng cách đến một LatLng theo meter
+> - *toString() -> String*: Trả về một chuỗi thể hiện giá trị của LatLng
+> - *distanceTo(latlngOther) -> Number*: Trả về giá trị khoảng cách đến một LatLng theo meter
 >   - latlngOther: một LatLng khác
 > ```javascript
 >    var latlng = BCG.latLng(11.05310, 106.66616);
 >    var latlngOther = BCG.latLng(11.05, 106.66);
 >    var distanceInMeters = latlng.distanceTo(latlngOther, 0.001);
 > ```
-
-> *toBounds(sizeInMeters): [LatLngBounds](#LatLngBounds)*
-> - Trả về giá trị [LatLngBounds](#LatLngBounds) được tính các góc bằng sizeInMeters / 2
-> - Thông số:
->   - Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
+> - *toBounds(sizeInMeters) -> [LatLngBounds](#LatLngBounds)*: Trả về giá trị [LatLngBounds](#LatLngBounds) được tính các góc bằng sizeInMeters / 2
+>   - Thông số:
+>     - Giá trị khoảng cách để tạo các góc có khoảng cách sizeInMeters / 2
 
 > **Properties**
 > - lat: Giá trị latitude theo độ
