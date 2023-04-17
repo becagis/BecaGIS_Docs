@@ -961,19 +961,19 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
 
 > **Methods**
 > - *addData(data)*: this
->   - 
+>   - Thêm một đối tượng GeoJSON vào lớp.
 >
 > - *geometryToLayer(featureData, options?)*: [Layer](#Layer)
->   - 
-> 
+>   - Tạo một lớp từ một đối tượng GeoJSON cụ thể. Có thể sử dụng hàm pointToLayer hoặc coordsToLatLng.
+>  
 > - *coordsToLatLng(coords)*: [LatLng](#LatLng)
->   - 
+>   - Tạo một đối tượng LatLng từ một mảng 2 số (kinh độ, vĩ độ) hoặc 3 số (kinh độ, vĩ độ, độ cao) được sử dụng trong GeoJSON cho điểm.
 > 
 > - *latLngToCoords(latlng, pricision)*:
->   - 
+>   - Hàm ngược lại với coordsToLatLng. Giá trị tọa độ được làm tròn với hàm formatNum
 >
 > - *asFeature(geoJson)*: Object
->   - 
+>   - Chuẩn hóa GeoJSON thành Feature GeoJSON.
 > 
 
 ### Control
