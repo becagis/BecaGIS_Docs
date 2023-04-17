@@ -462,12 +462,11 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 > - **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportaBCG.vntts.com.vn
 
 > - **loginInfo**: Thông tin xác thực tài khoản GeoPortal
-> - **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
-
->     - **clientSecret**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
->     - **username**: Tên đăng nhập của người dùng sử dụng dữ liệu
->     - **password**: Mật khẩu của người dùng sử dụng dữ liệu
->   - **layers**: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
+>   - **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
+>   - **clientSecret**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientSecret
+>   - **username**: Tên đăng nhập của người dùng sử dụng dữ liệu
+>   - **password**: Mật khẩu của người dùng sử dụng dữ liệu
+> - **layers**: Khai báo các danh sách layers được sử dụng ở ứng dụng khi vừa khởi tạo đối tượng map
 > - Trong mỗi khai báo Layer, gồm các thông số sau:
 >   - **layers**: Là typename của Layer trong GeoPortal
 >   - **options**: Chứa các khai báo bổ sung cho Layers
@@ -494,59 +493,42 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 > và `refreshToken`
 > phục vụ cho những lần sử dụng trong phiên làm việc.
 
-> **setAccessToken(accessToken)**
-> - Thiết lập giá trị accessToken
-
-> **getAccessToken(): String**
-> - Lấy giá trị accessToken
-
-> **getRefreshToken(): String**
-> - Lấy giá trị refreshToken
-
-> **async loginAsync(loginInfo)**
-> - Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
-
-> **async getLayersDataAsync(): Object[]**
-> - Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
-
-> **getFeatureHelper(): Object**
-> - Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
-
-> **async getFeatureHelper().getFeatureInfo(params): Object**
-> - Truy xuất thông tin chi tiết của Feature dựa thông số
-    của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo)
-> - `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
-
-> **async getFeatureHelper().getFeatureTypeList(): Object[]**
-> - Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
-
-> **async getFeatureHelper().getFeatureDescription(layer): Object**
+> **setAccessToken(accessToken)**: Thiết lập giá trị accessToken
+>
+> **getAccessToken(): String**: Lấy giá trị accessToken
+>
+> **getRefreshToken(): String**: Lấy giá trị refreshToken
+>
+> **async loginAsync(loginInfo)**: Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
+>
+> **async getLayersDataAsync() -> Object[]**: Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
+>
+> **getFeatureHelper(): Object**: Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
+>
+> **async getFeatureHelper().getFeatureInfo(params) -> Object**: Truy xuất thông tin chi tiết của Feature dựa thông số
+    của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo): `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
+>
+> **async getFeatureHelper().getFeatureTypeList() -> Object[]**: Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
+>
+> **async getFeatureHelper().getFeatureDescription(layer) -> Object**
 >  - Truy xuất thông tin chi tiết của layer
-
-> **async getFeatureHelper().getFeatureResourceDescription(layer): Object**
-> - Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
-
-> **async getFeatureHelper().getFeatures(layer, params)**
-> - Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER}
-
-> **async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson): Object[]**
-> - Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
-
-> **async getFeatureHelper().getFeatureAttributes(layer): Object**
-> - Truy xuất danh sách các attributes của layer
-
-> **getAuthHelper(): Object**
-> - Truy cập module chứa các method thực thi xác thực
-
-> **async getAuthHelper().getTokenInfoAsync(loginInfo): Object**
-> - Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}`
+>
+> **async getFeatureHelper().getFeatureResourceDescription(layer) -> Object**: Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
+>
+> **async getFeatureHelper().getFeatures(layer, params)**: Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER}
+>
+> **async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson) -> Object[]**: Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
+>
+> **async getFeatureHelper().getFeatureAttributes(layer) -> Object**: Truy xuất danh sách các attributes của layer
+>
+> **getAuthHelper() -> Object**: Truy cập module chứa các method thực thi xác thực
+>
+> **async getAuthHelper().getTokenInfoAsync(loginInfo) -> Object**: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}`
 > từ tham số `LoginInfo{clientId, clientSecret, username, password}`
-
-> **async getAuthHelper().getAuthorizationString(): String**
-> - Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
-
-> **async getAuthHelper().getTokenInfoByRefreshTokenAsync(): Object**
-> - Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
+>
+> **async getAuthHelper().getAuthorizationString() -> String**: Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
+>
+> **async getAuthHelper().getTokenInfoByRefreshTokenAsync() -> Object**: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
 
 ### Kiểu dữ liệu cơ bản
 
@@ -573,7 +555,7 @@ map.panTo(BCG.latLng(11.05310, 106.66616));
 > **equal(latlngOther, numberOfMagin): Boolean**
 > - So sánh 2 giá trị LatLng, trả về true nếu 2 điểm là giống nhau
 > - Tham số
-> - latlngOther: một LatLng khác
+>   - latlngOther: một LatLng khác
 
 > - numberOfMargin: giá trị margin tối đa để xác định 2 điểm là trùng nhau
 > ```javascript
@@ -631,51 +613,36 @@ map.fitBounds([
 
 3. Methods và Properties
 
-> **getCenter(): [LatLng](#LatLng)**
-> - Trả về giá trị [LatLng](#LatLng) là center của bounds
-
-> **getSouthWest(): [LatLng](#LatLng)**
-> - Trả về giá trị [LatLng](#LatLng) là điểm SouthWest
-
-> **getNorthEast(): [LatLng](#LatLng)**
-> - Trả về giá trị [LatLng](#LatLng) là điểm NorthEast
-
-> **getNorthWest(): [LatLng](#LatLng)**
-> - Trả về giá trị [LatLng](#LatLng) là điểm NorthWest
-
-> **getSouthEast(): [LatLng](#LatLng)**
-> - Trả về giá trị [LatLng](#LatLng) là điểm SouthEast
-
-> **getWest(): Number**
-> - Trả về giá trị Number là West Longitude
-
-> **getSouth(): Number**
-> - Trả về giá trị Number là South Latitude
-
-> **getEast(): Number**
-> - Trả về giá trị Number là East Longitude
-
-> **getNorth(): Number**
-> - Trả về giá trị Number là North Latitude
-
-> **contains(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther): Boolean**
-> - Trả về giá trị true nếu chứa một [LatLngBounds](#LatLngBounds) khác
-
-> **intersects(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther): Boolean**
-> - Trả về giá trị true nếu giao một [LatLngBounds](#LatLngBounds) khác
-
-> **overlaps(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther): Boolean**
-> - Trả về giá trị true nếu chồng lên một [LatLngBounds](#LatLngBounds) khác
-
-> **toBBoxString(): String**
-> - Trả về một chuỗi kèm theo tọa độ trong định dạng
+> **getCenter(): [LatLng](#LatLng)**: Trả về giá trị [LatLng](#LatLng) là center của bounds
+>
+> **getSouthWest(): [LatLng](#LatLng)**: Trả về giá trị [LatLng](#LatLng) là điểm SouthWest
+>
+> **getNorthEast(): [LatLng](#LatLng)**: Trả về giá trị [LatLng](#LatLng) là điểm NorthEast
+>
+> **getNorthWest(): [LatLng](#LatLng)**: Trả về giá trị [LatLng](#LatLng) là điểm NorthWest
+>
+> **getSouthEast(): [LatLng](#LatLng)**: Trả về giá trị [LatLng](#LatLng) là điểm SouthEast
+>
+> **getWest() -> Number**: Trả về giá trị Number là West Longitude
+>
+> **getSouth() -> Number**: Trả về giá trị Number là South Latitude
+>
+> **getEast() -> Number**: Trả về giá trị Number là East Longitude
+>
+> **getNorth() -> Number**: Trả về giá trị Number là North Latitude
+>
+> **contains(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean**: Trả về giá trị true nếu chứa một [LatLngBounds](#LatLngBounds) khác
+>
+> **intersects(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean**: Trả về giá trị true nếu giao một [LatLngBounds](#LatLngBounds) khác
+>
+> **overlaps(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean**: Trả về giá trị true nếu chồng lên một [LatLngBounds](#LatLngBounds) khác
+>
+> **toBBoxString() -> String**: Trả về một chuỗi kèm theo tọa độ trong định dạng
 > 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
 
-> **equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther): Boolean**
-> - Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
-
-> **isValid(): Boolean**
-> - Trả về giá trị true nếu đối tượng [LatLngBounds](#LatLngBounds) hợp lệ
+> **equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean**: Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
+>
+> **isValid() -> Boolean**: Trả về giá trị true nếu đối tượng [LatLngBounds](#LatLngBounds) hợp lệ
 
 #### Point
 
