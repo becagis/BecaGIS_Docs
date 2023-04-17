@@ -1,0 +1,8 @@
+services:
+  docs.prod:
+    build:
+      context: .
+      target: deploy
+    image: becagis/docs:${APP_VERSION}
+    ports:
+      - "${PROD_APP_PORT:-3010}:80"
