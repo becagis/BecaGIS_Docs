@@ -962,7 +962,7 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
 > 
 
 ### Control
-1. Là class cơ sở để khai báo các control của map, các control sẽ được xây dựng từ class Control
+`1. Là class cơ s`ở để khai báo các control của map, các control sẽ được xây dựng từ class Control
 2. Options và Methods
 
 > **Options** - Control được khởi tạo với thông số
@@ -981,8 +981,82 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
 > Phương thức này được gọi khi điều khiển được loại bỏ khỏi bản đồ bằng cách sử dụng phương thức `remove`
 
 ### Path
+1. Path là một lớp trừu tượng của các đối tượng hình học không gian. Không sử dụng trực tiếp và được kế thừa thừa từ lớp Layer.
+2. Options và Methods
+> **Options**
+> - **stroke**: Kiểm soát việc vẽ đường viền (stroke) trên path. Đặt giá trị false để tắt đường viền cho các đối tượng Polygon hoặc Circle.
+> - **color**: Màu sắc cho đường viền, mặc định là '#3388ff'.
+> - **weight**: Độ dày của đường viền tính bằng đơn vị pixel, mặc định là 3.
+> - **opacity**: Độ trong suốt của đường viền, từ 0 đến 1, mặc định là 1.0.
+> - **lineCap**: Hình dạng được sử dụng ở cuối đường viền. Mặc định là 'round'.
+> - **lineJoin**: Hình dạng được sử dụng tại các góc của đường viền. Mặc định là 'round'.
+> - **dashArray**: Một chuỗi định nghĩa các pattern của đường viền. Không hoạt động trên các lớp được vẽ bằng Canvas trên một số trình duyệt cũ.
+> - **dashOffset**: Một chuỗi xác định khoảng cách vào đường viền để bắt đầu mẫu. Không hoạt động trên các lớp được vẽ bằng Canvas trên một số trình duyệt cũ.
+> - **fill**: Kiểm soát việc tô màu cho path. Đặt giá trị false để tắt tô màu cho các đối tượng Polygon hoặc Circle.
+> - **fillColor**: Màu sắc cho việc tô màu, mặc định là giá trị của tùy chọn color.
+> - **fillOpacity**: Độ trong suốt của màu tô, từ 0 đến 1, mặc định là 0.2.
+> - **fillRule**: Một chuỗi xác định cách xác định bên trong của một hình dạng. Mặc định là 'evenodd'.
+> - **bubblingMouseEvents**: Khi đúng, một sự kiện chuột trên path này sẽ kích hoạt cùng một sự kiện trên bản đồ (trừ khi L.DomEvent.stopPropagation được sử dụng).
+> - **renderer**: Sử dụng bộ vẽ Renderer cụ thể này cho path này. Ưu tiên hơn so với bộ vẽ mặc định của bản đồ.
+> - **className**: Tên lớp tùy chỉnh được đặt tên trên phần tử DOM. Chỉ sử dụng cho bộ vẽ SVG.
+>
+> **Methods**
+> **redraw()**: Vẽ lại path. Thỉnh thoảng hữu ích khi thay đổi tọa độ mà path sử dụng.
+> **setStyle(style)**: Thay đổi diện mạo của Path dựa trên các tùy chọn trong đối tượng tùy chọn Path.
+> **bringToFront()**: Đưa lớp lên trên tất cả các lớp path khác.
+> **bringToBack()**: Đưa lớp xuống dưới tất cả các lớp path khác.
 
 #### Polyline
+1. Polyline được sử dụng để vẽ Polyline, kế thừa từ [Path](#Path)
+2. Khởi tạo 
+```javascript
+    var latlngs = [
+        [45.51, -122.68],
+        [37.77, -122.43],
+        [34.04, -118.2]
+    ];
+    
+    var polyline = BCG.polyline(latlngs, {color: 'red'}).addTo(map);
+
+    map.fitBounds(polyline.getBounds());
+```
+Ngoài ra có thể khởi tạo bằng cách sử dụng các nested array hình thành MultiPolyline
+```javascript
+    var latlngs = [
+        [[45.51, -122.68],
+         [37.77, -122.43],
+         [34.04, -118.2]],
+        [[40.78, -73.91],
+         [41.83, -87.62],
+         [32.76, -96.72]]
+    ];
+```
+> **Hàm khởi tạo**
+> - L.polyline(latlngs, options):
+>   - Trả về một đối tượng polyline dựa trên một mảng latlngs và options. 
+>   - `options` bao gồm:
+>     - smoothFactor: số thực (mặc định là 1.0). Độ giản lược của đường điểm được biểu diễn. Càng cao thì hiệu năng và màn hình sẽ mượt hơn, và ngược lại. 
+>     - noClip: Boolean (mặc định là false). Vô hiệu hóa việc cắt polyline.
+
+3. Methods
+
+> **Methods**
+> - **toGeoJSON(precision?)**:
+>   - Chuyển đổi đối tượng Polyline thành đối tượng GeoJSON LineString hoặc MultiLineString và trả về. Tham số precision được sử dụng để làm tròn giá trị tọa độ của các điểm.
+> - **getLatLngs()**:
+>   - Trả về một mảng chứa các điểm trong Polyline hoặc các mảng lồng nhau chứa các điểm trong trường hợp của MultiPolyline.
+> - **setLatLngs(latlngs)**:
+>   - Thay thế tất cả các điểm trong Polyline bằng một mảng Latlngs mới.
+> - **isEmpty()**:
+>   - Kiểm tra xem Polyline có chứa bất kỳ điểm nào hay không. Trả về true nếu Polyline không có LatLngs.
+> - **closestLayerPoint(point)**:
+>   - Trả về điểm gần nhất với điểm point trên Polyline.
+> - **getCenter()**:
+>   - Trả về tọa độ trung tâm (trọng tâm) của Polyline.
+> - **getBounds()**:
+>   - Trả về tọa độ giới hạn (LatLngBounds) của Polyline.
+> - **addLatLng(latlng, latlngs?)**:
+>   - Thêm một điểm được chỉ định vào Polyline. Theo mặc định, thêm vào vòng đầu tiên của Polyline trong trường hợp của MultiPolyline, nhưng có thể ghi đè bằng cách truyền một vòng cụ thể dưới dạng một mảng LatLng (có thể truy cập trước đó bằng getLatLngs).
 
 #### Polygon
 
