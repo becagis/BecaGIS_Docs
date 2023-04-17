@@ -977,12 +977,12 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
 > 
 
 ### Control
-`1. Là class cơ s`ở để khai báo các control của map, các control sẽ được xây dựng từ class Control
+1. Là class cơ sở để khai báo các control của map, các control sẽ được xây dựng từ class Control
 2. Options và Methods
 
 > **Options** - Control được khởi tạo với thông số
 > - **position**:  xác định vị trí của điều khiển trên bản đồ. Giá trị mặc định là 'topright'. Các giá trị khác bao gồm 'topleft', 'bottomleft', hoặc 'bottomright'.
-> 
+
 > **Methods** - Một số method cơ bản của control
 > - **getPosition()**: trả về vị trí hiện tại
 > - **setPosition(position)**: thiết lập vị trí
