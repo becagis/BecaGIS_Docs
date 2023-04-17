@@ -387,54 +387,54 @@ sidebar_label: JavaScript SDK
 
 > **Methods truy xuất thông tin map**
 > - _getCenter()_: [LatLng](#LatLng)
->   - 
+>   - Lấy vị trí center của map
 > - _getZoom()_: Number
->   - 
+>   - Lấy độ zoom hiện tại của map
 > - _getBounds()_: [LatLngBounds](#LatLngBounds)
->   - 
+>   - Lấy Bounds hiện tại của map
 > - _getMinZoom()_: Number
->   - 
+>   - Lấy giá trị zoom nhỏ nhất của map
 > - _getMaxZoom()_: Number
->   - 
+>   - Lấy giá trị zoom lớn nhất
 > - _getBoundsZoom(latlngBounds)_: Number
->   - 
+>   - Lấy độ zoom tương ứng của map với thông số đầu vào là bounds
 > - _getSize()_: [Point](#Point)
->   - 
+>   - Lấy kích thước của map
 
 > **Methods khai báo Event **
 > - _on(eventName, callback)_: this
->   - 
+>   - Đăng ký sự kiện của map với giá trị handler là callback.
 > - off(eventName, callbackRef): this
->   - 
+>   - Hủy đăng ký sự kiện của máp với reference của callback đã đăng ký.
 
 #### Events
 
 > **Events liên quan đến Layer**
-> - _baselayerchange_:
-> - _overlayeradd_:
-> - _overlayremove_:
-> - _layeradd_:
-> - _layerremove_:
+> - _baselayerchange_: khi base layer được thay đổi
+> - _overlayeradd_: khi overlay layer được thêm vào map
+> - _overlayremove_: khi overlay layer được xóa khỏi map
+> - _layeradd_: khi bất kỳ layer được thêm vào map
+> - _layerremove_: khi bất kỳ layer được xóa khỏi map
 
 > **Events liên quan đến trạng thái map**
-> - _zoomlevelschange_:
-> - _zoomstart_:
-> - _movestart_:
-> - _zoom_:
-> - _move_:
-> - _zoomend_:
-> - _moveend_:
+> - _zoomlevelschange_: thay đổi độ zoom
+> - _zoomstart_: khi quá trình zoom bắt đầu
+> - _movestart_: khi quá trình di chuyển bắt đầu
+> - _zoom_: khi quá trình zoom diễn ra
+> - _move_: khi quá trình di chuyển diễn ra
+> - _zoomend_: khi quá trình zoom kết thúc
+> - _moveend_: khi quá trình duy chuyển kết thúc
 
 > **Events tương tác**
-> - _click_:
-> - _dblclick_:
-> - _mousedown_:
-> - _mouseover_:
-> - _mouseup_
-> - _keypress_:
-> - _keydown_:
-> - _keyup_:
-> - _preclick_:
+> - _click_: khi sự kiện click diễn ra
+> - _dblclick_: khi sự kiện double click diễn ra
+> - _mousedown_: khi sự kiện mouse down diễn ra
+> - _mouseover_: khi sự kiện mouse over diễn ra
+> - _mouseup_: khi sự kiện mouse up diễn ra
+> - _keypress_: khi sự kiện 1 key được press diễn ra
+> - _keydown_: khi sự kiện 1 key down diễn ra
+> - _keyup_: khi sự kiện 1 key up diễn ra
+> - _preclick_: trước khi hàm handler của sự kiện click được gọi
 
 ### GeoPortal
 
