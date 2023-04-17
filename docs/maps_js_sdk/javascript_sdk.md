@@ -492,24 +492,24 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 > và `refreshToken`
 > phục vụ cho những lần sử dụng trong phiên làm việc.
 
-> *setAccessToken(accessToken)*: Thiết lập giá trị accessToken
-> *getAccessToken(): String*: Lấy giá trị accessToken
-> *getRefreshToken(): String*: Lấy giá trị refreshToken
-> *async loginAsync(loginInfo)*: Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
-> *async getLayersDataAsync() -> Object[]*: Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
-> *getFeatureHelper(): Object*: Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
-> *async getFeatureHelper().getFeatureInfo(params) -> Object*: Truy xuất thông tin chi tiết của Feature dựa thông số
+> - *setAccessToken(accessToken)*: Thiết lập giá trị accessToken
+> - *getAccessToken(): String*: Lấy giá trị accessToken
+> - *getRefreshToken(): String*: Lấy giá trị refreshToken
+> - *async loginAsync(loginInfo)*: Đăng nhập bằng `loginInfo{clientId, clientSecret, username, password}`
+> - *async getLayersDataAsync() -> Object[]*: Truy xuất danh sách layers được quyền truy cập, kết quả trả về là danh sách `layers[{alternate, name, title}]`
+> - *getFeatureHelper(): Object*: Truy xuất module FeatureHelper giúp thao tác lên dữ liệu của GeoPortal Layer
+> - *async getFeatureHelper().getFeatureInfo(params) -> Object*: Truy xuất thông tin chi tiết của Feature dựa thông số
     của [WMS GetFeatureInfo](https://docs.geoserver.org/2.22.x/en/user/services/wms/reference.html#getfeatureinfo): `params: {bbox, height, width, layers, query_layers, info_format, x, y}`
-> *async getFeatureHelper().getFeatureTypeList() -> Object[]*: Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
-> *async getFeatureHelper().getFeatureDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer
-> *async getFeatureHelper().getFeatureResourceDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
-> *async getFeatureHelper().getFeatures(layer, params)*: Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER
-> *async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson) -> Object[]*: Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
-> *async getFeatureHelper().getFeatureAttributes(layer) -> Object*: Truy xuất danh sách các attributes của layer
-> *getAuthHelper() -> Object*: Truy cập module chứa các method thực thi xác thực
-> *async getAuthHelper().getTokenInfoAsync(loginInfo) -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ tham số `LoginInfo{clientId, clientSecret, username, password}`
-> *async getAuthHelper().getAuthorizationString() -> String*: Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
-> *async getAuthHelper().getTokenInfoByRefreshTokenAsync() -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
+> - *async getFeatureHelper().getFeatureTypeList() -> Object[]*: Truy xuất danh sách tất cả layers của GeoPortal được quyền truy cập với đầy đủ thông tin liên quan của layer
+> - *async getFeatureHelper().getFeatureDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer
+> - *async getFeatureHelper().getFeatureResourceDescription(layer) -> Object*: Truy xuất thông tin chi tiết của layer, kết quả trả về theo mô tả Resource Description
+> - *async getFeatureHelper().getFeatures(layer, params)*: Truy xuất danh sách Features dựa theo kết quả tìm kiếm bằng params: {CQL_FILTER
+> - *async getFeatureHelper().getFeatuersWithinGeoJSON(layer, geoPropName, geoJson) -> Object[]*: Truy xuất danh sách Features với hàm Within được so sánh với tham số dữ liệu geoJson
+> - *async getFeatureHelper().getFeatureAttributes(layer) -> Object*: Truy xuất danh sách các attributes của layer
+> - *getAuthHelper() -> Object*: Truy cập module chứa các method thực thi xác thực
+> - *async getAuthHelper().getTokenInfoAsync(loginInfo) -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ tham số `LoginInfo{clientId, clientSecret, username, password}`
+> - *async getAuthHelper().getAuthorizationString() -> String*: Tạo Authorization String từ dữ liệu xác thực đã lưu trữ trước đó
+> - *async getAuthHelper().getTokenInfoByRefreshTokenAsync() -> Object*: Lấy `TokenInfo{access_token, expires_in, token_type, scope, refresh_token}` từ `refresh_token` đang được lưu trữ
 
 ### Kiểu dữ liệu cơ bản
 
@@ -594,21 +594,21 @@ map.fitBounds([
 
 3. Methods và Properties
 
-> *getCenter(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là center của bounds
-> *getSouthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthWest
-> *getNorthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthEast
-> *getNorthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthWest
-> *getSouthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthEast
-> *getWest() -> Number*: Trả về giá trị Number là West Longitude
-> *getSouth() -> Number*: Trả về giá trị Number là South Latitude
-> *getEast() -> Number*: Trả về giá trị Number là East Longitude
-> *getNorth() -> Number*: Trả về giá trị Number là North Latitude
-> *contains(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chứa một [LatLngBounds](#LatLngBounds) khác
-> *intersects(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giao một [LatLngBounds](#LatLngBounds) khác
-> *overlaps(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chồng lên một [LatLngBounds](#LatLngBounds) khác
-> *toBBoxString() -> String*: Trả về một chuỗi kèm theo tọa độ trong định dạng 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
-> *equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
-> *isValid() -> Boolean*: Trả về giá trị true nếu đối tượng [LatLngBounds](#LatLngBounds) hợp lệ
+> -  *getCenter(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là center của bounds
+> -  *getSouthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthWest
+> -  *getNorthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthEast
+> -  *getNorthWest(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm NorthWest
+> -  *getSouthEast(): [LatLng](#LatLng)*: Trả về giá trị [LatLng](#LatLng) là điểm SouthEast
+> -  *getWest() -> Number*: Trả về giá trị Number là West Longitude
+> -  *getSouth() -> Number*: Trả về giá trị Number là South Latitude
+> -  *getEast() -> Number*: Trả về giá trị Number là East Longitude
+> -  *getNorth() -> Number*: Trả về giá trị Number là North Latitude
+> -  *contains(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chứa một [LatLngBounds](#LatLngBounds) khác
+> -  *intersects(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giao một [LatLngBounds](#LatLngBounds) khác
+> -  *overlaps(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu chồng lên một [LatLngBounds](#LatLngBounds) khác
+> -  *toBBoxString() -> String*: Trả về một chuỗi kèm theo tọa độ trong định dạng 'southwest_lng,southwest_lat,northeast_lng,northeast_lat
+> -  *equals(<[LatLngBounds](#LatLngBounds)> latlngBoundsOther) -> Boolean*: Trả về giá trị true nếu giống một [LatLngBounds](#LatLngBounds) khác trong giới hạn margin
+> -  *isValid() -> Boolean*: Trả về giá trị true nếu đối tượng [LatLngBounds](#LatLngBounds) hợp lệ
 
 #### Point
 
@@ -629,19 +629,19 @@ map.panBy(BCG.point(200, 300))
 
 3. Methods và Properties
 
-> *add(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép cộng
-> *subtract(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép trừ
-> *divideBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia cho num
-> *multiplyBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân với num
-> *scaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân x với scale.x và y với scale.y
-> *unscaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia x với scale.x và y với scale.y
-> *round() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn 2 giá trị x,y
-> *floor() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn xuống 2 giá trị x,y
-> *ceil() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn lên 2 giá trị x,y
-> *trunc() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn về 0 của 2 giá trị x,y
-> *distanceTo(<[Point](#Point)> otherPoint) -> Number*: Trả về kết quả là khoản cách đến otherPoint
-> *equals(<[Point](#Point)> otherPoint) -> Boolean*: Trả về true nếu có x, y bằng với otherPoint
-> *toString() -> String*: Trả về String thể hiện 2 giá trị x,y
+> - *add(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép cộng
+> - *subtract(<[Point](#Point)> otherPoint) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép trừ
+> - *divideBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia cho num
+> - *multiplyBy(num) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân với num
+> - *scaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép nhân x với scale.x và y với scale.y
+> - *unscaleBy(<[Point](#Point)> scale) -> [Point](#Point)*: Trả về [Point](#Point) là kết quả của phép chia x với scale.x và y với scale.y
+> - *round() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn 2 giá trị x,y
+> - *floor() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn xuống 2 giá trị x,y
+> - *ceil() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn lên 2 giá trị x,y
+> - *trunc() -> [Point](#Point)*: Trả về [Point](#Point) là kết quả làm tròn về 0 của 2 giá trị x,y
+> - *distanceTo(<[Point](#Point)> otherPoint) -> Number*: Trả về kết quả là khoản cách đến otherPoint
+> - *equals(<[Point](#Point)> otherPoint) -> Boolean*: Trả về true nếu có x, y bằng với otherPoint
+> - *toString() -> String*: Trả về String thể hiện 2 giá trị x,y
 
 ### Layer
 1. Là class cơ bản của Layer, bao gồm các methods, properties, options định nghĩa nên một lớp dữ liệu
@@ -1050,16 +1050,16 @@ Tạo một đối tượng CircleMarker:
 3. Methods và Properties
 
 > **Methods**
-> - **toGeoJSON()**: Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
-> - **setLatLng(latLng)**: Cập nhật vị trí của CircleMarker.
-> - **getLatLng()**: Lấy vị trí hiện tại của CircleMarker.
-> - **setRadius(radius)**: Cập nhật bán kính của CircleMarker.
-> - **getRadius()**: Lấy bán kính hiện tại của CircleMarker.
+> - *toGeoJSON()*: Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
+> - *setLatLng(latLng)*: Cập nhật vị trí của CircleMarker.
+> - *getLatLng()*: Lấy vị trí hiện tại của CircleMarker.
+> - *setRadius(radius)*: Cập nhật bán kính của CircleMarker.
+> - *getRadius()*: Lấy bán kính hiện tại của CircleMarker.
 > 
 > - Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
 
 > **Events**
-> - **move**: Được kích hoạt khi đối tượng CircleMarker được di chuyển.
+> - *move*: Được kích hoạt khi đối tượng CircleMarker được di chuyển.
 
 #### Circle
 1. Lớp Circle để vẽ các đối tượng vòng tròn trên bản đồ và kế thừa từ CircleMarker.
@@ -1068,14 +1068,14 @@ Tạo một đối tượng CircleMarker:
     var circle = BCG.circle([50.5, 30.5], {radius: 200}).addTo(map);
 ```
 > **Để khởi tạo Circle có cách cách sau:**
-> - **BCG.circle(latLng, options)** : Tạo đối tượng vòng tròn cho một điểm địa lý và một đối tượng tùy chọn chứa bán kính của đường tròn.
-> - **BCG.circle(latLng, radius, options)** : Cách này là cũ và không được khuyến khích sử dụng trong các ứng dụng hoặc plugin mới.
+> - *BCG.circle(latLng, options)* : Tạo đối tượng vòng tròn cho một điểm địa lý và một đối tượng tùy chọn chứa bán kính của đường tròn.
+> - *BCG.circle(latLng, radius, options)* : Cách này là cũ và không được khuyến khích sử dụng trong các ứng dụng hoặc plugin mới.
 
 3. Methods và Properties
 > **Methods**
-> - **setRadius(radius)**: Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
-> - **getRadius()**: Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
-> - **getBounds()**: Trả về giới hạn địa lý của đối tượng.
+> - *setRadius(radius)*: Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
+> - *getRadius()*: Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
+> - *getBounds()*: Trả về giới hạn địa lý của đối tượng.
 
 > **Events**
 > - Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Layer.
