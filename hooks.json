@@ -4,6 +4,20 @@
     "execute-command": "/home/ubuntu/VNTT/PROJECT/INTERNAL/BecaGIS_Docs_Deploy/deploy.sh",
     "command-working-directory": "/home/ubuntu/VNTT/PROJECT/INTERNAL/BecaGIS_Docs_Deploy",
     "response-message": "Executing deploy script...",
+    "pass-arguments-to-command": [
+      {
+        "source": "payload",
+        "name": "head_commit.id"
+      },
+      {
+        "source": "payload",
+        "name": "pusher.name"
+      },
+      {
+        "source": "payload",
+        "name": "pusher.email"
+      }
+    ],
     "trigger-rule": {
       "and": [
         {
@@ -17,12 +31,10 @@
           }
         },
         {
-          "match":
-          {
+          "match": {
             "type": "value",
-            "value": "refs/heads/deploy",
-            "parameter":
-            {
+            "value": "refs/heads/master",
+            "parameter": {
               "source": "payload",
               "name": "ref"
             }
