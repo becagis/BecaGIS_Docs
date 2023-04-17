@@ -775,7 +775,7 @@ Trường hợp sử dụng phố biến, xác định tọa độ trung tâm c�
 > **getEvents(): Object**
 > -
 #### GridLayer
-1. Đây là lớp cơ sở cho tất cả các lớp tile và thay thế cho TileLayer.Canvas. GridLayer có thể được mở rộng để tạo ra một lưới các phần tử HTML như <canvas>, <img> hoặc <div>. GridLayer sẽ xử lý việc tạo image và animation các phần tử DOM này.
+1. Đây là lớp cơ sở cho tất cả các lớp tile và thay thế cho TileLayer.Canvas. GridLayer sẽ xử lý việc tạo image và animation các phần tử DOM này.
 2. Để sử dụng cần tạo lớp mở rộng GridLayer và thực hiện phương thức createTile(), phương thức này sẽ nhận vào một đối tượng Point với các tọa độ x, y và z (mức zoom) để vẽ tile.
 ```javascript
     var CanvasLayer = BCG.GridLayer.extend({
@@ -1035,7 +1035,7 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 >   - Một hàm xác định cách tạo lớp Leaflet từ các đối tượng điểm trong GeoJSON. Nó được gọi nội bộ khi dữ liệu được thêm vào, truyền vào đối tượng điểm GeoJSON và LatLng tương ứng của nó. Giá trị mặc định là tạo một Marker mặc định:
 > ```javascript
 > function(geoJsonPoint, latlng) {
-> return BCG.marker(latlng);
+>   return BCG.marker(latlng);
 > }
 > ```
 > - **onEachFeature(Function)**: Một hàm sẽ được gọi một lần cho mỗi Feature được tạo, sau khi nó được tạo và được thiết kế. Hữu ích để gắn sự kiện và popups cho Feature. Giá trị mặc định là không làm gì với các lớp mới được tạo:
