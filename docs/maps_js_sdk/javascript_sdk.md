@@ -1035,7 +1035,7 @@ ví dụ: `'https://{s}.somedomain.com/foobar/{z}/{x}/{y}.png'`
 >   - Một hàm xác định cách tạo lớp Leaflet từ các đối tượng điểm trong GeoJSON. Nó được gọi nội bộ khi dữ liệu được thêm vào, truyền vào đối tượng điểm GeoJSON và LatLng tương ứng của nó. Giá trị mặc định là tạo một Marker mặc định:
 > ```javascript
 > function(geoJsonPoint, latlng) {
-    > return BCG.marker(latlng);
+> return BCG.marker(latlng);
 > }
 > ```
 > - **onEachFeature(Function)**: Một hàm sẽ được gọi một lần cho mỗi Feature được tạo, sau khi nó được tạo và được thiết kế. Hữu ích để gắn sự kiện và popups cho Feature. Giá trị mặc định là không làm gì với các lớp mới được tạo:
