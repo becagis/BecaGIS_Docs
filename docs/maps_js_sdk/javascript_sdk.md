@@ -728,21 +728,13 @@ BCG.gridLayer(options?)
 
 > **Methods**
 > - **bringToFront()**: Đưa lớp tile lên trên tất cả các lớp tile. Trả về đối tượng lớp đó.
->
 > - **bringToBack()**: Đưa lớp tile xuống dưới đáy tất cả các lớp tile. Trả về đối tượng lớp đó.
->
 > - **getContainer()**: Trả về phần tử HTML chứa các tile cho lớp này.
->
 > - **setOpacity(opacity)**: Thay đổi độ mờ của lớp lưới. Trả về đối tượng lớp đó.
->
 > - **setZIndex(zIndex)**: Thay đổi độ sâu chồng của lớp lưới. Trả về đối tượng lớp đó.
->
 > - **isLoading()**: Trả về true nếu bất kỳ tile nào trong lớp lưới chưa tải xong.
->
 > - **redraw()**: Làm cho lớp xóa tất cả các tile và yêu cầu chúng lại. Trả về đối tượng lớp đó.
->
 > - **getTileSize()**: Chuẩn hóa tùy chọn tileSize thành một điểm. Sử dụng bởi phương thức createTile(). Trả về đối tượng Point.
->
 > - **createTile(coords, done?)**: Trả về phần tử HTMLElement tương ứng với các tọa độ đã cho. Nếu callback done được chỉ định, nó phải được gọi khi tile đã tải xong và vẽ xong.
 
 #### TileLayer
@@ -834,32 +826,15 @@ BCG.imageOverlay(imageUrl, imageBounds).addTo(map);
 3. Methods và Properties
 
 > **Methods**
-> - _setOpacity(opacity): this_
->   - Thiết lập độ mờ có giá trị từ 0 đến 1
-> 
-> - _bringToFront()_: this_
->   - Đưa hình ảnh lên zIndex cao hơn
-> 
-> - _bringToBack(): this_
->   - Đưa hình ảnh xuống zIndex thấp hơn
-> 
-> - _setUrl(url): this_
->   - Thiết lập url đến hình ảnh
-> 
-> - _setBounds(bounds): this_
->   - Thiết lập Bounds của hình ảnh
-> 
-> - _setZIndex(zIndex): this_
->   - Thiết lập ZIndex của hình ảnh
-> 
-> - _getBounds(): [LatLngBounds](#LatLngBounds)_
->   - Lấy giá trị Bounds hiện tại của hình ảnh
-> 
-> - _getElement(): HtmlElement_
->   - Lấy giá trị DOM đang là thể hiện của hình ảnh
-> 
-> - _getCenter(): [LatLng](#LatLng)_
->   - Lấy vị trí Center của Bounds hình ảnh
+> - _setOpacity(opacity) -> this_: Thiết lập độ mờ có giá trị từ 0 đến 1 
+> - _bringToFront()_ -> this_: Đưa hình ảnh lên zIndex cao hơn 
+> - _bringToBack() -> this_: Đưa hình ảnh xuống zIndex thấp hơn 
+> - _setUrl(url) -> this_: Thiết lập url đến hình ảnh 
+> - _setBounds(bounds) -> this_: Thiết lập Bounds của hình ảnh 
+> - _setZIndex(zIndex) -> this_: Thiết lập ZIndex của hình ảnh 
+> - _getBounds() -> [LatLngBounds](#LatLngBounds)_: Lấy giá trị Bounds hiện tại của hình ảnh 
+> - _getElement() -> HtmlElement_: Lấy giá trị DOM đang là thể hiện của hình ảnh 
+> - _getCenter() -> [LatLng](#LatLng)_: Lấy vị trí Center của Bounds hình ảnh
 
 > **Events**
 > - _load_: sự kiện diễn ra khi hình ảnh được tải xong
@@ -927,21 +902,12 @@ BCG.geoJSON(data, {
 3. Methods và Properties
 
 > **Methods**
-> - *addData(data)*: this
->   - Thêm một đối tượng GeoJSON vào lớp.
->
-> - *geometryToLayer(featureData, options?)*: [Layer](#Layer)
->   - Tạo một lớp từ một đối tượng GeoJSON cụ thể. Có thể sử dụng hàm pointToLayer hoặc coordsToLatLng.
->  
-> - *coordsToLatLng(coords)*: [LatLng](#LatLng)
->   - Tạo một đối tượng LatLng từ một mảng 2 số (kinh độ, vĩ độ) hoặc 3 số (kinh độ, vĩ độ, độ cao) được sử dụng trong GeoJSON cho điểm.
-> 
-> - *latLngToCoords(latlng, pricision)*:
->   - Hàm ngược lại với coordsToLatLng. Giá trị tọa độ được làm tròn với hàm formatNum
->
-> - *asFeature(geoJson)*: Object
->   - Chuẩn hóa GeoJSON thành Feature GeoJSON.
-> 
+> - **addData(data)** -> this: Thêm một đối tượng GeoJSON vào lớp.
+> - **geometryToLayer(featureData, options?)** -> [Layer](#Layers: Tạo một lớp từ một đối tượng GeoJSON cụ thể. Có thể sử dụng hàm pointToLayer hoặc coordsToLatLng.
+> - **coordsToLatLng(coords)** -> [LatLng](#LatLngs: Tạo một đối tượng LatLng từ một mảng 2 số (kinh độ, vĩ độ) hoặc 3 số (kinh độ, vĩ độ, độ cao) được sử dụng trong GeoJSON cho điểm.
+> - **latLngToCoords(latlng, pricision)**: Hàm ngược lại với coordsToLatLng. Giá trị tọa độ được làm tròn với hàm formatNum
+> - **asFeature(geoJson)** -> Objecs: Chuẩn hóa GeoJSON thành Feature GeoJSON.
+
 
 ### Control
 1. Là class cơ sở để khai báo các control của map, các control sẽ được xây dựng từ class Control
@@ -949,7 +915,6 @@ BCG.geoJSON(data, {
 
 > **Options** - Control được khởi tạo với thông số
 > - **position**:  xác định vị trí của điều khiển trên bản đồ. Giá trị mặc định là 'topright'. Các giá trị khác bao gồm 'topleft', 'bottomleft', hoặc 'bottomright'.
-
 > **Methods** - Một số method cơ bản của control
 > - **getPosition()**: trả về vị trí hiện tại
 > - **setPosition(position)**: thiết lập vị trí
@@ -957,10 +922,8 @@ BCG.geoJSON(data, {
 > - **addTo(map)**: thêm control vào map instance chỉ định
 > - **remove()**: xóa control khỏi map instance
 > **Methods bắt buộc khi kế thừa**
-> - **onAdd(map)**: Phương thức này trả về phần tử DOM chứa điều khiển và các Event Handler trên bản đồ. 
-> Phương thức này được gọi khi control được thêm vào map bằng cách sử dụng phương thức `addTo(map)`.
-> - **onRemove(map)**: Phương thức này chứa tất cả mã dọn dẹp để xóa các Event Handler được thêm vào trước đó trong onAdd. 
-> Phương thức này được gọi khi điều khiển được loại bỏ khỏi bản đồ bằng cách sử dụng phương thức `remove`
+> - **onAdd(map)**: Phương thức này trả về phần tử DOM chứa điều khiển và các Event Handler trên bản đồ. Phương thức này được gọi khi control được thêm vào map bằng cách sử dụng phương thức `addTo(map)`.
+> - **onRemove(map)**: Phương thức này chứa tất cả mã dọn dẹp để xóa các Event Handler được thêm vào trước đó trong onAdd. Phương thức này được gọi khi điều khiển được loại bỏ khỏi bản đồ bằng cách sử dụng phương thức `remove`
 
 ### Path
 1. Path là một lớp trừu tượng của các đối tượng hình học không gian. Không sử dụng trực tiếp và được kế thừa thừa từ lớp Layer.
@@ -1023,29 +986,14 @@ var latlngs = [
 3. Methods
 
 > **Methods**
-> - **toGeoJSON(precision?)**:
->   - Chuyển đổi đối tượng Polyline thành đối tượng GeoJSON LineString hoặc MultiLineString và trả về. Tham số precision được sử dụng để làm tròn giá trị tọa độ của các điểm.
->
-> - **getLatLngs()**:
->   - Trả về một mảng chứa các điểm trong Polyline hoặc các mảng lồng nhau chứa các điểm trong trường hợp của MultiPolyline.
->
-> - **setLatLngs(latlngs)**:
->   - Thay thế tất cả các điểm trong Polyline bằng một mảng Latlngs mới.
->
-> - **isEmpty()**:
->   - Kiểm tra xem Polyline có chứa bất kỳ điểm nào hay không. Trả về true nếu Polyline không có LatLngs.
->
-> - **closestLayerPoint(point)**:
->   - Trả về điểm gần nhất với điểm point trên Polyline.
->
-> - **getCenter()**:
->   - Trả về tọa độ trung tâm (trọng tâm) của Polyline.
->
-> - **getBounds()**:
->   - Trả về tọa độ giới hạn (LatLngBounds) của Polyline.
->
-> - **addLatLng(latlng, latlngs?)**:
->   - Thêm một điểm được chỉ định vào Polyline. Theo mặc định, thêm vào vòng đầu tiên của Polyline trong trường hợp của MultiPolyline, nhưng có thể ghi đè bằng cách truyền một vòng cụ thể dưới dạng một mảng LatLng (có thể truy cập trước đó bằng getLatLngs).
+> - **toGeoJSON(precision?)**: Chuyển đổi đối tượng Polyline thành đối tượng GeoJSON LineString hoặc MultiLineString và trả về. Tham số precision được sử dụng để làm tròn giá trị tọa độ của các điểm.
+> - **getLatLngs()**: Trả về một mảng chứa các điểm trong Polyline hoặc các mảng lồng nhau chứa các điểm trong trường hợp của MultiPolyline.
+> - **setLatLngs(latlngs)**: Thay thế tất cả các điểm trong Polyline bằng một mảng Latlngs mới.
+> - **isEmpty()**: Kiểm tra xem Polyline có chứa bất kỳ điểm nào hay không. Trả về true nếu Polyline không có LatLngs.
+> - **closestLayerPoint(point)**: Trả về điểm gần nhất với điểm point trên Polyline.
+> - **getCenter()**: Trả về tọa độ trung tâm (trọng tâm) của Polyline.
+> - **getBounds()**: Trả về tọa độ giới hạn (LatLngBounds) của Polyline.
+> - **addLatLng(latlng, latlngs?)**: Thêm một điểm được chỉ định vào Polyline. Theo mặc định, thêm vào vòng đầu tiên của Polyline trong trường hợp của MultiPolyline, nhưng có thể ghi đè bằng cách truyền một vòng cụ thể dưới dạng một mảng LatLng (có thể truy cập trước đó bằng getLatLngs).
 
 #### Polygon
 1. Polygon là một lớp đối tượng dùng để vẽ đa giác trên bản đồ. Lớp này kế thừa từ lớp Polyline. Lưu ý khi tạo đa giác thì các điểm không được trùng với điểm đầu tiên của đa giác vì điều này sẽ ảnh hưởng đến hiển thị của đa giác.
@@ -1103,20 +1051,11 @@ Tạo một đối tượng CircleMarker:
 3. Methods và Properties
 
 > **Methods**
-> - **toGeoJSON()**:
->   - Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
->
-> - **setLatLng(latLng)**:
->   - Cập nhật vị trí của CircleMarker.
->
-> - **getLatLng()**:
->   - Lấy vị trí hiện tại của CircleMarker.
->
-> - **setRadius(radius)**:
->   - Cập nhật bán kính của CircleMarker.
->
-> - **getRadius()**:
->   - Lấy bán kính hiện tại của CircleMarker.
+> - **toGeoJSON()**: Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
+> - **setLatLng(latLng)**: Cập nhật vị trí của CircleMarker.
+> - **getLatLng()**: Lấy vị trí hiện tại của CircleMarker.
+> - **setRadius(radius)**: Cập nhật bán kính của CircleMarker.
+> - **getRadius()**: Lấy bán kính hiện tại của CircleMarker.
 > 
 > - Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
 
@@ -1135,14 +1074,9 @@ Tạo một đối tượng CircleMarker:
 
 3. Methods và Properties
 > **Methods**
-> - **setRadius(radius)**:
->   - Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
->
-> - **getRadius()**:
->   - Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
->
-> - **getBounds()**:
->   - Trả về giới hạn địa lý của đối tượng.
+> - **setRadius(radius)**: Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
+> - **getRadius()**: Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
+> - **getBounds()**: Trả về giới hạn địa lý của đối tượng.
 
 > **Events**
 > - Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Layer.
