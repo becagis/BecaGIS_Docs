@@ -33,15 +33,6 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 })
 ```
 
-4. Mã nguồn hoàn chỉnh
-
-```html
-
-<html>
-
-</html>
-```
-
 ### Khởi tạo bản đồ với đầy đủ các thông số
 
 1. Sử dụng hàm `createMap` để khởi tạo bản đồ với đầy đủ các thông số
