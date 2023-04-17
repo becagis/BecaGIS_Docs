@@ -797,35 +797,35 @@ var imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
 BCG.imageOverlay(imageUrl, imageBounds).addTo(map);
 ```
 
-> - _imageUrl:_ đường dẫn đến image
-> - _imageBounds:_ vùng (Bounds)[#LatLngBounds] của image
-> - _BCG.imageOverlay:_ hàm khởi tạo ImageOverlay
+>- _imageUrl:_ đường dẫn đến image
+>- _imageBounds:_ vùng (Bounds)[#LatLngBounds] của image
+>- _BCG.imageOverlay:_ hàm khởi tạo ImageOverlay
 
-> **Options**
-> - _opacity(Number)_: độ trong suốt của hình có giá trị từ 0-1
-> - _alt(String)_: Văn bản cho thuộc tính alt của hình ảnh
-> - _interactive(Boolean)_: Nếu true, lớp phủ hình ảnh sẽ phát ra các sự kiện chuột khi được nhấp hoặc di chuột qua.
-> - _crossOrigin(Boolean)_: mặc định là false, Xác định xem liệu thuộc tính crossOrigin có được thêm vào hình ảnh hay không. Nếu cung cấp một chuỗi, thuộc tính crossOrigin của hình ảnh sẽ được thiết lập thành chuỗi đó.
-> - _errorOverlayUrl(String)_: URL đến hình ảnh phủ để hiển thị thay cho lớp phủ đã không tải được.
-> - _zIndex(Number)_: zIndex của image
-> - _className(String)_: tên class của thẻ div chứa hình ảnh
+**Options**
+- _opacity(Number)_: độ trong suốt của hình có giá trị từ 0-1
+- _alt(String)_: Văn bản cho thuộc tính alt của hình ảnh
+- _interactive(Boolean)_: Nếu true, lớp phủ hình ảnh sẽ phát ra các sự kiện chuột khi được nhấp hoặc di chuột qua.
+- _crossOrigin(Boolean)_: mặc định là false, Xác định xem liệu thuộc tính crossOrigin có được thêm vào hình ảnh hay không. Nếu cung cấp một chuỗi, thuộc tính crossOrigin của hình ảnh sẽ được thiết lập thành chuỗi đó.
+- _errorOverlayUrl(String)_: URL đến hình ảnh phủ để hiển thị thay cho lớp phủ đã không tải được.
+- _zIndex(Number)_: zIndex của image
+- _className(String)_: tên class của thẻ div chứa hình ảnh
 
 3. Methods và Properties
 
-> **Methods**
-> - _setOpacity(opacity) -> this_: Thiết lập độ mờ có giá trị từ 0 đến 1 
-> - _bringToFront()_ -> this_: Đưa hình ảnh lên zIndex cao hơn 
-> - _bringToBack() -> this_: Đưa hình ảnh xuống zIndex thấp hơn 
-> - _setUrl(url) -> this_: Thiết lập url đến hình ảnh 
-> - _setBounds(bounds) -> this_: Thiết lập Bounds của hình ảnh 
-> - _setZIndex(zIndex) -> this_: Thiết lập ZIndex của hình ảnh 
-> - _getBounds() -> [LatLngBounds](#LatLngBounds)_: Lấy giá trị Bounds hiện tại của hình ảnh 
-> - _getElement() -> HtmlElement_: Lấy giá trị DOM đang là thể hiện của hình ảnh 
-> - _getCenter() -> [LatLng](#LatLng)_: Lấy vị trí Center của Bounds hình ảnh
+**Methods**
+- _setOpacity(opacity) -> this_: Thiết lập độ mờ có giá trị từ 0 đến 1 
+- _bringToFront()_ -> this_: Đưa hình ảnh lên zIndex cao hơn 
+- _bringToBack() -> this_: Đưa hình ảnh xuống zIndex thấp hơn 
+- _setUrl(url) -> this_: Thiết lập url đến hình ảnh 
+- _setBounds(bounds) -> this_: Thiết lập Bounds của hình ảnh 
+- _setZIndex(zIndex) -> this_: Thiết lập ZIndex của hình ảnh 
+- _getBounds() -> [LatLngBounds](#LatLngBounds)_: Lấy giá trị Bounds hiện tại của hình ảnh 
+- _getElement() -> HtmlElement_: Lấy giá trị DOM đang là thể hiện của hình ảnh 
+- _getCenter() -> [LatLng](#LatLng)_: Lấy vị trí Center của Bounds hình ảnh
 
-> **Events**
-> - _load_: sự kiện diễn ra khi hình ảnh được tải xong
-> - _error_: sự kiễn diễn ra khi hình ảnh tải gặp lỗi
+**Events**
+- _load_: sự kiện diễn ra khi hình ảnh được tải xong
+- _error_: sự kiễn diễn ra khi hình ảnh tải gặp lỗi
 
 #### VideoOverlay
 1. Được sử dụng hiển thị Video với Bounds
@@ -840,12 +840,12 @@ BCG.videoOverlay(videoUrl, videoBounds ).addTo(map);
 > - _videoBounds:_ khung [Bounds](#LatLngBounds) của video
 > - _BCG.videoOverlay:_ hàm khởi tạo VideoOverlay
 
-> **Options**
-> - _autoplay(Boolean)_: nếu là True, video sẽ tự động phát sau khi tải.
-> - _loop(Boolean)_: nếu là True, video sẽ tự lặp lại sau khi phát xong
-> - _keepAspectRatio(Boolean)_: nếu là True, video sẽ tự tính toán Width/Height nếu 1 hướng đã được thiết lập
-> - _muted(Boolean)_: nếu là True, video sẽ không phát âm thanh
-> - _playsInline(Boolean)_: nếu là true, đối với trình duyệt mobile sẽ chỉ phát video mà không phát dưới dạng fullscreen
+**Options**
+- _autoplay(Boolean)_: nếu là True, video sẽ tự động phát sau khi tải.
+- _loop(Boolean)_: nếu là True, video sẽ tự lặp lại sau khi phát xong
+- _keepAspectRatio(Boolean)_: nếu là True, video sẽ tự tính toán Width/Height nếu 1 hướng đã được thiết lập
+- _muted(Boolean)_: nếu là True, video sẽ không phát âm thanh
+- _playsInline(Boolean)_: nếu là true, đối với trình duyệt mobile sẽ chỉ phát video mà không phát dưới dạng fullscreen
 
 #### GeoJSON
 1. Sử dụng để tạo Layer từ GeoJSON data
@@ -865,78 +865,78 @@ BCG.geoJSON(data, {
 > - style: định dạng style cho feature
 > - addTo: hàm gọi đưa geojson vào map dưới dạng Layer
 
-> **Options**
-> - *pointToLayer(Function)*:
->   - Một hàm xác định cách tạo lớp Leaflet từ các đối tượng điểm trong GeoJSON. Nó được gọi nội bộ khi dữ liệu được thêm vào, truyền vào đối tượng điểm GeoJSON và LatLng tương ứng của nó. Giá trị mặc định là tạo một Marker mặc định:
-> ```javascript
-> function(geoJsonPoint, latlng) {
->   return BCG.marker(latlng);
-> }
-> ```
-> - *onEachFeature(Function)*: Một hàm sẽ được gọi một lần cho mỗi Feature được tạo, sau khi nó được tạo và được thiết kế. Hữu ích để gắn sự kiện và popups cho Feature. Giá trị mặc định là không làm gì với các lớp mới được tạo:
-> ```javascript
-> function (feature, layer) {}
-> ```
-> - *filter(Function)*: Một hàm sẽ được sử dụng để quyết định liệu có bao gồm Feature hay không. Giá trị mặc định là bao gồm tất cả các Feature:
-> ```javascript
-> function (geoJsonFeature) {
->   return true;
-> }
-> ```
+**Options**
+- *pointToLayer(Function)*:
+  - Một hàm xác định cách tạo lớp Leaflet từ các đối tượng điểm trong GeoJSON. Nó được gọi nội bộ khi dữ liệu được thêm vào, truyền vào đối tượng điểm GeoJSON và LatLng tương ứng của nó. Giá trị mặc định là tạo một Marker mặc định:
+```javascript
+function(geoJsonPoint, latlng) {
+  return BCG.marker(latlng);
+}
+```
+- *onEachFeature(Function)*: Một hàm sẽ được gọi một lần cho mỗi Feature được tạo, sau khi nó được tạo và được thiết kế. Hữu ích để gắn sự kiện và popups cho Feature. Giá trị mặc định là không làm gì với các lớp mới được tạo:
+```javascript
+function (feature, layer) {}
+```
+- *filter(Function)*: Một hàm sẽ được sử dụng để quyết định liệu có bao gồm Feature hay không. Giá trị mặc định là bao gồm tất cả các Feature:
+```javascript
+function (geoJsonFeature) {
+  return true;
+}
+```
 > Lưu ý: thay đổi tùy chọn bộ lọc động sẽ chỉ có tác dụng trên dữ liệu mới được thêm vào. Nó sẽ không đánh giá lại các Feature đã được bao gồm trước đó.
 > - *coordsToLatLng(Function)*:  Một hàm sẽ được sử dụng để chuyển đổi tọa độ GeoJSON thành LatLng. Giá trị mặc định là phương thức tĩnh coordsToLatLng.
 
 3. Methods và Properties
 
-> **Methods**
-> - *addData(data) -> this*: Thêm một đối tượng GeoJSON vào lớp.
-> - *geometryToLayer(featureData, options?) -> [Layer](#Layers)*: Tạo một lớp từ một đối tượng GeoJSON cụ thể. Có thể sử dụng hàm pointToLayer hoặc coordsToLatLng.
-> - *coordsToLatLng(coords) -> [LatLng](#LatLngs)*: Tạo một đối tượng LatLng từ một mảng 2 số (kinh độ, vĩ độ) hoặc 3 số (kinh độ, vĩ độ, độ cao) được sử dụng trong GeoJSON cho điểm.
-> - *latLngToCoords(latlng, pricision)*: Hàm ngược lại với coordsToLatLng. Giá trị tọa độ được làm tròn với hàm formatNum
-> - *asFeature(geoJson) -> Objects*: Chuẩn hóa GeoJSON thành Feature GeoJSON.
+**Methods**
+- *addData(data) -> this*: Thêm một đối tượng GeoJSON vào lớp.
+- *geometryToLayer(featureData, options?) -> [Layer](#Layers)*: Tạo một lớp từ một đối tượng GeoJSON cụ thể. Có thể sử dụng hàm pointToLayer hoặc coordsToLatLng.
+- *coordsToLatLng(coords) -> [LatLng](#LatLngs)*: Tạo một đối tượng LatLng từ một mảng 2 số (kinh độ, vĩ độ) hoặc 3 số (kinh độ, vĩ độ, độ cao) được sử dụng trong GeoJSON cho điểm.
+- *latLngToCoords(latlng, pricision)*: Hàm ngược lại với coordsToLatLng. Giá trị tọa độ được làm tròn với hàm formatNum
+- *asFeature(geoJson) -> Objects*: Chuẩn hóa GeoJSON thành Feature GeoJSON.
 
 
 ### Control
 1. Là class cơ sở để khai báo các control của map, các control sẽ được xây dựng từ class Control
 2. Options và Methods
 
-> **Options** - Control được khởi tạo với thông số
-> - *position*:  xác định vị trí của điều khiển trên bản đồ. Giá trị mặc định là 'topright'. Các giá trị khác bao gồm 'topleft', 'bottomleft', hoặc 'bottomright'.
-> **Methods** - Một số method cơ bản của control
-> - *getPosition()*: trả về vị trí hiện tại
-> - *setPosition(position)*: thiết lập vị trí
-> - *getContainer()*: trả về phần tử DOM chứa control
-> - *addTo(map)*: thêm control vào map instance chỉ định
-> - *remove()*: xóa control khỏi map instance
-> **Methods bắt buộc khi kế thừa**
-> - *onAdd(map)*: Phương thức này trả về phần tử DOM chứa điều khiển và các Event Handler trên bản đồ. Phương thức này được gọi khi control được thêm vào map bằng cách sử dụng phương thức `addTo(map)`.
-> - *onRemove(map)*: Phương thức này chứa tất cả mã dọn dẹp để xóa các Event Handler được thêm vào trước đó trong onAdd. Phương thức này được gọi khi điều khiển được loại bỏ khỏi bản đồ bằng cách sử dụng phương thức `remove`
+**Options** - Control được khởi tạo với thông số
+- *position*:  xác định vị trí của điều khiển trên bản đồ. Giá trị mặc định là 'topright'. Các giá trị khác bao gồm 'topleft', 'bottomleft', hoặc 'bottomright'.
+**Methods** - Một số method cơ bản của control
+- *getPosition()*: trả về vị trí hiện tại
+- *setPosition(position)*: thiết lập vị trí
+- *getContainer()*: trả về phần tử DOM chứa control
+- *addTo(map)*: thêm control vào map instance chỉ định
+- *remove()*: xóa control khỏi map instance
+**Methods bắt buộc khi kế thừa**
+- *onAdd(map)*: Phương thức này trả về phần tử DOM chứa điều khiển và các Event Handler trên bản đồ. Phương thức này được gọi khi control được thêm vào map bằng cách sử dụng phương thức `addTo(map)`.
+- *onRemove(map)*: Phương thức này chứa tất cả mã dọn dẹp để xóa các Event Handler được thêm vào trước đó trong onAdd. Phương thức này được gọi khi điều khiển được loại bỏ khỏi bản đồ bằng cách sử dụng phương thức `remove`
 
 ### Path
 1. Path là một lớp trừu tượng của các đối tượng hình học không gian. Không sử dụng trực tiếp và được kế thừa thừa từ lớp Layer.
 2. Options và Methods
-> **Options**
-> - *stroke*: Kiểm soát việc vẽ đường viền (stroke) trên path. Đặt giá trị false để tắt đường viền cho các đối tượng Polygon hoặc Circle.
-> - *color*: Màu sắc cho đường viền, mặc định là '#3388ff'.
-> - *weight*: Độ dày của đường viền tính bằng đơn vị pixel, mặc định là 3.
-> - *opacity*: Độ trong suốt của đường viền, từ 0 đến 1, mặc định là 1.0.
-> - *lineCap*: Hình dạng được sử dụng ở cuối đường viền. Mặc định là 'round'.
-> - *lineJoin*: Hình dạng được sử dụng tại các góc của đường viền. Mặc định là 'round'.
-> - *dashArray*: Một chuỗi định nghĩa các pattern của đường viền. Không hoạt động trên các lớp được vẽ bằng Canvas trên một số trình duyệt cũ.
-> - *dashOffset*: Một chuỗi xác định khoảng cách vào đường viền để bắt đầu mẫu. Không hoạt động trên các lớp được vẽ bằng Canvas trên một số trình duyệt cũ.
-> - *fill*: Kiểm soát việc tô màu cho path. Đặt giá trị false để tắt tô màu cho các đối tượng Polygon hoặc Circle.
-> - *fillColor*: Màu sắc cho việc tô màu, mặc định là giá trị của tùy chọn color.
-> - *fillOpacity*: Độ trong suốt của màu tô, từ 0 đến 1, mặc định là 0.2.
-> - *fillRule*: Một chuỗi xác định cách xác định bên trong của một hình dạng. Mặc định là 'evenodd'.
-> - *bubblingMouseEvents*: Khi đúng, một sự kiện chuột trên path này sẽ kích hoạt cùng một sự kiện trên bản đồ (trừ khi BCG.DomEvent.stopPropagation được sử dụng).
-> - *renderer*: Sử dụng bộ vẽ Renderer cụ thể này cho path này. Ưu tiên hơn so với bộ vẽ mặc định của bản đồ.
-> - *className*: Tên lớp tùy chỉnh được đặt tên trên phần tử DOM. Chỉ sử dụng cho bộ vẽ SVG.
+**Options**
+- *stroke*: Kiểm soát việc vẽ đường viền (stroke) trên path. Đặt giá trị false để tắt đường viền cho các đối tượng Polygon hoặc Circle.
+- *color*: Màu sắc cho đường viền, mặc định là '#3388ff'.
+- *weight*: Độ dày của đường viền tính bằng đơn vị pixel, mặc định là 3.
+- *opacity*: Độ trong suốt của đường viền, từ 0 đến 1, mặc định là 1.0.
+- *lineCap*: Hình dạng được sử dụng ở cuối đường viền. Mặc định là 'round'.
+- *lineJoin*: Hình dạng được sử dụng tại các góc của đường viền. Mặc định là 'round'.
+- *dashArray*: Một chuỗi định nghĩa các pattern của đường viền. Không hoạt động trên các lớp được vẽ bằng Canvas trên một số trình duyệt cũ.
+- *dashOffset*: Một chuỗi xác định khoảng cách vào đường viền để bắt đầu mẫu. Không hoạt động trên các lớp được vẽ bằng Canvas trên một số trình duyệt cũ.
+- *fill*: Kiểm soát việc tô màu cho path. Đặt giá trị false để tắt tô màu cho các đối tượng Polygon hoặc Circle.
+- *fillColor*: Màu sắc cho việc tô màu, mặc định là giá trị của tùy chọn color.
+- *fillOpacity*: Độ trong suốt của màu tô, từ 0 đến 1, mặc định là 0.2.
+- *fillRule*: Một chuỗi xác định cách xác định bên trong của một hình dạng. Mặc định là 'evenodd'.
+- *bubblingMouseEvents*: Khi đúng, một sự kiện chuột trên path này sẽ kích hoạt cùng một sự kiện trên bản đồ (trừ khi BCG.DomEvent.stopPropagation được sử dụng).
+- *renderer*: Sử dụng bộ vẽ Renderer cụ thể này cho path này. Ưu tiên hơn so với bộ vẽ mặc định của bản đồ.
+- *className*: Tên lớp tùy chỉnh được đặt tên trên phần tử DOM. Chỉ sử dụng cho bộ vẽ SVG.
 
-> **Methods**
-> - *redraw()*: Vẽ lại path. Thỉnh thoảng hữu ích khi thay đổi tọa độ mà path sử dụng.
-> - *setStyle(style)*: Thay đổi diện mạo của Path dựa trên các tùy chọn trong đối tượng tùy chọn Path.
-> - *bringToFront()*: Đưa lớp lên trên tất cả các lớp path khác.
-> - *bringToBack()*: Đưa lớp xuống dưới tất cả các lớp path khác.
+**Methods**
+- *redraw()*: Vẽ lại path. Thỉnh thoảng hữu ích khi thay đổi tọa độ mà path sử dụng.
+- *setStyle(style)*: Thay đổi diện mạo của Path dựa trên các tùy chọn trong đối tượng tùy chọn Path.
+- *bringToFront()*: Đưa lớp lên trên tất cả các lớp path khác.
+- *bringToBack()*: Đưa lớp xuống dưới tất cả các lớp path khác.
 
 #### Polyline
 1. Polyline được sử dụng để vẽ Polyline, kế thừa từ [Path](#Path)
@@ -972,15 +972,15 @@ var latlngs = [
 
 3. Methods
 
-> **Methods**
-> - *toGeoJSON(precision?)*: Chuyển đổi đối tượng Polyline thành đối tượng GeoJSON LineString hoặc MultiLineString và trả về. Tham số precision được sử dụng để làm tròn giá trị tọa độ của các điểm.
-> - *getLatLngs()*: Trả về một mảng chứa các điểm trong Polyline hoặc các mảng lồng nhau chứa các điểm trong trường hợp của MultiPolyline.
-> - *setLatLngs(latlngs)*: Thay thế tất cả các điểm trong Polyline bằng một mảng Latlngs mới.
-> - *isEmpty()*: Kiểm tra xem Polyline có chứa bất kỳ điểm nào hay không. Trả về true nếu Polyline không có LatLngs.
-> - *closestLayerPoint(point)*: Trả về điểm gần nhất với điểm point trên Polyline.
-> - *getCenter()*: Trả về tọa độ trung tâm (trọng tâm) của Polyline.
-> - *getBounds()*: Trả về tọa độ giới hạn (LatLngBounds) của Polyline.
-> - *addLatLng(latlng, latlngs?)*: Thêm một điểm được chỉ định vào Polyline. Theo mặc định, thêm vào vòng đầu tiên của Polyline trong trường hợp của MultiPolyline, nhưng có thể ghi đè bằng cách truyền một vòng cụ thể dưới dạng một mảng LatLng (có thể truy cập trước đó bằng getLatLngs).
+**Methods**
+- *toGeoJSON(precision?)*: Chuyển đổi đối tượng Polyline thành đối tượng GeoJSON LineString hoặc MultiLineString và trả về. Tham số precision được sử dụng để làm tròn giá trị tọa độ của các điểm.
+- *getLatLngs()*: Trả về một mảng chứa các điểm trong Polyline hoặc các mảng lồng nhau chứa các điểm trong trường hợp của MultiPolyline.
+- *setLatLngs(latlngs)*: Thay thế tất cả các điểm trong Polyline bằng một mảng Latlngs mới.
+- *isEmpty()*: Kiểm tra xem Polyline có chứa bất kỳ điểm nào hay không. Trả về true nếu Polyline không có LatLngs.
+- *closestLayerPoint(point)*: Trả về điểm gần nhất với điểm point trên Polyline.
+- *getCenter()*: Trả về tọa độ trung tâm (trọng tâm) của Polyline.
+- *getBounds()*: Trả về tọa độ giới hạn (LatLngBounds) của Polyline.
+- *addLatLng(latlng, latlngs?)*: Thêm một điểm được chỉ định vào Polyline. Theo mặc định, thêm vào vòng đầu tiên của Polyline trong trường hợp của MultiPolyline, nhưng có thể ghi đè bằng cách truyền một vòng cụ thể dưới dạng một mảng LatLng (có thể truy cập trước đó bằng getLatLngs).
 
 #### Polygon
 1. Polygon là một lớp đối tượng dùng để vẽ đa giác trên bản đồ. Lớp này kế thừa từ lớp Polyline. Lưu ý khi tạo đa giác thì các điểm không được trùng với điểm đầu tiên của đa giác vì điều này sẽ ảnh hưởng đến hiển thị của đa giác.
@@ -1020,10 +1020,10 @@ map.fitBounds(bounds);
 ```
 3. Methods và Properties
 
-> **Methods**
-> - *rectangle(latLngBounds, options)*: Phương thức tạo mới đối tượng Rectangle, với latLngBounds là vùng địa lý của hình chữ nhật và options là một đối tượng chứa các tùy chọn.
-> - *setBounds(latLngBounds)*: Phương thức vẽ lại hình chữ nhật với giới hạn được truyền vào.
-> - **Đối tượng Rectangle cũng kế thừa tất cả các phương thức và thuộc tính của lớp Polygon, Polyline, Path và Layer.
+**Methods**
+- *rectangle(latLngBounds, options)*: Phương thức tạo mới đối tượng Rectangle, với latLngBounds là vùng địa lý của hình chữ nhật và options là một đối tượng chứa các tùy chọn.
+- *setBounds(latLngBounds)*: Phương thức vẽ lại hình chữ nhật với giới hạn được truyền vào.
+- **Đối tượng Rectangle cũng kế thừa tất cả các phương thức và thuộc tính của lớp Polygon, Polyline, Path và Layer.
 
 #### CircleMarker
 1. CircleMarker cho phép vẽ một đối tượng hình tròn trên bản đồ với bán kính được chỉ định theo đơn vị pixeBCG. Lớp này kế thừa từ lớp Path.
@@ -1032,18 +1032,18 @@ Tạo một đối tượng CircleMarker:
 ```javascript
     var circleMarker = BCG.circleMarker([51.5, -0.09], { radius: 10 }).addTo(map);
 ```
-> **Options**
-> - *radius*: Bán kính của hình tròn đơn vị là pixeBCG.
+**Options**
+- *radius*: Bán kính của hình tròn đơn vị là pixeBCG.
 
 3. Methods và Properties
 
-> **Methods**
-> - *toGeoJSON()*: Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
-> - *setLatLng(latLng)*: Cập nhật vị trí của CircleMarker.
-> - *getLatLng()*: Lấy vị trí hiện tại của CircleMarker.
-> - *setRadius(radius)*: Cập nhật bán kính của CircleMarker.
-> - *getRadius()*: Lấy bán kính hiện tại của CircleMarker.
-> - Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
+**Methods**
+- *toGeoJSON()*: Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
+- *setLatLng(latLng)*: Cập nhật vị trí của CircleMarker.
+- *getLatLng()*: Lấy vị trí hiện tại của CircleMarker.
+- *setRadius(radius)*: Cập nhật bán kính của CircleMarker.
+- *getRadius()*: Lấy bán kính hiện tại của CircleMarker.
+- Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
 
 > **Events**
 > - *move*: Được kích hoạt khi đối tượng CircleMarker được di chuyển.
@@ -1060,13 +1060,13 @@ Tạo một đối tượng CircleMarker:
 
 3. Methods và Properties
 
-> **Methods**
-> - *setRadius(radius)*: Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
-> - *getRadius()*: Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
-> - *getBounds()*: Trả về giới hạn địa lý của đối tượng.
+**Methods**
+- *setRadius(radius)*: Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
+- *getRadius()*: Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
+- *getBounds()*: Trả về giới hạn địa lý của đối tượng.
 
-> **Events**
-> - Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Layer.
+**Events**
+- Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Layer.
 
 
 
