@@ -36,3 +36,6 @@ login:
 
 publish: build-prod push-prod
 	$(WEB_HOOK_REQUEST)
+
+# Windows CMD:
+# git pull && git add . && git commit -m 'docs' && docker-compose --env-file ./.env.prod -f docker-compose.prod.yml build && docker-compose --env-file ./.env.prod -f docker-compose.prod.yml push

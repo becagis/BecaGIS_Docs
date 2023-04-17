@@ -1043,18 +1043,25 @@ Ngoài ra có thể khởi tạo bằng cách sử dụng các nested array hìn
 > **Methods**
 > - **toGeoJSON(precision?)**:
 >   - Chuyển đổi đối tượng Polyline thành đối tượng GeoJSON LineString hoặc MultiLineString và trả về. Tham số precision được sử dụng để làm tròn giá trị tọa độ của các điểm.
+>
 > - **getLatLngs()**:
 >   - Trả về một mảng chứa các điểm trong Polyline hoặc các mảng lồng nhau chứa các điểm trong trường hợp của MultiPolyline.
+>
 > - **setLatLngs(latlngs)**:
 >   - Thay thế tất cả các điểm trong Polyline bằng một mảng Latlngs mới.
+>
 > - **isEmpty()**:
 >   - Kiểm tra xem Polyline có chứa bất kỳ điểm nào hay không. Trả về true nếu Polyline không có LatLngs.
+>
 > - **closestLayerPoint(point)**:
 >   - Trả về điểm gần nhất với điểm point trên Polyline.
+>
 > - **getCenter()**:
 >   - Trả về tọa độ trung tâm (trọng tâm) của Polyline.
+>
 > - **getBounds()**:
 >   - Trả về tọa độ giới hạn (LatLngBounds) của Polyline.
+>
 > - **addLatLng(latlng, latlngs?)**:
 >   - Thêm một điểm được chỉ định vào Polyline. Theo mặc định, thêm vào vòng đầu tiên của Polyline trong trường hợp của MultiPolyline, nhưng có thể ghi đè bằng cách truyền một vòng cụ thể dưới dạng một mảng LatLng (có thể truy cập trước đó bằng getLatLngs).
 
@@ -1100,3 +1107,59 @@ Các phương thức và sự kiện của lớp Polygon được kế thừa t�
 > - **rectangle(latLngBounds, options)**: Phương thức tạo mới đối tượng Rectangle, với latLngBounds là vùng địa lý của hình chữ nhật và options là một đối tượng chứa các tùy chọn.
 > - **setBounds(latLngBounds)**: Phương thức vẽ lại hình chữ nhật với giới hạn được truyền vào.
 > - **Đối tượng Rectangle cũng kế thừa tất cả các phương thức và thuộc tính của lớp Polygon, Polyline, Path và Layer.
+
+#### CircleMarker
+1. CircleMarker cho phép vẽ một đối tượng hình tròn trên bản đồ với bán kính được chỉ định theo đơn vị pixel. Lớp này kế thừa từ lớp Path.
+2. Khởi tạo
+Tạo một đối tượng CircleMarker:
+```javascript
+    var circleMarker = BCG.circleMarker([51.5, -0.09], { radius: 10 }).addTo(map);
+```
+> **Options**
+> - **radius**: Bán kính của hình tròn đơn vị là pixel.
+
+3. Methods và Properties
+
+> **Methods**
+> - **toGeoJSON()**:
+>   - Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
+> - **setLatLng(latLng)**:
+>   - Cập nhật vị trí của CircleMarker.
+> - **getLatLng()**:
+>   - Lấy vị trí hiện tại của CircleMarker.
+> - **setRadius(radius)**:
+>   - Cập nhật bán kính của CircleMarker.
+> - **getRadius()**:
+>   - Lấy bán kính hiện tại của CircleMarker.
+> - Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
+
+
+
+move: Được kích hoạt khi đối tượng CircleMarker được di chuyển.
+Phương thức:
+
+
+
+#### Circle
+1. Lớp Circle trong Leaflet là để vẽ các đối tượng vòng tròn trên bản đồ và kế thừa từ CircleMarker.
+
+Điều này là một sự xấp xỉ và bắt đầu sai khỏi một vòng tròn thực sự gần cực (do sự méo dạng của chiếu phim).
+
+Ví dụ sử dụng:
+
+L.circle([50.5, 30.5], {radius: 200}).addTo(map);
+
+Các phương thức của lớp Circle bao gồm:
+
+setRadius(radius): Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
+getRadius(): Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
+getBounds(): Trả về giới hạn địa lý của đối tượng.
+Các lựa chọn của lớp Circle bao gồm bán kính và các tùy chọn được thừa kế từ lớp Path, Interactive layer và Layer.
+
+Để tạo đối tượng Circle, có hai cách:
+
+L.circle(latLng, options): Tạo đối tượng vòng tròn cho một điểm địa lý và một đối tượng tùy chọn chứa bán kính của đường tròn.
+L.circle(latLng, radius, options): Cách này là cũ và không được khuyến khích sử dụng trong các ứng dụng hoặc plugin mới.
+Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Mouse, Layer và Tooltip.
+
+
