@@ -345,18 +345,12 @@ var map = BCG.BecaGIS.createMap('divMapId', options, config)
 > #### Methods
 
 > **Methods dành cho Layers và Controls**
-> - _addControl(control)_: this
->   - Thêm control vào map
-> - _removeControl(control)_: this
->   - Xóa control khỏi map
-> - _addLayer(layer)_: this
->   - Thêm layer vào map
-> - _removeLayer(layer)_:
->   - xóa layer khỏi map
-> - _hasLayer(layer)_: Boolean
->   - Kiểm tra layer có tồn tại trong map hay không
-> - _eachLayer(func, context)_: this
->   - Duyệt qua tất cả layer của map với đối số layer truyền vào hàm func
+> - _addControl(control)_ -> this: Thêm control vào map
+> - _removeControl(control)_ -> this: Xóa control khỏi map
+> - _addLayer(layer)_ -> this: Thêm layer vào map
+> - _removeLayer(layer)_ -> xóa layer khỏi map
+> - _hasLayer(layer)_ -> Boolean: Kiểm tra layer có tồn tại trong map hay không
+> - _eachLayer(func, context)_ -> this: Duyệt qua tất cả layer của map với đối số layer truyền vào hàm func
 > ```javascript
 >   map.eachLayer((layer) => {
 >       layer.bindPopup('Hello');
