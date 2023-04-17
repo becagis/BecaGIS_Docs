@@ -272,74 +272,74 @@ var featureAttributes = await map.geoPortal
 var map = BCG.BecaGIS.createMap('divMapId', options, config)
 ```
 
-> Diễn giải các thông số:
-> - *divId*: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
-> - *options*: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
-> Có 2 thông số bắt buộc khi khởi tạo map:
-> - *center*: xác định vị trí trung tâm của map khi khởi tạo
-> - *zoom*: mức zoom mặc định của map khi khởi tạo
-> - *config*: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
+ Diễn giải các thông số:
+ - *divId*: là id của thẻ div được chọn làm Map, điều kiện thẻ div phải được xác định width và height
+ - *options*: là các cấu hình thay thế mặc định cho properties của map, sẽ được diễn giải ở Properties
+ Có 2 thông số bắt buộc khi khởi tạo map:
+ - *center*: xác định vị trí trung tâm của map khi khởi tạo
+ - *zoom*: mức zoom mặc định của map khi khởi tạo
+ - *config*: là các cấu hình liên quan đến GeoPortal, Plugins, Module khác.
 
 #### Options
 
-> **Map State Options**
-> - _crs_: hệ tọa độ
-> - _center_(*): [LatLng](#LatLng) vị trí trung tâm khi khởi tạo
-> - _zoom_(Number)(*): độ zoom mặc định
-> - _minZoom_(Number): độ zoom nhỏ nhất cho phép
-> - _maxZoom_(Number): độ zoom lớn nhất cho phép
-> - _layers_(Number): danh sách layers được thêm mặc định
-> - _maxBounds_([LatLngBounds](#LatLngBounds): Bounds tối đa
+ **Map State Options**
+ - _crs_: hệ tọa độ
+ - _center_(*): [LatLng](#LatLng) vị trí trung tâm khi khởi tạo
+ - _zoom_(Number)(*): độ zoom mặc định
+ - _minZoom_(Number): độ zoom nhỏ nhất cho phép
+ - _maxZoom_(Number): độ zoom lớn nhất cho phép
+ - _layers_(Number): danh sách layers được thêm mặc định
+ - _maxBounds_([LatLngBounds](#LatLngBounds): Bounds tối đa
 
->**Animation Options**
-> - _zoomAnimation_(Boolean): hiệu ứng khi phóng to, thu nhỏ
-> - _zoomAnimationThreshold_(Number): chênh lệch mức zoom để xuất hiện hiệu ứng
-> - _fadeAnimation_(Boolean): hiệu ứng fade in/out khi tile được thay thế đối với [TileLayer](#TileLayer)
+**Animation Options**
+ - _zoomAnimation_(Boolean): hiệu ứng khi phóng to, thu nhỏ
+ - _zoomAnimationThreshold_(Number): chênh lệch mức zoom để xuất hiện hiệu ứng
+ - _fadeAnimation_(Boolean): hiệu ứng fade in/out khi tile được thay thế đối với [TileLayer](#TileLayer)
 
->**Control options**
-> - _zoomControl_(Boolean): hiển thị zoom control
-> - _attributionControl_(Boolean): hiển thị thông tin nhà phát triển
+**Control options**
+ - _zoomControl_(Boolean): hiển thị zoom control
+ - _attributionControl_(Boolean): hiển thị thông tin nhà phát triển
 
 >[Xem thêm...](https://leafletjs.com/reference.html#map)
 
 #### Config
 
-> **Cấu hình GeoPortal**
-> - _geoPortal_: chứa các cấu hình liên quan đến [GeoPorta](#GeoPortal)
-> - _map_: chứa các cấu hình modules, control, plugins
->```javascript
->    map: {
->        controls: {
->            drawControl: false,
->            measurementControl: false,
->            searchPlaceControl: false,
->            scaleControl: false,
->            geoPortalLayersControl: false,
->            geoPortalLoginControl: false,
->            geoPortalWmsLegendControl: false,
->            geoPortalFeatureSearchControl: false,
->        },
->        layers: {
->            overlayLayers: [
->                    {
->                        type: "GeoJSON|WMS|TileLayer",
->                        key: "<Chuỗi khóa duy nhất của layer trong map instance>",
->                        options: {
->                            url: "geojson_url | wms url | tile url template",
->                            layers: "Tên layer trong khai báo của url"
->                        }
->                    }
->            ],
->            baseLayers: []
->        },
->        plugins: {
->            turfPlugin: false,
->            mvtPlugin: false,
->            model3DPlugins: false,
->            model3DTilingPlugins: false
->        },
->    },
-> ```
+ **Cấu hình GeoPortal**
+ - _geoPortal_: chứa các cấu hình liên quan đến [GeoPorta](#GeoPortal)
+ - _map_: chứa các cấu hình modules, control, plugins
+```javascript
+    map: {
+        controls: {
+            drawControl: false,
+            measurementControl: false,
+            searchPlaceControl: false,
+            scaleControl: false,
+            geoPortalLayersControl: false,
+            geoPortalLoginControl: false,
+            geoPortalWmsLegendControl: false,
+            geoPortalFeatureSearchControl: false,
+        },
+        layers: {
+            overlayLayers: [
+                    {
+                        type: "GeoJSON|WMS|TileLayer",
+                        key: "<Chuỗi khóa duy nhất của layer trong map instance>",
+                        options: {
+                            url: "geojson_url | wms url | tile url template",
+                            layers: "Tên layer trong khai báo của url"
+                        }
+                    }
+            ],
+            baseLayers: []
+        },
+        plugins: {
+            turfPlugin: false,
+            mvtPlugin: false,
+            model3DPlugins: false,
+            model3DTilingPlugins: false
+        },
+    },
+ ```
 
 > #### Methods
 
