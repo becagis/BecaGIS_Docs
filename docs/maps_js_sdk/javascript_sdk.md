@@ -979,11 +979,6 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
 > Phương thức này được gọi khi control được thêm vào map bằng cách sử dụng phương thức `addTo(map)`.
 > - **onRemove(map)**: Phương thức này chứa tất cả mã dọn dẹp để xóa các Event Handler được thêm vào trước đó trong onAdd. 
 > Phương thức này được gọi khi điều khiển được loại bỏ khỏi bản đồ bằng cách sử dụng phương thức `remove`
-#### DrawControl
-
-#### SearchControl
-
-#### ScaleControl
 
 ### Path
 
