@@ -203,7 +203,7 @@ sidebar_label: JavaScript SDK
         })
 ```
 
-2. Truy xuất danh sách Features dựa vào truy vấn CQL.
+2. Truy xuất danh sách Features dựa vào truy vấn CQBCG.
 
 ```javascript
     var features = await map.geoPortal
@@ -236,7 +236,7 @@ sidebar_label: JavaScript SDK
 ```
 
 > *** Hướng dẫn CQL Query xem chi
-> tiết [tại đây](https://docs.geoserver.org/2.22.x/en/user/tutorials/cql/cql_tutorial.html)
+> tiết [tại đây](https://docs.geoserver.org/2.22.x/en/user/tutorials/cql/cql_tutoriaBCG.html)
 
 4. Truy xuất thông tin mô tả thuộc tính của Feature
 
@@ -484,7 +484,7 @@ sidebar_label: JavaScript SDK
 
 > Diễn giải các thông số:
 > - **geoPortal**: chứa khai báo liên quan đến GeoPortal
-> - **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportal.vntts.com.vn
+> - **geoPortalUrl**: đường dẫn đến website GeoPortal, ví dụ: https://geoportaBCG.vntts.com.vn
 
 > - **loginInfo**: Thông tin xác thực tài khoản GeoPortal
 > - **clientId**: Tìm thông số trong menu: Admin Site/Applications/<ứng dụng>/clientId
@@ -590,7 +590,7 @@ Trong khi sử dụng LatLng có thể sử dụng thông qua các dạng khai b
     map.panTo([11.05310, 106.66616]);
     map.panTo({lng: 106.66616, lat: 11.05310});
     map.panTo({lat: 11.05310, lng: 106.66616});
-    map.panTo(L.latLng(11.05310, 106.66616));
+    map.panTo(BCG.latLng(11.05310, 106.66616));
 ```
 
 3. Methods và Properties
@@ -996,7 +996,7 @@ ví dụ: `'https://{s}.somedomain.com/blabla/{z}/{x}/{y}.png'`
 > - **fillColor**: Màu sắc cho việc tô màu, mặc định là giá trị của tùy chọn color.
 > - **fillOpacity**: Độ trong suốt của màu tô, từ 0 đến 1, mặc định là 0.2.
 > - **fillRule**: Một chuỗi xác định cách xác định bên trong của một hình dạng. Mặc định là 'evenodd'.
-> - **bubblingMouseEvents**: Khi đúng, một sự kiện chuột trên path này sẽ kích hoạt cùng một sự kiện trên bản đồ (trừ khi L.DomEvent.stopPropagation được sử dụng).
+> - **bubblingMouseEvents**: Khi đúng, một sự kiện chuột trên path này sẽ kích hoạt cùng một sự kiện trên bản đồ (trừ khi BCG.DomEvent.stopPropagation được sử dụng).
 > - **renderer**: Sử dụng bộ vẽ Renderer cụ thể này cho path này. Ưu tiên hơn so với bộ vẽ mặc định của bản đồ.
 > - **className**: Tên lớp tùy chỉnh được đặt tên trên phần tử DOM. Chỉ sử dụng cho bộ vẽ SVG.
 >
@@ -1032,7 +1032,7 @@ Ngoài ra có thể khởi tạo bằng cách sử dụng các nested array hìn
     ];
 ```
 > **Hàm khởi tạo**
-> - L.polyline(latlngs, options):
+> - BCG.polyline(latlngs, options):
 >   - Trả về một đối tượng polyline dựa trên một mảng latlngs và options. 
 >   - `options` bao gồm:
 >     - smoothFactor: số thực (mặc định là 1.0). Độ giản lược của đường điểm được biểu diễn. Càng cao thì hiệu năng và màn hình sẽ mượt hơn, và ngược lại. 
@@ -1059,7 +1059,44 @@ Ngoài ra có thể khởi tạo bằng cách sử dụng các nested array hìn
 >   - Thêm một điểm được chỉ định vào Polyline. Theo mặc định, thêm vào vòng đầu tiên của Polyline trong trường hợp của MultiPolyline, nhưng có thể ghi đè bằng cách truyền một vòng cụ thể dưới dạng một mảng LatLng (có thể truy cập trước đó bằng getLatLngs).
 
 #### Polygon
+1. Polygon là một lớp đối tượng dùng để vẽ đa giác trên bản đồ. Lớp này kế thừa từ lớp Polyline. Lưu ý khi tạo đa giác thì các điểm không được trùng với điểm đầu tiên của đa giác vì điều này sẽ ảnh hưởng đến hiển thị của đa giác.
+2. Khởi tạo
+Để tạo một đa giác đơn giản từ một mảng các LatLngs
+```javascript
+var latlngs = [[37, -109.05],[41, -109.03],[41, -102.05],[37, -102.04]];
+var polygon = BCG.polygon(latlngs, {color: 'red'}).addTo(map);
+map.fitBounds(polygon.getBounds());
+```
+Cũng có thể tạo một đa giác lồng vào đa giác khác bằng cách truyền vào một mảng hai chiều với mảng đầu tiên là đa giác ngoài và các mảng sau là các lỗ trong đa giác ngoài.
+```javascript
+var latlngs = [
+[[37, -109.05],[41, -109.03],[41, -102.05],[37, -102.04]], // đa giác ngoài
+[[37.29, -108.58],[40.71, -108.58],[40.71, -102.50],[37.29, -102.50]] // lỗ trong đa giác ngoài
+];
+```
+Ngoài ra, chúng ta có thể truyền vào một mảng ba chiều để tạo một đa giác đa tầng (MultiPolygon).
 
-#### Circle
+3. Methods
+Các phương thức và sự kiện của lớp Polygon được kế thừa từ lớp Polyline, lớp Path, lớp Layer. Các phương thức quan trọng của lớp Polygon bao gồm:
+> - **toGeoJSON(precision?)**: Phương thức này trả về một đối tượng GeoJSON đại diện cho đa giác, có thể là đa giác đơn hoặc đa giác đa tầng (MultiPolygon).
+> - **getCenter()**: Phương thức này trả về tọa độ trung tâm (centroid) của đa giác.
 
 #### Rectangle
+1. Lớp Rectangle được sử dụng để vẽ các đối tượng hình chữ nhật trên bản đồ. Nó kế thừa từ lớp Polygon.
+2. Khởi tạo
+```javascript
+    // định nghĩa vùng địa lý của hình chữ nhật
+    var bounds = [[54.559322, -5.767822], [56.1210604, -3.021240]];
+    
+    // tạo một hình chữ nhật màu cam
+    BCG.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
+    
+    // phóng to bản đồ đến giới hạn của hình chữ nhật
+    map.fitBounds(bounds);
+```
+3. Methods và Properties
+
+> **Methods**
+> - **rectangle(latLngBounds, options)**: Phương thức tạo mới đối tượng Rectangle, với latLngBounds là vùng địa lý của hình chữ nhật và options là một đối tượng chứa các tùy chọn.
+> - **setBounds(latLngBounds)**: Phương thức vẽ lại hình chữ nhật với giới hạn được truyền vào.
+> - **Đối tượng Rectangle cũng kế thừa tất cả các phương thức và thuộc tính của lớp Polygon, Polyline, Path và Layer.
