@@ -358,48 +358,29 @@ var map = BCG.BecaGIS.createMap('divMapId', options, config)
 > ```
 
 > **Methods thay đổi trạng thái map**
-> - _setView(center, zoom)_: this
->   - Thiết lập vị trí center ([LatLng](#LatLng))) và độ zoom (Number)
-> - _setZoom(zoom)_: this
->   - Thiết lập độ zoom (Number)
-> - _fitBounds(latlngBound)_: this
->   - Thiết lập bounds ([LatLngBounds](#LatLngBounds)) vào khung nhìn của map
-> - _panTo(latlng)_: this
->   - Di chuyển map center đến vị trí latlng ([LatLng](#LatLng))
-> - _flyTo(latlng, zoom)_: this
->   - Di chuyển map center với hiệu ứng fly đến vị trí latlng ([LatLng](#LatLng)) và độ zoom (Number)
-> - _flyToBounds(latlngbounds)_: this
->   - Di chuyển map view đến khung latlngBounds ([LatLngBounds](#LatLngBounds))
-> - _setMaxBounds(latlngBounds)_: this
->   - Thiết lập latlngBounds ([LatLngBounds](#LatLngBounds)) tối đa của map và giới hạn khung nhìn di chuyển ra khỏi bounds
-> - _setMaxZoom(zoom)_: this
->   - Thiết lập độ zoom lớn nhất của map (Thông thường giá trị là 24)
-> - _setMinZoom(zoom)_: this
->   - Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
-> - _invalidateSize()_: this
->   - Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
+> - _setView(center, zoom)_ -> this: Thiết lập vị trí center ([LatLng](#LatLng))) và độ zoom (Number)
+> - _setZoom(zoom)_ -> this: Thiết lập độ zoom (Number)
+> - _fitBounds(latlngBound)_ -> this: Thiết lập bounds ([LatLngBounds](#LatLngBounds)) vào khung nhìn của map
+> - _panTo(latlng)_ -> this: Di chuyển map center đến vị trí latlng ([LatLng](#LatLng))
+> - _flyTo(latlng, zoom)_ -> this: Di chuyển map center với hiệu ứng fly đến vị trí latlng ([LatLng](#LatLng)) và độ zoom (Number)
+> - _flyToBounds(latlngbounds)_ -> this: Di chuyển map view đến khung latlngBounds ([LatLngBounds](#LatLngBounds))
+> - _setMaxBounds(latlngBounds)_ -> this: Thiết lập latlngBounds ([LatLngBounds](#LatLngBounds)) tối đa của map và giới hạn khung nhìn di chuyển ra khỏi bounds
+> - _setMaxZoom(zoom)_ -> this: Thiết lập độ zoom lớn nhất của map (Thông thường giá trị là 24)
+> - _setMinZoom(zoom)_ -> this: Thiết lập độ zoom nhỏ nhất của bản đồ (Thông thường giá trị là 8)
+> - _invalidateSize()_ -> this: Sử dụng khi có thay đổi kích thước thẻ divMap nhằm đảm bảo mapview hoạt động đúng
 
 > **Methods truy xuất thông tin map**
-> - _getCenter()_: [LatLng](#LatLng)
->   - Lấy vị trí center của map
-> - _getZoom()_: Number
->   - Lấy độ zoom hiện tại của map
-> - _getBounds()_: [LatLngBounds](#LatLngBounds)
->   - Lấy Bounds hiện tại của map
-> - _getMinZoom()_: Number
->   - Lấy giá trị zoom nhỏ nhất của map
-> - _getMaxZoom()_: Number
->   - Lấy giá trị zoom lớn nhất
-> - _getBoundsZoom(latlngBounds)_: Number
->   - Lấy độ zoom tương ứng của map với thông số đầu vào là bounds
-> - _getSize()_: [Point](#Point)
->   - Lấy kích thước của map
+> - _getCenter() -> [LatLng](#LatLng): Lấy vị trí center của map
+> - _getZoom() -> Number: Lấy độ zoom hiện tại của map
+> - _getBounds() -> [LatLngBounds](#LatLngBounds): Lấy Bounds hiện tại của map
+> - _getMinZoom() -> Number: Lấy giá trị zoom nhỏ nhất của map
+> - _getMaxZoom() -> Number: Lấy giá trị zoom lớn nhất
+> - _getBoundsZoom(latlngBounds) -> Number: Lấy độ zoom tương ứng của map với thông số đầu vào là bounds
+> - _getSize() -> [Point](#Point): Lấy kích thước của map
 
 > **Methods khai báo Event **
-> - _on(eventName, callback)_: this
->   - Đăng ký sự kiện của map với giá trị handler là callback.
-> - off(eventName, callbackRef): this
->   - Hủy đăng ký sự kiện của máp với reference của callback đã đăng ký.
+> - _on(eventName, callback)_ -> this: Đăng ký sự kiện của map với giá trị handler là callback.
+> - off(eventName, callbackRef) -> this: Hủy đăng ký sự kiện của máp với reference của callback đã đăng ký.
 
 #### Events
 
