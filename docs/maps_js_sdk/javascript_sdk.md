@@ -1109,57 +1109,61 @@ Các phương thức và sự kiện của lớp Polygon được kế thừa t�
 > - **Đối tượng Rectangle cũng kế thừa tất cả các phương thức và thuộc tính của lớp Polygon, Polyline, Path và Layer.
 
 #### CircleMarker
-1. CircleMarker cho phép vẽ một đối tượng hình tròn trên bản đồ với bán kính được chỉ định theo đơn vị pixel. Lớp này kế thừa từ lớp Path.
+1. CircleMarker cho phép vẽ một đối tượng hình tròn trên bản đồ với bán kính được chỉ định theo đơn vị pixeBCG. Lớp này kế thừa từ lớp Path.
 2. Khởi tạo
 Tạo một đối tượng CircleMarker:
 ```javascript
     var circleMarker = BCG.circleMarker([51.5, -0.09], { radius: 10 }).addTo(map);
 ```
 > **Options**
-> - **radius**: Bán kính của hình tròn đơn vị là pixel.
+> - **radius**: Bán kính của hình tròn đơn vị là pixeBCG.
 
 3. Methods và Properties
 
 > **Methods**
 > - **toGeoJSON()**:
 >   - Chuyển đổi vị trí CircleMarker thành đối tượng GeoJSON.
+>
 > - **setLatLng(latLng)**:
 >   - Cập nhật vị trí của CircleMarker.
+>
 > - **getLatLng()**:
 >   - Lấy vị trí hiện tại của CircleMarker.
+>
 > - **setRadius(radius)**:
 >   - Cập nhật bán kính của CircleMarker.
+>
 > - **getRadius()**:
 >   - Lấy bán kính hiện tại của CircleMarker.
+> 
 > - Lớp CircleMarker cũng kế thừa các phương thức từ lớp Path và Layer.
-
-
-
-move: Được kích hoạt khi đối tượng CircleMarker được di chuyển.
-Phương thức:
-
-
+>
+> **Events**
+> - **move**: Được kích hoạt khi đối tượng CircleMarker được di chuyển.
 
 #### Circle
-1. Lớp Circle trong Leaflet là để vẽ các đối tượng vòng tròn trên bản đồ và kế thừa từ CircleMarker.
+1. Lớp Circle để vẽ các đối tượng vòng tròn trên bản đồ và kế thừa từ CircleMarker.
+2. Khởi tạo
+```javascript
+    var circle = BCG.circle([50.5, 30.5], {radius: 200}).addTo(map);
+```
+> **Để khởi tạo Circle có cách cách sau:**
+> - **BCG.circle(latLng, options)** : Tạo đối tượng vòng tròn cho một điểm địa lý và một đối tượng tùy chọn chứa bán kính của đường tròn.
+> - **BCG.circle(latLng, radius, options)** : Cách này là cũ và không được khuyến khích sử dụng trong các ứng dụng hoặc plugin mới.
 
-Điều này là một sự xấp xỉ và bắt đầu sai khỏi một vòng tròn thực sự gần cực (do sự méo dạng của chiếu phim).
+3. Methods và Properties
+> **Methods**
+> - **setRadius(radius)**:
+>   - Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
+>
+> - **getRadius()**:
+>   - Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
+>
+> - **getBounds()**:
+>   - Trả về giới hạn địa lý của đối tượng.
+>
+> **Events**
+> - Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Layer.
 
-Ví dụ sử dụng:
-
-L.circle([50.5, 30.5], {radius: 200}).addTo(map);
-
-Các phương thức của lớp Circle bao gồm:
-
-setRadius(radius): Thiết lập bán kính của đối tượng vòng tròn. Đơn vị tính là mét.
-getRadius(): Trả về bán kính hiện tại của đối tượng vòng tròn. Đơn vị tính là mét.
-getBounds(): Trả về giới hạn địa lý của đối tượng.
-Các lựa chọn của lớp Circle bao gồm bán kính và các tùy chọn được thừa kế từ lớp Path, Interactive layer và Layer.
-
-Để tạo đối tượng Circle, có hai cách:
-
-L.circle(latLng, options): Tạo đối tượng vòng tròn cho một điểm địa lý và một đối tượng tùy chọn chứa bán kính của đường tròn.
-L.circle(latLng, radius, options): Cách này là cũ và không được khuyến khích sử dụng trong các ứng dụng hoặc plugin mới.
-Các sự kiện của lớp Circle bao gồm sự kiện kế thừa từ CircleMarker, Mouse, Layer và Tooltip.
 
 
