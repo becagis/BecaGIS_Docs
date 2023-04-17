@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "Hello World 123"
+echo "Hello World"
 echo $(date) >> timestamp.txt
