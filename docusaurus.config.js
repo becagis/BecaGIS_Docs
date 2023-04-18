@@ -92,8 +92,8 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'qgis_plugins/README',
-            label: 'QGIS Plugins',
+            docId: 'qgis_plugin/README',
+            label: 'QGIS Plugin',
           },
           {
             href: 'https://github.com/becagis/BecaGIS_Docs',
