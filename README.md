@@ -7,7 +7,6 @@
 webhook -hooks /home/ubuntu/VNTT/PROJECT/INTERNAL/BecaGIS_Docs_Deploy/hooks.json -verbose --port 9090 -hotreload -template
 ```
 
-
 ```json
 [
   {
@@ -20,7 +19,6 @@ webhook -hooks /home/ubuntu/VNTT/PROJECT/INTERNAL/BecaGIS_Docs_Deploy/hooks.json
         {
           "match": {
             "type": "payload-hash-sha1",
-            "secret": "YmVjYWdpcy1kb2NzCg==",
             "secret": "{{ getenv "BECAGIS_DOCS_SECRET" | js }}",
             "parameter": {
               "source": "header",
