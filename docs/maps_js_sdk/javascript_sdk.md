@@ -95,9 +95,9 @@ var map = BCG.BecaGIS.createMap("map", {}, {
 })
 ```
 
-### Tạo bản đồ với Marker
+### Tạo bản đồ với GeoJSON
 
-1. Sử dụng hàm `createMap` để khởi tạo bản đồ với Marker và popup hiển thị thông báo
+1. Sử dụng hàm `createMap` để khởi tạo bản đồ với Polygon GeoJSON và popup hiển thị thông báo
 
 ```javascript
 var map = BCG.BecaGIS.createMap("map", {}, {
