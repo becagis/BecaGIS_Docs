@@ -1,0 +1,12 @@
+services:
+  webhook:
+    image: thecatlady/webhook
+    container_name: webhook
+    command: -verbose -hooks=hooks.yml -hotreload
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /path/to/appdata/config:/config:ro
+    ports:
+      - 9000:9000
+    restart: always

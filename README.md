@@ -1,5 +1,12 @@
 # BecaGIS Docs Deploy
 
+- https://github.com/ncarlier/webhookd
+- https://github.com/adnanh/webhook
+
+```shell
+webhook -hooks /home/ubuntu/VNTT/PROJECT/INTERNAL/BecaGIS_Docs_Deploy/hooks.json -verbose --port 9090 -hotreload -template
+```
+
 ```json
 [
   {
@@ -13,6 +20,7 @@
           "match": {
             "type": "payload-hash-sha1",
             "secret": "YmVjYWdpcy1kb2NzCg==",
+            "secret": "{{ getenv "BECAGIS_DOCS_SECRET" | js }}",
             "parameter": {
               "source": "header",
               "name": "X-Hub-Signature"
