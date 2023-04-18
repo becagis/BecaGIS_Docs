@@ -32,6 +32,10 @@ var map = BCG.BecaGIS.createMap("map", {}, {
     baseLayer: "Google"
 })
 ```
+<div>
+<iframe src="https://becagisvntts.github.io/becagis-demo/becagis-sdk/create_map_with_baselayer.html" width="100%" height="500px"/>
+</div>
+
 
 ### Khởi tạo bản đồ với đầy đủ các thông số
 
@@ -106,11 +110,11 @@ var map = BCG.BecaGIS.createMap("map", {}, {
             overlayLayers: [
                 {
                     type: "GeoJSON",
-                    key: "<Chuỗi khóa duy nhất của layer trong map instance>",
+                    key: "marker_geojson",
                     data: {
-                          "type": "Feature",
-                          "properties": {},
-                          "geometry": {
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {
                             "coordinates": [[
                                 [106.66458020843481, 11.05468402738991],
                                 [106.66348580116204, 11.051683536663418],
@@ -124,13 +128,14 @@ var map = BCG.BecaGIS.createMap("map", {}, {
                                 [106.66710210341944, 11.054730727350687],
                                 [106.66692366745093, 11.055197726963257],
                                 [106.66458020843481, 11.05468402738991]
-                              ]],
+                            ]],
                             "type": "Polygon"
-                          }
+                        }
                     },
                     options: {
                         showPopup: {
-                            content: "BecaGIS Team"
+                            content: "BecaGIS Team",
+                            latlng: [11.05468402738991, 106.66458020843481]
                         }
                     }
                 }
@@ -140,6 +145,10 @@ var map = BCG.BecaGIS.createMap("map", {}, {
     baseLayer: "Google"
 })
 ```
+
+<div>
+<iframe src="https://becagisvntts.github.io/becagis-demo/becagis-sdk/create_map_with_marker.html" width="100%" height="500px"/>
+</div>
 
 ### Tạo bản đồ với WMS Layer từ GeoPortal
 
@@ -170,6 +179,10 @@ var map = BCG.BecaGIS.createMap("map", {}, {
     }
 })
 ```
+
+<div>
+<iframe src="https://becagisvntts.github.io/becagis-demo/becagis-sdk/create_map_with_geoportal_wms.html" width="100%" height="500px"/>
+</div>
 
 ### Tìm kiếm Feature với GeoPortal Connector
 
