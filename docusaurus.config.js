@@ -77,11 +77,6 @@ const config = {
           },
           {
             type: 'docSidebar',
-            sidebarId: 'maps_flutter_sdk',
-            label: 'Maps Flutter SDK',
-          },
-          {
-            type: 'docSidebar',
             sidebarId: 'geoportal',
             label: 'GeoPortal',
           },
