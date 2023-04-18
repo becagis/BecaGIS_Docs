@@ -73,7 +73,7 @@ const config = {
           {
             type: 'docSidebar',
             sidebarId: 'maps_js_sdk',
-            label: 'Maps JavaScript SDK',
+            label: 'BecaGIS Maps SDK',
           },
           {
             type: 'docSidebar',
