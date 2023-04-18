@@ -91,8 +91,8 @@ const config = {
             label: 'GeoSurvey',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'qgis_plugins',
+            type: 'doc',
+            docId: 'qgis_plugins/README',
             label: 'QGIS Plugins',
           },
           {
