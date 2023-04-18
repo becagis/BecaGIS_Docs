@@ -1,5 +1,5 @@
 # 
-<!-- PROJECT LOGO -->
+
 <p align="center">
     <img src="images/readme/becagis.svg" alt="Logo"/>
   <h3 align="center">BecaGIS</h3>
